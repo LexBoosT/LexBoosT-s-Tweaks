@@ -21,3 +21,12 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NVDisplay.ContainerLocalSystem\LocalSystem\Watchdog]
 "LogLevel"=dword:00000000
+
+[HKLM\SYSTEM\CurrentControlSet\Control\GraphicsDrivers]
+"TdrLevel"=dword:00000000
+"TdrDelay"=dword:00000000
+"TdrDdiDelay"=dword:00000000
+"TdrDebugMode"=dword:00000000
+"TdrLimitCount"=dword:00000000
+"TdrLimitTime"=dword:00000000
+"TdrTestMode"=dword:00000000
