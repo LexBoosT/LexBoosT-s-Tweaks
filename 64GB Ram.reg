@@ -1,7 +1,5 @@
 Windows Registry Editor Version 5.00
 
-Made by BareFox;
-
 [HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control]
 "SvcHostSplitThresholdInKB"=dword:67108864
 
