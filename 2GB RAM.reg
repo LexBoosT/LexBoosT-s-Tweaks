@@ -1,4 +1,4 @@
-Windows Registry Editor Version 5.00
+Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 
 [HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control]
 "SvcHostSplitThresholdInKB"=dword:2047152
