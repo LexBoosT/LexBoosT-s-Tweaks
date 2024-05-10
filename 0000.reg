@@ -1,6 +1,6 @@
 Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}\0000]
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}\{{gpu}}]
 "ACGSupported"=dword:00000000
 "DisableAsyncPstates"=dword:00000001
 "DisableDynamicPstate"=dword:00000001
@@ -69,12 +69,3 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 "RmProfilingAdminOnly"=dword:00000000
 "TrackResetEngine"=dword:00000000
 "ValidateBlitSubRects"=dword:00000000
-
-[HKLM\SYSTEM\CurrentControlSet\Control\GraphicsDrivers]
-"TdrLevel"=dword:00000000
-"TdrDelay"=dword:00000000
-"TdrDdiDelay"=dword:00000000
-"TdrDebugMode"=dword:00000000
-"TdrLimitCount"=dword:00000000
-"TdrLimitTime"=dword:00000000
-"TdrTestMode"=dword:00000000
