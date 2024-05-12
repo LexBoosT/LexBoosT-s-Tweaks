@@ -1,0 +1,14 @@
+Windows Registry Editor Version 5.00 Made by LexBoosT 2024
+                                                                                        
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile]
+"NetworkThrottlingIndex"=dword:ffffffff
+"SystemResponsiveness"=dword:00000000
+ 
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power\PowerThrottling]
+"PowerThrottlingOff"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\PriorityControl]
+"Win32PrioritySeparation"=dword:00000026
+
+
+
