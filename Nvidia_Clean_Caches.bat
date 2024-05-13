@@ -5,3 +5,4 @@ for /d %%x in ("%localappdata%low\D3DSCache\*") do @rd /s /q "%%x"
 for /d %%x in ("%localappdata%low\NVIDIA\PerDriverVersion\GLCache\*") do @rd /s /q "%%x"
 for /d %%x in ("%localappdata%low\NVIDIA\PerDriverVersion\DXCache") do @rd /s /q "%%x"
 for /d %%x in ("%AppData%\NVIDIA\ComputeCache\*") do @rd /s /q "%%x"
+exit
