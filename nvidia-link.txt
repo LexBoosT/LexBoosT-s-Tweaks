@@ -1,3 +1,3 @@
-https://drive.usercontent.google.com/download?id=1vf1cR7MqUZMSClS7KRuvJ2BPxN0OKA4J&export=download&authuser=0&confirm=t&uuid=9ca59186-36b6-4c98-a10a-60239fb24471&at=APZUnTWAKOS02bZfbIym-QjqePEI:1716301361993
-https://fr.download.nvidia.com/nvapp/client/10.0.0.535/NVIDIA_app_beta_v10.0.0.535.exe
-555.85
+https://drive.usercontent.google.com/download?id=1vf1cR7MqUZMSClS7KRuvJ2BPxN0OKA4J&export=download&authuser=0&confirm=t&uuid=26261834-9d53-4f9c-938d-4eff588eaa31&at=APZUnTUDaEp_sXhA6eReUzDW-WbM:1717503478765
+https://us.download.nvidia.com/nvapp/client/10.0.1.253/NVIDIA_app_beta_v10.0.1.253.exe
+555.99
