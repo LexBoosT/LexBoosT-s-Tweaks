@@ -1,6 +1,4 @@
-Windows Registry Editor Version 5.00				Made By EverythingTech (https://www.youtube.com/c/EverythingTechTutorials/?sub_confirmation=1)
-
-*Memory Management Optimization*
+Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management]
 "ClearPageFileAtShutdown"=dword:00000000
@@ -21,5 +19,5 @@ Windows Registry Editor Version 5.00				Made By EverythingTech (https://www.yout
 "PoolUsageMaximum"=dword:00000060
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\PrefetchParameters]
-"EnablePrefetcher"=dword:00000000
+"EnablePrefetcher"=dword:00000003
 "EnableSuperfetch"=dword:00000000
