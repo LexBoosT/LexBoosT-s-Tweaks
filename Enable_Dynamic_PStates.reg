@@ -1,6 +1,6 @@
 Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 
-[HKLM\SYSTEM\CurrentControlSet\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}\]
+[HKLM\SYSTEM\CurrentControlSet\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}\{{gpu}}]
 "DisableAsyncPstates"=""
 "DisableDynamicPstate"=
 "DisableOverclockedPstates"=""
