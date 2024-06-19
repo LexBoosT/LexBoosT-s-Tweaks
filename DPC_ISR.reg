@@ -46,7 +46,7 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 "RtlCapabilityCheckLatency"=dword:00000001
 "TransitionLatency"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\GraphicsDrivers]
+[HKLM\SYSTEM\CurrentControlSet\Control\GraphicsDrivers]
 "MonitorLatencyTolerance"=dword:00000000
 "MonitorRefreshLatencyTolerance"=dword:00000000
 "RMDisablePostL2Compression"=dword:00000001
