@@ -60,7 +60,6 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 "DisableKmRenderStage"=dword:00000000
 "DisableKmRender"=dword:00000000
 "DisablePreemptionOnS3S4"=dword:00000000
-"DisablePreemption"=dword:00000000
 "DisableWriteCombining"=dword:00000001
 "EnableAsyncMidBufferPreemption"=dword:00000001
 "EnableBugcheckDisplay"=dword:00000000
