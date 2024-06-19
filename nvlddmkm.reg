@@ -1,11 +1,5 @@
 Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\DriverSearching]
-"SearchOrderConfig"=dword:00000000
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Device Metadata]
-"PreventDeviceMetadataFromNetwork"=dword:00000001
-
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate]
 "ExcludeWUDriversInQualityUpdate"=dword:00000001
 
@@ -39,6 +33,11 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 "TdrLimitCount"=dword:00000000
 "TdrLimitTime"=dword:00000000
 "TdrTestMode"=dword:00000000
+"RmGpsPsEnablePerCpuCoreDpc"=dword:00000001
+"MonitorLatencyTolerance"=dword:00000000
+"MonitorRefreshLatencyTolerance"=dword:00000000
+"RMDisablePostL2Compression"=dword:00000001
+"RmDisableRegistryCaching"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\nvlddmkm\Global\NVTweak]
 "Gestalt"=dword:00000513
@@ -48,8 +47,11 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 "NvCplPhysxAuto"=dword:00000000
 "NvDevToolsVisible"=dword:00000001
 "RmProfilingAdminOnly"=dword:00000000
+"DisplayPowerSaving"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\nvlddmkm]
+"0x112493bd"=dword:00000000
+"0x11e91a61"=dword:ffffffff
 "AllowdGPUPassthrough"=dword:00000000
 "AllowHWGC6"=dword:00000001
 "DisableBugcheckCallback"=dword:00000001
