@@ -1,4 +1,14 @@
 Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 
 [HKCU\Control Panel\Desktop]
-"MenuShowDelay"dword:00000000
+"MenuShowDelay"="0"
+"AutoEndTasks"="1"
+"HungAppTimeout"="1000"
+"WaitToKillAppTimeout"="2000"
+"LowLevelHooksTimeout"="1000"
+
+[HKLM\SYSTEM\CurrentControlSet\Control]
+"WaitToKillServiceTimeout"="2000"
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control]
+"WaitToKillServiceTimeout"="2000"
