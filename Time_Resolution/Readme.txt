@@ -1,3 +1,0 @@
--Lancer GlobalTimerResolutionRequests.reg
--Mettre STR.exe dans C:/
--Mettre le raccourci STR.exe dans C:\Users\Administrator\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup (Administrator est le compte utilisateur)
