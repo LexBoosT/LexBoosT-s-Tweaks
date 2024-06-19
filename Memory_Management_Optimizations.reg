@@ -3,7 +3,8 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management]
 "ClearPageFileAtShutdown"=dword:00000000
 "DisablePagingExecutive"=dword:00000001
-"LargeSystemCache"=dword:00000000
+"LargeSystemCache"=dword:00000001
+"HugePagesEnabled"=dword:00000001
 "NonPagedPoolQuota"=dword:00000000
 "NonPagedPoolSize"=dword:00000000
 "PagedPoolQuota"=dword:00000000
