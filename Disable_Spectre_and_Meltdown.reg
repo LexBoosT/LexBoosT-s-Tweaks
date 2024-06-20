@@ -1,4 +1,4 @@
-﻿Windows Registry Editor Version 5.00 Made by LexBoosT 2024
+Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 
 ;Meltdown and Spectre are two related side-channel attacks on modern CPU microprocessors that can result in unprivileged code reading data.
 ;Disabling them increases performance by 20%. 
