@@ -1,5 +1,8 @@
 Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 
+[-HKEY_CLASSES_ROOT\*\shell\TakeOwnership]
+[-HKEY_CLASSES_ROOT\*\shell\runas]
+
 [HKEY_CLASSES_ROOT\*\shell\TakeOwnership]
 @="Take Ownership"
 "Extended"=-
