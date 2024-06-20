@@ -61,11 +61,11 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 "EnableAeroPeek"=dword:00000000
 
 [HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\location]
-"Value"=Deny
+"Value"="Deny"
 [HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\appDiagnostics]
-"Value"=Deny
+"Value"="Deny"
 [HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\userAccountInformation]
-"Value"=Deny
+"Value"="Deny"
 
 [HKLM\SOFTWARE\Policies\Microsoft\Windows\System]
 "PublishUserActivities"=dword:00000000
