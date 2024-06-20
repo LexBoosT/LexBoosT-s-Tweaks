@@ -10,6 +10,6 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 
 "EnablePreemption"=dword:00000000
 
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\GraphicsDrivers
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\GraphicsDrivers]
 
 "PlatformSupportMiracast"=dword:00000000
