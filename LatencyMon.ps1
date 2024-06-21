@@ -1,0 +1,1 @@
+winget install --id=Resplendence.LatencyMon  -e

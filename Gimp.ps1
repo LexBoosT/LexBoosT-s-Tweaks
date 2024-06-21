@@ -1,0 +1,1 @@
+winget install --id=GIMP.GIMP  -e

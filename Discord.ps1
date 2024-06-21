@@ -1,0 +1,1 @@
+winget install --id=Discord.Discord  -e

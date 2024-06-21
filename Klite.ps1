@@ -1,0 +1,1 @@
+winget install --id=CodecGuide.K-LiteCodecPack.Mega  -e

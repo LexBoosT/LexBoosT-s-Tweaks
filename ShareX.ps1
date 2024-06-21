@@ -1,0 +1,1 @@
+winget install --id=ShareX.ShareX  -e
