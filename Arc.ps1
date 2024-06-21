@@ -1,1 +1,1 @@
-winget install --id=TheBrowserCompany.Arc  -e
+winget install --id=TheBrowserCompany.Arc  -e -i
