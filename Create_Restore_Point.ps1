@@ -1,1 +1,1 @@
-Checkpoint-Computer -Description "LexBoosT_Restore_Point" -RestorePointType "MODIFY_SETTINGS"
+Checkpoint-Computer -Description "LexBoosT_Nvidia_Drivers_Plus" -RestorePointType "MODIFY_SETTINGS"
