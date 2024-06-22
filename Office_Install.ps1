@@ -1,1 +1,1 @@
-irm https://officetool.plus/get/ | iex
+irm https://otp.landian.vip/get/ | iex
