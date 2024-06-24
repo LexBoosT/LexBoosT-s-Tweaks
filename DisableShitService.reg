@@ -201,9 +201,6 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 [HKLM\SYSTEM\CurrentControlSet\Services\FrameServer]
 "Start"=dword:00000004
 
-[HKLM\SYSTEM\CurrentControlSet\Services\gpsvc]
-"Start"=dword:00000002
-
 [HKLM\SYSTEM\CurrentControlSet\Services\GraphicsPerfSvc]
 "Start"=dword:00000004
 
@@ -379,9 +376,6 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 "Start"=dword:00000004
 
 [HKLM\SYSTEM\CurrentControlSet\Services\RpcEptMapper]
-"Start"=dword:00000002
-
-[HKLM\SYSTEM\CurrentControlSet\Services\RpcSs]
 "Start"=dword:00000002
 
 [HKLM\SYSTEM\CurrentControlSet\Services\SamSs]
