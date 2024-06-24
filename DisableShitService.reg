@@ -105,9 +105,6 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 [HKLM\SYSTEM\CurrentControlSet\Services\CscService]
 "Start"=dword:00000004
 
-[HKLM\SYSTEM\CurrentControlSet\Services\DcomLaunch]
-"Start"=dword:00000002
-
 [HKLM\SYSTEM\CurrentControlSet\Services\defragsvc]
 "Start"=dword:00000004
 
