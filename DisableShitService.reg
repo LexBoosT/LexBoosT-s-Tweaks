@@ -156,9 +156,6 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 [HKLM\SYSTEM\CurrentControlSet\Services\dot3svc]
 "Start"=dword:00000003
 
-[HKLM\SYSTEM\CurrentControlSet\Services\DPS]
-"Start"=dword:00000004
-
 [HKLM\SYSTEM\CurrentControlSet\Services\DsmSvc]
 "Start"=dword:00000004
 
