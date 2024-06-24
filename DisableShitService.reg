@@ -6,7 +6,7 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 [HKLM\SYSTEM\CurrentControlSet\Services\AJRouter]
 "Start"=dword:00000004
 
-[HKLM\SYSTEM\CurrentControlSet\Services\ALG]"Start"
+[HKLM\SYSTEM\CurrentControlSet\Services\ALG]
 "Start"=dword:00000004
 
 [HKLM\SYSTEM\CurrentControlSet\Services\AppIDSvc]
