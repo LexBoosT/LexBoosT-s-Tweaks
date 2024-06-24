@@ -25,8 +25,8 @@ REM  --> Vérifie si le script a les droits d'administrateur
     CD /D "%~dp0"
 :--------------------------------------
 :: Votre script PowerShell commence ici
-    PowerShell -Command "& {Set-ExecutionPolicy Bypass -Scope CurrentUser -Force}"
-    PowerShell -Command "& {Set-ExecutionPolicy Bypass -Scope LocalMachine -Force}"
-    PowerShell -Command "& {Set-ExecutionPolicy Bypass -Scope Process -Force}"
+    PowerShell -Command "& {Set-ExecutionPolicy Bypass -Scope CurrentUser -Force; Set-ExecutionPolicy Bypass -Scope LocalMachine -Force}"
 :: Votre script PowerShell se termine ici
 :--------------------------------------
+:: Pause ajoutée pour garder la fenêtre ouverte
+    pause
