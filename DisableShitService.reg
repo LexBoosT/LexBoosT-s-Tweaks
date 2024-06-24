@@ -1,7 +1,7 @@
 Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 
 [HKLM\SYSTEM\CurrentControlSet\Services\AarSvc]
-""Start""=dword:00000004
+"Start"=dword:00000004
 
 [HKLM\SYSTEM\CurrentControlSet\Services\AJRouter]
 "Start"=dword:00000004
@@ -14,6 +14,7 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 
 [HKLM\SYSTEM\CurrentControlSet\Services\Appinfo]
 "Start"=dword:00000003
+
 [HKLM\SYSTEM\CurrentControlSet\Services\AppMgmt]
 "Start"=dword:00000004
 
