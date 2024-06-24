@@ -378,9 +378,6 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 [HKLM\SYSTEM\CurrentControlSet\Services\RpcEptMapper]
 "Start"=dword:00000002
 
-[HKLM\SYSTEM\CurrentControlSet\Services\SamSs]
-"Start"=dword:00000004
-
 [HKLM\SYSTEM\CurrentControlSet\Services\SCardSvr]
 "Start"=dword:00000004
 
@@ -486,14 +483,8 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 [HKLM\SYSTEM\CurrentControlSet\Services\TokenBroker]
 "Start"=dword:00000003
 
-[HKLM\SYSTEM\CurrentControlSet\Services\TrkWks]
-"Start"=dword:00000004
-
 [HKLM\SYSTEM\CurrentControlSet\Services\TroubleshootingSvc]
 "Start"=dword:00000004
-
-[HKLM\SYSTEM\CurrentControlSet\Services\TrustedInstaller]
-"Start"=dword:00000003
 
 [HKLM\SYSTEM\CurrentControlSet\Services\tzautoupdate]
 "Start"=dword:00000004
@@ -550,12 +541,6 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 "Start"=dword:00000002
 
 [HKLM\SYSTEM\CurrentControlSet\Services\wcncsvc]
-"Start"=dword:00000004
-
-[HKLM\SYSTEM\CurrentControlSet\Services\WdiServiceHost]
-"Start"=dword:00000004
-
-[HKLM\SYSTEM\CurrentControlSet\Services\WdiSystemHost]
 "Start"=dword:00000004
 
 [HKLM\SYSTEM\CurrentControlSet\Services\WebClient]
