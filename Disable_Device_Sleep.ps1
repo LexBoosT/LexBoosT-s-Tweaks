@@ -13,3 +13,29 @@ foreach ($power_device in $power_device_enable) {
         }
     }
 }
+
+$keys = @(
+    "EnhancedPowerManagementEnabled",
+    "AllowIdleIrpInD3",
+    "EnableSelectiveSuspend",
+    "DeviceSelectiveSuspended",
+    "SelectiveSuspendEnabled",
+    "SelectiveSuspendOn",
+    "EnumerationRetryCount",
+    "ExtPropDescSemaphore",
+    "WaitWakeEnabled",
+    "D3ColdSupported",
+    "WdfDirectedPowerTransitionEnable",
+    "EnableIdlePowerManagement",
+    "IdleInWorkingState",
+    "IoLatencyCap",
+    "DmaRemappingCompatible",
+    "DmaRemappingCompatibleSelfhost"
+)
+
+foreach ($key in $keys) {
+    $paths = Get-ChildItem -Path "HKLM:\SYSTEM\CurrentControlSet\Enum" -Recurse | Get-ItemProperty -EA SilentlyContinue | Where-Object { $_.PSChildName -eq $key }
+    foreach ($path in $paths) {
+        Set-ItemProperty -Path $path.PSPath -Name $key -Value 1
+    }
+}
