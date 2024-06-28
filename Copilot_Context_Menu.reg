@@ -1,9 +1,0 @@
-Windows Registry Editor Version 5.00 Made by LexBoosT 2024
-
-[HKEY_CLASSES_ROOT\DesktopBackground\shell\Copilot]
-"MUIVerb"="Copilot"
-"Position"="Bottom"
-
-[HKEY_CLASSES_ROOT\DesktopBackground\shell\Copilot\Command]
-@="rundll32.exe url.dll,FileProtocolHandler \"microsoft-edge://?ux=copilot&tcp=1&source=taskbar\""
-
