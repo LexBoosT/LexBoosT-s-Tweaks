@@ -1,7 +1,32 @@
 Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 
+[HKEY_CLASSES_ROOT\.ps1]
+@="PowerShellScript"
+"Content Type"="text/plain"
+"PerceivedType"="text"
+
 [HKEY_CLASSES_ROOT\.ps1\ShellNew]
 "NullFile"=""
+
+[HKEY_CLASSES_ROOT\PowerShellScript]
+@="Windows PowerShell Script"
+"EditFlags"=dword:00000000
+"FriendlyTypeName"="@shell32.dll,-41997"
+
+[HKEY_CLASSES_ROOT\PowerShellScript\DefaultIcon]
+@="%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe,-41"
+
+[HKEY_CLASSES_ROOT\PowerShellScript\Shell]
+
+[HKEY_CLASSES_ROOT\PowerShellScript\Shell\Open]
+
+[HKEY_CLASSES_ROOT\PowerShellScript\Shell\Open\Command]
+@="\"%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe\" -noLogo -noExit -Command \"& {\\\"%1\\\"}\""
+
+[HKEY_CLASSES_ROOT\PowerShellScript\Shell\Edit]
+
+[HKEY_CLASSES_ROOT\PowerShellScript\Shell\Edit\Command]
+@="\"%SystemRoot%\\System32\\notepad.exe\" \"%1\""
 
 [HKEY_CLASSES_ROOT\.bat\ShellNew]
 "NullFile"=""
