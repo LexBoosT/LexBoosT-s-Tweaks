@@ -7,6 +7,7 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 
 [HKEY_CLASSES_ROOT\.ps1\ShellNew]
 "NullFile"=""
+"ItemName"=hex(2):4e,00,65,00,77,00,20,00,66,00,69,00,6c,00,65,00,00,00
 
 [HKEY_CLASSES_ROOT\PowerShellScript]
 @="Windows PowerShell Script"
