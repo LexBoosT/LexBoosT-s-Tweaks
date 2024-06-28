@@ -6,31 +6,31 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 "Position"=-
 "SubCommands"=""
 
-[HKEY_CLASSES_ROOT\DesktopBackground\Shell\SafeMode\shell\001-NormalMode]
+[HKEY_CLASSES_ROOT\DesktopBackground\Shell\SafeMode\shell\Normal Mode]
 @="Restart in Normal Mode"
 "HasLUAShield"=""
 
-[HKEY_CLASSES_ROOT\DesktopBackground\Shell\SafeMode\shell\001-NormalMode\command]
+[HKEY_CLASSES_ROOT\DesktopBackground\Shell\SafeMode\shell\Normal Mode\command]
 @="powershell -windowstyle hidden -command \"Start-Process cmd -ArgumentList '/s,/c,bcdedit /deletevalue {current} safeboot & bcdedit /deletevalue {current} safebootalternateshell & shutdown -r -t 00 -f' -Verb runAs\""
 
 
-[HKEY_CLASSES_ROOT\DesktopBackground\Shell\SafeMode\shell\002-SafeMode]
+[HKEY_CLASSES_ROOT\DesktopBackground\Shell\SafeMode\shell\Safe Mode]
 @="Restart in Safe Mode"
 "HasLUAShield"=""
 
-[HKEY_CLASSES_ROOT\DesktopBackground\Shell\SafeMode\shell\002-SafeMode\command]
+[HKEY_CLASSES_ROOT\DesktopBackground\Shell\SafeMode\shell\Safe Mode\command]
 @="powershell -windowstyle hidden -command \"Start-Process cmd -ArgumentList '/s,/c,bcdedit /set {current} safeboot minimal & bcdedit /deletevalue {current} safebootalternateshell & shutdown -r -t 00 -f' -Verb runAs\""
 
-[HKEY_CLASSES_ROOT\DesktopBackground\Shell\SafeMode\shell\003-SafeModeNetworking]
+[HKEY_CLASSES_ROOT\DesktopBackground\Shell\SafeMode\shell\Safe Mode Networking]
 @="Restart in Safe Mode with Networking"
 "HasLUAShield"=""
 
-[HKEY_CLASSES_ROOT\DesktopBackground\Shell\SafeMode\shell\003-SafeModeNetworking\command]
+[HKEY_CLASSES_ROOT\DesktopBackground\Shell\SafeMode\shell\Safe Mode Networking\command]
 @="powershell -windowstyle hidden -command \"Start-Process cmd -ArgumentList '/s,/c,bcdedit /set {current} safeboot network & bcdedit /deletevalue {current} safebootalternateshell & shutdown -r -t 00 -f' -Verb runAs\""
 
-[HKEY_CLASSES_ROOT\DesktopBackground\Shell\SafeMode\shell\004-SafeModeCommandPrompt]
+[HKEY_CLASSES_ROOT\DesktopBackground\Shell\SafeMode\shell\Safe Mode Command Prompt]
 @="Restart in Safe Mode with Command Prompt"
 "HasLUAShield"=""
 
-[HKEY_CLASSES_ROOT\DesktopBackground\Shell\SafeMode\shell\004-SafeModeCommandPrompt\command]
+[HKEY_CLASSES_ROOT\DesktopBackground\Shell\SafeMode\shell\Safe Mode Command Prompt\command]
 @="powershell -windowstyle hidden -command \"Start-Process cmd -ArgumentList '/s,/c,bcdedit /set {current} safeboot minimal & bcdedit /set {current} safebootalternateshell yes & shutdown -r -t 00 -f' -Verb runAs\""
