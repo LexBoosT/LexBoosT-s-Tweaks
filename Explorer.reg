@@ -23,3 +23,6 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\NamingTemplates]
 "ShortcutNameTemplate"="ShortcutNameTemplate"
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\kernel]
+"DisableTsx"=dword:00000000
