@@ -1,0 +1,8 @@
+Windows Registry Editor Version 5.00 Made by LexBoosT 2024
+
+[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\EpicGamesLauncher.exe\PerfOptions]
+"CpuPriorityClass"=dword:00000001
+"IoPriority"=dword:00000000
+"TCPNoDelay"=dword:00000001
+"TCPackFrequency"=dword:00000001
+"ThreadPriority"=dword:0000001f
