@@ -355,9 +355,3 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 [HKLM\Software\Policies\Microsoft\Windows\EdgeUI]
 "DisableHelpSticker"=dword:00000001
 "DisableMFUTracking"=dword:00000001
-
-[-HKCU\Software\Classes\microsoft-edge]
-[-HKCU\Software\Classes\microsoft-edge-holographic]
-[-HKLM\System\ControlSet001\Services\edgeupdate]
-[-HKLM\System\ControlSet001\Services\edgeupdatem]
-[-HKLM\System\CurrentControlSet\Services\MicrosoftEdgeElevationService]
