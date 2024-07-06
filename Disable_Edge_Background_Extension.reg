@@ -242,7 +242,6 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 "SitePerProcess"=dword:00000001
 "SiteSafetyServicesEnabled"=dword:00000000
 "SleepingTabsEnabled"=dword:00000001
-"SleepingTabsTimeout"=dword:00000e10
 "SmartScreenDnsRequestsEnabled"=dword:00000000
 "SmartScreenEnabled"=dword:00000000
 "SmartScreenForTrustedDownloadsEnabled"=dword:00000000
@@ -304,7 +303,6 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 "ShowHomeButton"=dword:00000000
 "ShowMicrosoftRewards"=dword:00000000
 "SleepingTabsEnabled"=dword:00000000
-"SleepingTabsTimeout"=dword:00000e10
 "SmartScreenDnsRequestsEnabled"=dword:00000000
 "SmartScreenEnabled"=dword:00000000
 "SmartScreenForTrustedDownloadsEnabled"=dword:00000000
