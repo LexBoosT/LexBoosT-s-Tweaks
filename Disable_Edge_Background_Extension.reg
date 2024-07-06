@@ -2,11 +2,7 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 
 [HKCU\Software\Microsoft\Edge]
 "UsageStatsInSample"=dword:00000000
-
-[HKCU\Software\Microsoft\Edge]
 "SmartScreenEnabled"=dword:00000000
-
-[HKCU\Software\Microsoft\Edge]
 "SmartScreenPuaEnabled"=dword:00000000
 
 [HKCU\Software\Microsoft\Edge\StabilityMetrics]
@@ -196,7 +192,6 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 "NewTabPageAllowedBackgroundTypes"=dword:00000003
 "NewTabPageContentEnabled"=dword:00000000
 "NewTabPageHideDefaultTopSites"=dword:00000001
-"NewTabPageLocation"="https://www.google.com"
 "NewTabPagePrerenderEnabled"=dword:00000000
 "NewTabPageQuickLinksEnabled"=dword:00000000
 "NewTabPageSearchBox"="redirect"
@@ -354,4 +349,5 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 
 [HKLM\Software\Policies\Microsoft\Windows\EdgeUI]
 "DisableHelpSticker"=dword:00000001
+"DisableMFUTracking"=dword:00000001
 "DisableMFUTracking"=dword:00000001
