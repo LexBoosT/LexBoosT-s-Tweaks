@@ -214,26 +214,6 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 "WinHttpProxyResolverEnabled"=dword:00000000
 "WPADQuickCheckEnabled"=dword:00000000
 
-[HKLM\Software\Policies\Microsoft\Edge\Recommended]
-"DefaultSearchProviderEnabled"=dword:00000001
-"DownloadRestrictions"=dword:00000000
-"EdgeDiscoverEnabled"=dword:00000000
-"EfficiencyMode"=dword:00000002
-"HomepageIsNewTabPage"=dword:00000000
-"HomepageLocation"="https://www.google.com"
-"LocalBrowserDataShareEnabled"=dword:00000000
-"NewSmartScreenLibraryEnabled"=dword:00000000
-"NewTabPageLocation"="https://www.google.com"
-"NewTabPagePrerenderEnabled"=dword:00000000
-"NewTabPageSetFeedType"=dword:00000001
-"RestoreOnStartup"=dword:00000004
-"SleepingTabsEnabled"=dword:00000000
-"SleepingTabsTimeout"=dword:00000e10
-"StartupBoostEnabled"=dword:00000000
-"TravelAssistanceEnabled"=dword:00000000
-"TyposquattingCheckerEnabled"=dword:00000000
-"VisualSearchEnabled"=dword:00000000
-
 [HKLM\Software\Policies\Microsoft\Edge\Recommended\RestoreOnStartupURLs]
 "1"="https://www.google.com"
 
