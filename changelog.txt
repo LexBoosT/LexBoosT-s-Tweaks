@@ -1,0 +1,98 @@
+# Version 3.6.0
+
+
+- Replaces Vendcord by Equicord in the Software menu.
+
+- Once the application is activated, the field to enter the password and the Activate button become grayed out.
+
+
+# Version 3.5.1
+
+- Fix Auto Update program
+
+
+# Version 3.5.0
+
+- Added Disable FTH.
+
+- Added Disable/Enable Mitigations with Valorant Support.
+
+- Added Priority in Context Menu.
+
+- Disabled -Shortcut text in new shortcut in Explorer Tweaks.
+
+
+# Version 3.4.0
+
+- Fix the problem of the software which does not launch if it does not detect installed Nvidia drivers.
+
+- Added Edge Tweaks.
+
+- Added product registration function to upgrade to Donors version.
+
+- Added automatic program update.
+
+
+# Version 3.3.0
+
+- Added multiple runtime: AdobeAir, Silverlight, Games for Windows Live, Shockwave.
+
+- Added ability to disable Core Isolation Memory Integrity.
+
+- Added Tweaks for Steam.
+
+- Added Tweaks for Epic Games.
+
+- In Explorer Tweak, disabled - Shortcut filename extension for shortcuts.
+
+- Added a confirmation window to indicate that caches/temporary files have been deleted.
+
+- Install correct font of the application.
+
+- Cleaning the code.
+
+
+# Version 3.2.0
+
+- Warning system to let you know that a new version of the Drivers is available on server when the program is launched.
+
+- Flashing version number when a new version of the Drivers is available.
+
+- Fix program that downloads but does not delete after closing it.
+
+- Improved interface.
+
+- Fix launching Autorun64.
+
+- Added option to enable or disable USB Idle.
+
+- Added ability to Disable Edge extensions background when closing it.
+
+- Added abitilty to disable Block potentially unwanted apps in Edge.
+
+- Added ability to add shortcuts to the context menu to start in "Safe Mode".
+
+- Added ability to enable hidden files/folders.
+
+- Added ability to enable file extensions.
+
+- Added ability to add a shortcut to make new file to the context menu (.reg .bat .vbs).
+
+- Added the ability to add a shortcut to the context menu for Copilot.
+
+- Added DNS Jumper, Winaero Tweaker softwares, Drivers Booster.
+
+- Added Network Tweaks.
+
+
+# Version 3.1.0
+
+- New interface for the program.
+
+- Reworked tweaks.
+
+- Removing unnecessary tweaks.
+
+- Added Nvidia Telemetry Program.
+
+- Gives access to tweaks from the old version only.
