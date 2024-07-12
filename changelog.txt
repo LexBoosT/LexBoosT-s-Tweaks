@@ -1,5 +1,9 @@
 # Version 3.6.0
 
+- Added Changelog Tab
+
+
+# Version 3.6.0
 
 - Replaces Vendcord by Equicord in the Software menu.
 
