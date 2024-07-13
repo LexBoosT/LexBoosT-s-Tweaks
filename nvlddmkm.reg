@@ -93,3 +93,26 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 
 [HKLM\SYSTEM\ControlSet001\Services\nvlddmkm\FTS]
 "EnableRID61684"=dword:00000001
+"EnableGR535"=dword:00000000
+"EnableRID44231"=dword:00000000
+"EnableRID64640"=dword:00000000
+"EnableRID66610"=dword:00000000
+"EnableSRS1364"=dword:00000001
+"EnableSRS1891"=dword:00000001
+"EnableRID50422"=dword:00000001
+"EnableSRS1045"=dword:00000001
+"EnableSRS1564"=dword:00000001
+"EnableSRS1673"=dword:00000001
+"EnableFSN511"=dword:00000001
+"EnableRID50787"=dword:00000001
+"EnableRID49431"=dword:00000001
+"EnableSRS1906"=dword:00000001
+"EnableSRS1736"=dword:00000001
+"EnableRID44814"=dword:00000001
+"EnableFSN408"=dword:00000001
+"EnableSRS1717"=dword:00000001
+"EnableRID46078"=dword:00000001
+"EnableRID58722"=dword:00000001
+"EnableRID57152"=dword:00000001
+"EnableRID58285"=dword:00000001
+"EnableRID41500"=dword:00000001
