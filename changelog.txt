@@ -1,3 +1,10 @@
+# Version 4.1.0
+
+- Added Donors List on Donate Tab.
+- Modifying of Equicord installation.
+- Added Flush DNS button in Windows Performances Tweaks Tab.
+
+
 # Version 4.0.0
 
 - Change of name of the software because it is no longer focused only on Nvidia Drivers.
