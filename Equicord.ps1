@@ -16,35 +16,22 @@ winget install --id Git.Git -e --source winget
 # Installer NodeJS
 winget install --id OpenJS.NodeJS.LTS -e --source winget
 
-# Installer pnpm
-npm i -g pnpm
+$DOWNLOAD_GUI = "https://github.com/Equicord/Installer/releases/latest/download/EquicordInstaller.exe"
 
-# Cloner Equicord
-git clone https://github.com/Equicord/Equicord
-cd Equicord
+$link = $DOWNLOAD_GUI
 
-# Installer les dépendances
-pnpm install --frozen-lockfile
+$outfile = "$env:TEMP\$(([uri]$link).Segments[-1])"
 
-# Construire Equicord
-pnpm build
+Write-Output "Downloading installer to $outfile"
 
-# Injecter Equicord dans votre client
-pnpm inject
+Invoke-WebRequest -Uri "$link" -OutFile "$outfile"
 
-# Boucle pour relancer 'pnpm inject'
-do {
-    Write-Host "Choose 1 to Inject or 2 to Exit Powershell"
-    $choice = Read-Host "Entrez votre choix"
-    if ($choice -eq '1') {
-        pnpm inject
-    } elseif ($choice -eq '2') {
-        exit
-    } else {
-        Write-Host "Invalid choice. Please choose 1 to Inject or 2 to exit Powershell"
-    }
-} while ($true)
+Write-Output ""
 
+Start-Process -Wait -NoNewWindow -FilePath "$outfile"
+
+# Cleanup
+Remove-Item -Force "$outfile"
 
 
 
