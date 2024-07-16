@@ -1,6 +1,6 @@
 Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 
-[HKLM\Software\Policies\Microsoft\Edge]
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Edge]
 "AccessibilityImageLabelsEnabled"=dword:00000000
 "AddressBarMicrosoftSearchInBingProviderEnabled"=dword:00000000
 "AdsSettingForIntrusiveAdsSites"=dword:00000002
@@ -167,14 +167,14 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 "WinHttpProxyResolverEnabled"=dword:00000000
 "WPADQuickCheckEnabled"=dword:00000000
 
-[HKLM\Software\Policies\Microsoft\Edge\Recommended\RestoreOnStartupURLs]
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Edge\Recommended\RestoreOnStartupURLs]
 "1"="https://www.google.com"
 
-[HKLM\Software\Policies\Microsoft\Edge\RestoreOnStartupURLs]
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Edge\RestoreOnStartupURLs]
 "1"="https://www.google.com"
 
-[HKLM\Software\Policies\Microsoft\MicrosoftEdge\BooksLibrary]
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\MicrosoftEdge\BooksLibrary]
 "EnableExtendedBooksTelemetry"=dword:00000000
 
-[HKLM\Software\Policies\Microsoft\MicrosoftEdge\TabPreloader]
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\MicrosoftEdge\TabPreloader]
 "AllowTabPreloading"=dword:00000000
