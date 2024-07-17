@@ -1,1 +1,1 @@
-Google Play Game: winget install --id=Google.PlayGames.Beta  -e
+winget install -e --id=Google.PlayGames.Beta
