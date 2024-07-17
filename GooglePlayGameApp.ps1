@@ -1,1 +1,8 @@
-winget.exe install --id Google.PlayGames.Beta --exact --source winget --accept-source-agreements --silent --disable-interactivity --accept-package-agreements
+# Vérification de l'installation de Winget
+if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
+    Write-Host "Winget is not installed. Loading installation..."
+	Set-ExecutionPolicy Bypass -Scope Process -Force; 
+    iwr -useb https://aka.ms/winget/install | iex
+}
+
+winget install -e --id Google.PlayGames.Beta
