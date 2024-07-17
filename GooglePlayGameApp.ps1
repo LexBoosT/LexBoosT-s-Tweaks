@@ -5,4 +5,4 @@ if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
     iwr -useb https://aka.ms/winget/install | iex
 }
 
-winget install -e --id Google.PlayGames.Beta
+winget.exe install --id Google.PlayGames.Beta --exact --source winget --accept-source-agreements --version "24.5.760.6" --silent --disable-interactivity --accept-package-agreements
