@@ -12,7 +12,7 @@
 - Added Disable Wifi-Sense.
 - Added Disable Microsoft P2P Network Services.
 - Added Windows Login Tweaks.
-- Added Logon Wallpaper Cganger program.
+- Added Logon Wallpaper Changer program.
 - Added Delete Users Account (like Win Defender, DefaultAccount, Guest, Web sign-in account).
 - Added Cloudflare DNS Configuration (IPV4 and IPV6) with 1 click.
 - Added Start Graphics Performance Service (improves performance).
