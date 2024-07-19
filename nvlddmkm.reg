@@ -116,3 +116,6 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 "EnableRID57152"=dword:00000001
 "EnableRID58285"=dword:00000001
 "EnableRID41500"=dword:00000001
+"EnableRID73779"=dword:00000001
+"EnableRID73780"=dword:00000001
+"EnableRID74361"=dword:00000001
