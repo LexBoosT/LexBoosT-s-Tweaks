@@ -4,6 +4,8 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 "KeyboardDataQueueSize"=dword:00000019
 
 [HKEY_CURRENT_USER\Control Panel\Keyboard]
+"KeyboardDelay"="0"
+"KeyboardSpeed"="31"
 "InitialKeyboardIndicators"="2"
 "AutoRepeatDelay"="200"
 "AutoRepeatRate"="6"
