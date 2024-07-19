@@ -1,4 +1,5 @@
 @echo 
+setlocal enabledelayedexpansion
 rem # Delete Windows Defender user account
 net user WDAGUtilityAccount /active:no
 net user "WDAGUtilityAccount" /delete
