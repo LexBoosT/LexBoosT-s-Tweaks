@@ -6,4 +6,8 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 [HKEY_CURRENT_USER\Control Panel\Keyboard]
 "InitialKeyboardIndicators"="2"
 "KeyboardDelay"="0"
-"KeyboardSpeed"="31"
+"KeyboardSpeed"="0"
+"TypematicDelay"="0"
+
+[HKEY_CURRENT_USER\Control Panel\Keyboard]
+"KeyboardSpeed"="0"
