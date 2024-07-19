@@ -1,0 +1,10 @@
+Windows Registry Editor Version 5.00 Made by LexBoosT 2024
+
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\Personalization]
+"NoLockScreen"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\System]
+"DisableLogonBackgroundImage"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\System]
+"DisableAcrylicBackgroundOnLogon"=dword:00000001
