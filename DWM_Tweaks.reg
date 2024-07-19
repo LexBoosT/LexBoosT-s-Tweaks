@@ -2,13 +2,13 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Dwm]
 "DisableDrawListCaching"=dword:00000000
-;"DisableHologramCompositor"=dword:00000001
-;"DisallowNonDrawListRendering"=dword:00000000
-;"EnableCpuClipping"=dword:00000000
-;"EnableDrawToBackbuffer"=dword:00000001
-;"EnableImageProcessing"=dword:00000001
-;"EnableMPCPerfCounter"=dword:00000000
-;"EnableShadow"=dword:00000000
-;"UseHWDrawListEntriesOnWARP"=dword:00000001
-;"SuperWetEnabled"=dword:00000000
-;"UseHWDrawListEntriesOnWARP"=dword:00000000
+"DisableHologramCompositor"=dword:00000001
+"DisallowNonDrawListRendering"=dword:00000000
+"EnableCpuClipping"=dword:00000000
+"EnableDrawToBackbuffer"=dword:00000001
+"EnableImageProcessing"=dword:00000001
+"EnableMPCPerfCounter"=dword:00000000
+"EnableShadow"=dword:00000000
+"UseHWDrawListEntriesOnWARP"=dword:00000001
+"SuperWetEnabled"=dword:00000000
+"UseHWDrawListEntriesOnWARP"=dword:00000000
