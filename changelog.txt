@@ -1,3 +1,28 @@
+# Version 4.2.0
+
+- Reorganization of Tweaks on 2 pages.
+- Added Windows on Separate Process.
+- Added Desktop on Single Process.
+- Added Disable Lockscreen.
+- Added Windows Caching DLL in memory.
+- Added Disable Disk Defrag Background.
+- Added Show all Icons Notification Taskbar.
+- Added Disable Ambient Light.
+- Added Disable Kernel Security Features.
+- Added Disable Wifi-Sense.
+- Added Disable Microsoft P2P Network Services.
+- Added Windows Login Tweaks.
+- Added Logon Wallpaper Cganger program.
+- Added Delete Users Account (like Win Defender, DefaultAccount, Guest, Web sign-in account).
+- Added Cloudflare DNS Configuration (IPV4 and IPV6) with 1 click.
+- Added Start Graphics Performance Service (improves performance).
+- Added Valorant Launcher.
+- Added Bluestacks.
+- Added more adress for DNS Jumper.
+- Added xd-Antispy Program.
+- Added LexBoosT Capitain Cursor.
+
+
 # Version 4.1.0
 
 - Added Donors List on Donate Tab.
