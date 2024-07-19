@@ -14,4 +14,4 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 "UseHWDrawListEntriesOnWARP"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\DWM\ExtendedComposition]
-"ExclusiveModeFramerateAveragingPeriodMs"=dword:000000fa
+"ExclusiveModeFramerateAveragingPeriodMs"=dword:000000FA
