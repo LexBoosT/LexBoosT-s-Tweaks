@@ -16,6 +16,10 @@ rem # Delete "DefaultAccount" account
 net user DefaultAccount /active:no
 net user "DefaultAccount" /delete
 
+rem # Delete "Default" account
+net user Default /active:no
+net user "Default" /delete
+
 rem # Delete Guest account
 net user Guest /active:no
 net user "Guest" /delete
