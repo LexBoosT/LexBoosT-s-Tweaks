@@ -5,4 +5,4 @@ if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
     iwr -useb https://aka.ms/winget/install | iex
 }
 
-winget install --id=GIMP.GIMP  -e
+winget install --id=GIMP.GIMP  -e --force
