@@ -5,4 +5,4 @@ if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
     iwr -useb https://aka.ms/winget/install | iex
 }
 
-winget install --exact --id SomePythonThings.WingetUIStore --source winget
+winget install --exact --id SomePythonThings.WingetUIStore  --force
