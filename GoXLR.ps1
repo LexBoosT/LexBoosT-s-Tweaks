@@ -10,5 +10,5 @@ if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
     iwr -useb https://aka.ms/winget/install | iex
 }
 
-choco install goxlr-driver -y --no-progress
-winget install -e --id GoXLR-on-Linux.GoXLR-Utility
+choco install goxlr-driver -y --no-progress --force
+winget install -e --id GoXLR-on-Linux.GoXLR-Utility --force
