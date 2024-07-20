@@ -5,4 +5,4 @@ if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
     iwr -useb https://aka.ms/winget/install | iex
 }
 
-winget install --id=ItchIo.Itch  -e
+winget install --id=ItchIo.Itch  -e --force
