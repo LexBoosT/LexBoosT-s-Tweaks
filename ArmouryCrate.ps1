@@ -5,4 +5,4 @@ if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
     iwr -useb https://aka.ms/winget/install | iex
 }
 
-winget install -e --id 9PM9DFQRDH3F
+winget install -e --id 9PM9DFQRDH3F --force
