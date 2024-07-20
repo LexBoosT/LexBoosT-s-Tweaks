@@ -5,4 +5,4 @@ if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
     iwr -useb https://aka.ms/winget/install | iex
 }
 
-winget install --id=WinMerge.WinMerge  -e
+winget install --id=WinMerge.WinMerge  -e --force
