@@ -13,5 +13,5 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 "Flags"="27"
 "BounceTime"="0"
 
-[HKEY_CURRENT_USER\Control Panel\Desktop
+[HKEY_CURRENT_USER\Control Panel\Desktop]
 "CursorBlinkRate"="200"
