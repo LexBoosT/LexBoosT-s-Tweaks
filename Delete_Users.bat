@@ -27,4 +27,8 @@ net user "Guest" /delete
 rem # Delete controversial default0 user
 net user defaultuser0 /active:no
 net user defaultuser0 /delete
+
+rem # Delete controversial default1 user
+net user defaultuser1 /active:no
+net user defaultuser1 /delete
 exit
