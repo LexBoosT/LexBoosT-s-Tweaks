@@ -5,9 +5,22 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 "SystemResponsiveness"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\Interfaces]
-"TCPDelAckTicks"=dword:00000001
+"TCPDelAckTicks"=dword:00000000
 "TCPNoDelay"=dword:00000001
 "TcpAckFrequency"=dword:00000001
+"DefaultTTL"=dword:00000040
+"TcP1323Opts"=dword:00000001
+"TcPMaxDupAcks"=dword:00000002
+"SackOpts"=dword:00000000
+"MaxUserPort"=dword:0000fffe
+"TcPTimedWaitDelay"=dword:0000001e
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\DeliveryOptimization\Config]
+"DODownloadMode"=dword:00000000
+"DownloadMode"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\DeliveryOptimization\Settings]
+"DownloadMode"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters]
 "TCPDelAckTicks"=dword:00000001
@@ -27,7 +40,7 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 "autodisconnect"=dword:ffffffff
 "Size"=dword:00000003
 "EnableOplocks"=dword:00000000
-"IRPStackSize"=dword:00000020
+"IRPStackSize"=dword:00000014
 "SharingViolationDelay"=dword:00000000
 "SharingViolationRetries"=dword:00000000
 
@@ -36,3 +49,7 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 "CacheHashTableSize"=dword:000000b4
 "MaxCacheEntryTtlLimit"=dword:0000fa00
 "MaxSOACacheEntryTtlLimit"=dword:00000012
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\Winsock]
+"MinSockAddrLength"=dword:00000010
+"MaxSockAddrLength"=dword:00000010
