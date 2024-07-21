@@ -82,6 +82,7 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 "SimulateSecureBoot"=dword:00000000
 "UMDPowerFeatureConfig"=dword:00000001
 "UseDpcForGpuWatchdogCallback"=dword:00000001
+"UvmDisable"=dword:00000001
 "WDDM1xUseContextAllocation"=dword:00000001
 "WDDM20UseContextAllocation"=dword:00000001
 "WDDMCPUHostApertureSupported"=dword:00000001
@@ -92,6 +93,10 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 "WDDMv22EnableSmoothTransition"=dword:00000001
 
 [HKLM\SYSTEM\ControlSet001\Services\nvlddmkm\FTS]
+"LogWarningEntries"=dword:00000000
+"LogPagingEntries"=dword:00000000
+"LogEventEntries"=dword:00000000
+"LogErrorEntries"=dword:00000000
 "EnableRID61684"=dword:00000001
 "EnableGR535"=dword:00000000
 "EnableRID44231"=dword:00000000
