@@ -32,6 +32,7 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 “RMBandwidthFeature”=dword:00000064
 “RMBandwidthFeature2”=dword:00000001
 “RMBlcg”=dword:11111111
+"RmCacheLoc"=dword:00000000
 “RMClkSlowDown”=dword:00000000
 “RMCtxswLog”=dword:00000000
 “RMDeepL1EntryLatencyUsec”=dword:00000001
@@ -52,6 +53,7 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 “RMEnablePowerSupplyCapacity”=dword:00000000
 “RMEnableSHMECC”=dword:00000000
 “RMEnableSMECC”=dword:00000000
+"RmFbsrPagedDMA"=dword:00000001
 “RMFspg”=dword:0000000F
 “RMGC6Feature”=dword:002AAAAA
 “RMGC6Parameters”=dword:00000055
@@ -74,6 +76,7 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 “RMPcieLtrOverride”=dword:00000002
 “RMPowerFeature”=dword:54455555
 “RMPowerFeature2”=dword:05555555
+"RmProfilingAdminOnly"=dword:00000000
 “RMSkipACPIBattCap”=dword:00000001
 “RMSkipHdcp22Init”=dword:00000001
 “RMSlcg”=dword:0003ffff
