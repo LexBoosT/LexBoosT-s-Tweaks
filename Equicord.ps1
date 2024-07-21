@@ -10,13 +10,7 @@ if (-NOT ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdent
 Invoke-WebRequest -Uri "https://github.com/microsoft/winget-cli/releases/download/v1.0.11692/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.appxbundle" -OutFile "Winget.appxbundle"
 Add-AppxPackage -Path .\Winget.appxbundle
 
-# Installer Git
-winget install --id Git.Git -e --source winget
-
-# Installer NodeJS
-winget install --id OpenJS.NodeJS.LTS -e --source winget
-
-$DOWNLOAD_GUI = "https://github.com/Equicord/Installer/releases/latest/download/EquicordInstaller.exe"
+$DOWNLOAD_GUI = "https://github.com/Equicord/Equilotl/releases/latest/download/Equilotl.exe"
 
 $link = $DOWNLOAD_GUI
 
