@@ -6,10 +6,6 @@ if (-NOT ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdent
     exit
 }
 
-# Installer Winget dans sa dernière version
-Invoke-WebRequest -Uri "https://github.com/microsoft/winget-cli/releases/download/v1.0.11692/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.appxbundle" -OutFile "Winget.appxbundle"
-Add-AppxPackage -Path .\Winget.appxbundle
-
 $DOWNLOAD_GUI = "https://github.com/Equicord/Equilotl/releases/latest/download/Equilotl.exe"
 
 $link = $DOWNLOAD_GUI
