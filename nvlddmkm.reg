@@ -82,7 +82,6 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 "SimulateSecureBoot"=dword:00000000
 "UMDPowerFeatureConfig"=dword:00000001
 "UseDpcForGpuWatchdogCallback"=dword:00000001
-"UvmDisable"=dword:00000001
 "WDDM1xUseContextAllocation"=dword:00000001
 "WDDM20UseContextAllocation"=dword:00000001
 "WDDMCPUHostApertureSupported"=dword:00000001
