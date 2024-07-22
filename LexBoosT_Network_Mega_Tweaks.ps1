@@ -29,7 +29,11 @@ function Set-WindowSize {
         [DllImport("user32.dll")]
         public static extern bool MoveWindow(IntPtr hWnd, int X, int Y, int nWidth, int nHeight, bool bRepaint);
 "@ -Name "User32" -Namespace "Win32Functions" -PassThru
-    $user32::MoveWindow($hwnd, 0, 0, $width, $height, $true)
+    $screenWidth = [System.Windows.Forms.Screen]::PrimaryScreen.Bounds.Width
+    $screenHeight = [System.Windows.Forms.Screen]::PrimaryScreen.Bounds.Height
+    $windowX = [math]::Round(($screenWidth - $width) / 2)
+    $windowY = [math]::Round(($screenHeight - $height) / 2)
+    $user32::MoveWindow($hwnd, $windowX, $windowY, $width, $height, $true)
 }
 
 # Définir la taille de la fenêtre PowerShell
@@ -43,40 +47,35 @@ function Show-Menu {
     Write-Host "=============================================="
     Write-Host "|       LexBoosT Network Tweaks Menu         |"
     Write-Host "=============================================="
-    Write-Host "1.  Set Network AutoTuning to Disabled $autotuning"
-    Write-Host "2.  Disable Explicit Congestion Notification $ecn"
-    Write-Host "3.  Enable Direct Cache Access $dca"
-    Write-Host "4.  Enable Network Direct Memory Access $netdma"
-    Write-Host "5.  Disable Recieve Side Coalescing $rsc"
-    Write-Host "6.  Enable Recieve Side Scaling $rss"
-    Write-Host "7.  Disable TCP Timestamps $timestamps"
-    Write-Host "8.  Set Initial Retransmission Timer $initialrto"
-    Write-Host "9.  Set MTU Size (1500) $mtu"
-    Write-Host "10. Disable Non Sack RTT Resiliency $nonsackrtt"
-    Write-Host "11. Set Max Syn Retransmissions $maxsyn"
-    Write-Host "12. Disable Memory Pressure Protection $mpp"
-    Write-Host "13. Disable Security Profiles $profiles"
-    Write-Host "14. Disable Windows Scaling Heuristics $heuristics"
-    Write-Host "15. Increase ARP Cache Size (256 > 4096) $arp"
-    Write-Host "16. Enable CTCP $ctcp"
-    Write-Host "17. Disable Task Offloading $taskoffload"
-    Write-Host "18. Disable IPv6 $ipv6"
-    Write-Host "19. Disable ISATAP $isatap"
-    Write-Host "20. Disable Teredo $teredo"
+    Write-Host "1.  Disable Explicit Congestion Notification $ecn"
+    Write-Host "2.  Enable Direct Cache Access $dca"
+    Write-Host "3.  Enable Network Direct Memory Access $netdma"
+    Write-Host "4.  Disable Recieve Side Coalescing $rsc"
+    Write-Host "5.  Enable Recieve Side Scaling $rss"
+    Write-Host "6.  Disable TCP Timestamps $timestamps"
+    Write-Host "7.  Set Initial Retransmission Timer $initialrto"
+    Write-Host "8.  Set MTU Size (1500) $mtu"
+    Write-Host "9.  Disable Non Sack RTT Resiliency $nonsackrtt"
+    Write-Host "10. Set Max Syn Retransmissions $maxsyn"
+    Write-Host "11. Disable Memory Pressure Protection $mpp"
+    Write-Host "12. Disable Security Profiles $profiles"
+    Write-Host "13. Disable Windows Scaling Heuristics $heuristics"
+    Write-Host "14. Increase ARP Cache Size (256 > 4096) $arp"
+    Write-Host "15. Enable CTCP $ctcp"
+    Write-Host "16. Disable Task Offloading $taskoffload"
+    Write-Host "17. Disable IPv6 $ipv6"
+    Write-Host "18. Disable ISATAP $isatap"
+    Write-Host "19. Disable Teredo $teredo"
     Write-Host "=============================================="
-	Write-Host "| 21. Select All                             |" -ForegroundColor Yellow
-	Write-Host "| 22. Unselect All                           |" -ForegroundColor Cyan
-    Write-Host "| 23. Apply Selected Tweaks                  |" -ForegroundColor Blue
-    Write-Host "| 24. Restore Default Network Values         |" -ForegroundColor Magenta
+	Write-Host "| 20. Select All                             |" -ForegroundColor Yellow
+	Write-Host "| 21. Unselect All                           |" -ForegroundColor Cyan
+    Write-Host "| 22. Apply Selected Tweaks                  |" -ForegroundColor Blue
+    Write-Host "| 23. Restore Default Network Values         |" -ForegroundColor Magenta
     Write-Host "| Q.  Quit                                   |" -ForegroundColor Red
     Write-Host "=============================================="
 }
 
 function Invoke-Tweaks {
-    if ($autotuning -eq "*") {
-        Write-Host "Setting Network AutoTuning to Disabled"
-        netsh int tcp set global autotuninglevel=disabled
-    }
     if ($ecn -eq "*") {
         Write-Host "Disabling Explicit Congestion Notification"
         netsh int tcp set global ecncapability=disabled
@@ -160,7 +159,6 @@ function Invoke-Tweaks {
 
 function Restore-Defaults {
     Write-Host "Restoring default network values"
-    netsh int tcp set global autotuninglevel=normal
     netsh int tcp set global ecncapability=default
     netsh int tcp set global dca=disabled
     netsh int tcp set global netdma=disabled
@@ -211,147 +209,139 @@ while ($true) {
     $choice = Read-Host "Enter your choice (1-24) or Q for Quit"
     switch ($choice) {
         1 {
-            if ($autotuning -eq "*") {
-                $autotuning = ""
-            } else {
-                $autotuning = "*"
-            }
-        }
-        2 {
             if ($ecn -eq "*") {
                 $ecn = ""
             } else {
                 $ecn = "*"
             }
         }
-        3 {
+        2 {
             if ($dca -eq "*") {
                 $dca = ""
             } else {
                 $dca = "*"
             }
         }
-        4 {
+        3 {
             if ($netdma -eq "*") {
                 $netdma = ""
             } else {
                 $netdma = "*"
             }
         }
-        5 {
+        4 {
             if ($rsc -eq "*") {
                 $rsc = ""
             } else {
                 $rsc = "*"
             }
         }
-        6 {
+        5 {
             if ($rss -eq "*") {
                 $rss = ""
             } else {
                 $rss = "*"
             }
         }
-        7 {
+        6 {
             if ($timestamps -eq "*") {
                 $timestamps = ""
             } else {
                 $timestamps = "*"
             }
         }
-        8 {
+        7 {
             if ($initialrto -eq "*") {
                 $initialrto = ""
             } else {
                 $initialrto = "*"
             }
         }
-        9 {
+        8 {
                         if ($mtu -eq "*") {
                 $mtu = ""
             } else {
                 $mtu = "*"
             }
         }
-        10 {
+        9 {
             if ($nonsackrtt -eq "*") {
                 $nonsackrtt = ""
             } else {
                 $nonsackrtt = "*"
             }
         }
-        11 {
+        10 {
             if ($maxsyn -eq "*") {
                 $maxsyn = ""
             } else {
                 $maxsyn = "*"
             }
         }
-        12 {
+        11 {
             if ($mpp -eq "*") {
                 $mpp = ""
             } else {
                 $mpp = "*"
             }
         }
-        13 {
+        12 {
             if ($profiles -eq "*") {
                 $profiles = ""
             } else {
                 $profiles = "*"
             }
         }
-        14 {
+        13 {
             if ($heuristics -eq "*") {
                 $heuristics = ""
             } else {
                 $heuristics = "*"
             }
         }
-        15 {
+        14 {
             if ($arp -eq "*") {
                 $arp = ""
             } else {
                 $arp = "*"
             }
         }
-        16 {
+        15 {
             if ($ctcp -eq "*") {
                 $ctcp = ""
             } else {
                 $ctcp = "*"
             }
         }
-        17 {
+        16 {
             if ($taskoffload -eq "*") {
                 $taskoffload = ""
             } else {
                 $taskoffload = "*"
             }
         }
-        18 {
+        17 {
             if ($ipv6 -eq "*") {
                 $ipv6 = ""
             } else {
                 $ipv6 = "*"
             }
         }
-        19 {
+        18 {
             if ($isatap -eq "*") {
                 $isatap = ""
             } else {
                 $isatap = "*"
             }
         }
-        20 {
+        19 {
             if ($teredo -eq "*") {
                 $teredo = ""
             } else {
                 $teredo = "*"
             }
         }
-		21 {
-        $autotuning = "*"
+		20 {
         $ecn = "*"
         $dca = "*"
         $netdma = "*"
@@ -372,8 +362,7 @@ while ($true) {
         $isatap = "*"
         $teredo = "*"
 		}
-		22 {
-        $autotuning = ""
+		21 {
         $ecn = ""
         $dca = ""
         $netdma = ""
@@ -394,10 +383,10 @@ while ($true) {
         $isatap = ""
         $teredo = ""
 		}
-        23 {
-            Apply-Tweaks
+        22 {
+            Invoke-Tweaks
         }
-        24 {
+        23 {
             Restore-Defaults
         }
         Q  {
