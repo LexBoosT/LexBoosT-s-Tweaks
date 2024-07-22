@@ -6,7 +6,7 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 "BackgroundPriority"=dword:00000000
 "Clock Rate"=dword:00002710
 "GPU Priority"=dword:00000008
-"Priority"=dword:00000002
+"Priority"=dword:00000006
 "Scheduling Category"="High"
 "SFIO Priority"="High"
 "Latency Sensitive"="True"
