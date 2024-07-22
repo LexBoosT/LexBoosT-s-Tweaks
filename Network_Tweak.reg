@@ -1,7 +1,7 @@
 Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile]
-"NetworkThrottlingIndex"=dword:ffffffff
+"NetworkThrottlingIndex"=dword:FFFFFFFF
 "SystemResponsiveness"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\Interfaces]
@@ -12,8 +12,8 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 "TcP1323Opts"=dword:00000001
 "TcPMaxDupAcks"=dword:00000002
 "SackOpts"=dword:00000000
-"MaxUserPort"=dword:0000fffe
-"TcPTimedWaitDelay"=dword:0000001e
+"MaxUserPort"=dword:0000FFFE
+"TcPTimedWaitDelay"=dword:0000001E
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\DeliveryOptimization\Config]
 "DODownloadMode"=dword:00000000
@@ -30,8 +30,8 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 "TcP1323Opts"=dword:00000001
 "TcPMaxDupAcks"=dword:00000002
 "SackOpts"=dword:00000000
-"MaxUserPort"=dword:0000fffe
-"TcPTimedWaitDelay"=dword:0000001e
+"MaxUserPort"=dword:0000FFFE
+"TcPTimedWaitDelay"=dword:0000001E
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\MSMQ\Parameters]
 "TCPNoDelay"=dword:00000001
@@ -43,7 +43,7 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 "NetbtPriority"=dword:00000007
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\services\LanmanServer\Parameters]
-"autodisconnect"=dword:ffffffff
+"autodisconnect"=dword:FFFFFFFF
 "Size"=dword:00000003
 "EnableOplocks"=dword:00000000
 "IRPStackSize"=dword:00000014
@@ -52,8 +52,8 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters]
 "CacheHashTableBucketSize"=dword:00000001
-"CacheHashTableSize"=dword:000000b4
-"MaxCacheEntryTtlLimit"=dword:0000fa00
+"CacheHashTableSize"=dword:000000B4
+"MaxCacheEntryTtlLimit"=dword:0000FA00
 "MaxSOACacheEntryTtlLimit"=dword:00000012
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\Winsock]
