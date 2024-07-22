@@ -23,9 +23,15 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 "DownloadMode"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters]
-"TCPDelAckTicks"=dword:00000001
+"TCPDelAckTicks"=dword:00000000
 "TCPNoDelay"=dword:00000001
 "TcpAckFrequency"=dword:00000001
+"DefaultTTL"=dword:00000040
+"TcP1323Opts"=dword:00000001
+"TcPMaxDupAcks"=dword:00000002
+"SackOpts"=dword:00000000
+"MaxUserPort"=dword:0000fffe
+"TcPTimedWaitDelay"=dword:0000001e
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\MSMQ\Parameters]
 "TCPNoDelay"=dword:00000001
