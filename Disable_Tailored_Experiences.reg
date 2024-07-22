@@ -1,0 +1,4 @@
+Windows Registry Editor Version 5.00 Made by LexBoosT 2024
+
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Privacy]
+"TailoredExperiencesWithDiagnosticDataEnabled"=dword:00000000
