@@ -5,7 +5,7 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 "DeleteRoamingCache"=dword:00000001
 "AutoRestartShell"=dword:00000001
 "RasDisable"="1"
-"WinStationsDisabled"="1"
+"WinStationsDisabled"="0"
 "SyncForegroundPolicy"=dword:00000000
 "DisableBkGndGroupPolicy"=dword:00000001
 "WaitForNetwork"=dword:00000000
