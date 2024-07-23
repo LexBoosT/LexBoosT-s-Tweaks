@@ -1,3 +1,4 @@
+Add-Type -AssemblyName System.Windows.Forms
 # LexBoosT BCD Tweaks for Better performances
 $host.ui.RawUI.BackgroundColor = "Black"
 $host.ui.RawUI.ForegroundColor = "White"
