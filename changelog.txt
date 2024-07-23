@@ -18,7 +18,7 @@
 - Added LexBoosT NTFS Tweaks script.
 - Added LexBoosT Move User Folders script.
 - Improved some tweaks.
-- Added Possibility to choose Blur or Mica for Windows Explorer transparency.
+- Added Possibility to choose Blur/Acrylic/Mica/MicaAlt for Windows Explorer transparency.
 - Added NilsoftShell with my settings.
 
 
