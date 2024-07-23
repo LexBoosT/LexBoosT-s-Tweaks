@@ -1,6 +1,5 @@
+Add-Type -AssemblyName System.Windows.Forms
 # LexBoosT Network Mega Tweaks
-
-
 $host.ui.RawUI.BackgroundColor = "Black"
 $host.ui.RawUI.ForegroundColor = "White"
 Clear-Host
