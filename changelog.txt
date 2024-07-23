@@ -1,6 +1,6 @@
 # Version 4.3.2
 
--Fixes powershell windows that are not centered on the screen for new scripts added in version 4.3.0.
+- Fixes powershell windows that are not centered on the screen for new scripts added in version 4.3.0.
 
 
 # Version 4.3.1
