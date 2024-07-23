@@ -1,3 +1,4 @@
+Add-Type -AssemblyName System.Windows.Forms
 # Set PowerShell window background color to black
 $host.UI.RawUI.BackgroundColor = "Black"
 $host.UI.RawUI.ForegroundColor = "White"
