@@ -1,3 +1,27 @@
+# Version 4.3.0
+
+- Added CSRSS Realtime Tweaks.
+- Added Disable Error Reporting.
+- Added Disable Filter Key.
+- Added Disable Microsoft Settings Synchronization.
+- Added Disable Shared Experiences.
+- Added Disable Spotlight.
+- Added Disable Sticky Key.
+- Added Tailored Experiences.
+- Added Disable Toggle Key.
+- Added Disable Windows Remediation.
+- Added Disable Windows Tooltips.
+- Added Resource Policy Store Value Tweaks.
+- Added Windows Privacy Tweaks.
+- Added LexBoosT BCDEDIT Tweaks script.
+- Added LexBoosT Network Mega Tweaks script.
+- Added LexBoosT NTFS Tweaks script.
+- Added LexBoosT Move User Folders script.
+- Improved some tweaks.
+- Added Possibility to choose Blur or Mica for Windows Explorer transparency.
+- Added NilsoftShell with my settings.
+
+
 # Version 4.2.0
 
 - Reorganization of Tweaks on 2 pages.
