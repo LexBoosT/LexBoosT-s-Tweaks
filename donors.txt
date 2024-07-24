@@ -6,6 +6,7 @@ Jeffix
 hkliszi
 Preston
 Ptr
+SSentry
 TASbot
 TrashForReal
 woes.slash
