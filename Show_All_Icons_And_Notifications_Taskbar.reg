@@ -1,5 +1,8 @@
 Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 
+[HKEY_CURRENT_USER\Software\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\TrayNotify]
+"SystemTrayChevronVisibility"=dword:00000000
+
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]
 "NoAutoTrayNotify"=dword:00000001
 
