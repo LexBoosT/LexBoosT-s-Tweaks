@@ -57,57 +57,53 @@ function Show-Menu {
 # Fonction pour appliquer les tweaks
 function Apply-Tweaks {
     bcdedit /set tscsyncpolicy Enhanced
-    bcdedit /set firstmegabytepolicy UseAll
-    bcdedit /set avoidlowmemory 0x8000000
-    bcdedit /set nolowmem Yes
-    bcdedit /set allowedinmemorysettings 0x0
-    bcdedit /set isolatedcontext No
-    bcdedit /set vsmlaunchtype Off
+	bcdedit /set /timeout 0
+	bcdedit /set bootux disabled
+	bcdedit /set bootmenupolicy standard
+	bcdedit /set quietboot yes
+	bcdedit /set allowedinmemorysettings 0x0
+	bcdedit /set vsmlaunchtype Off
     bcdedit /set vm No
     bcdedit /set x2apicpolicy Enable
+    bcdedit /set uselegacyapicmode No
     bcdedit /set configaccesspolicy Default
-    bcdedit /set MSI Default
     bcdedit /set usephysicaldestination No
     bcdedit /set usefirmwarepcisettings No
-    bcdedit /set disableelamdrivers Yes
-    bcdedit /set pae ForceEnable
-    bcdedit /set nx optout
-    bcdedit /set highestmode Yes
-    bcdedit /set forcefipscrypto No
-    bcdedit /set noumex Yes
-    bcdedit /set uselegacyapicmode No
-    bcdedit /set ems No
-    bcdedit /set extendedinput Yes
-    bcdedit /set hypervisorlaunchtype Off
+if ((Get-WmiObject Win32_Processor).Name -like '*Intel*') {
+
+  bcdedit /set nx optout
+
+} else {
+
+  bcdedit /set nx alwaysoff
+
+}
     Write-Host "Tweaks applied."
     Pause
 }
 
 # Fonction pour restaurer les valeurs par défaut
 function Restore-Defaults {
-    bcdedit /set tscsyncpolicy Default
-    bcdedit /set firstmegabytepolicy Default
-    bcdedit /set avoidlowmemory 0x0
-    bcdedit /set nolowmem No
-    bcdedit /set allowedinmemorysettings 0x1
-    bcdedit /set isolatedcontext Yes
-    bcdedit /set vsmlaunchtype Auto
-    bcdedit /set vm Yes
-    bcdedit /set x2apicpolicy Default
-    bcdedit /set configaccesspolicy Default
-    bcdedit /set MSI Default
-    bcdedit /set usephysicaldestination Yes
-    bcdedit /set usefirmwarepcisettings Yes
-    bcdedit /set disableelamdrivers No
-    bcdedit /set pae Default
-    bcdedit /set nx OptIn
-    bcdedit /set highestmode No
-    bcdedit /set forcefipscrypto Yes
-    bcdedit /set noumex No
-    bcdedit /set uselegacyapicmode Yes
-    bcdedit /set ems Yes
-    bcdedit /set extendedinput No
+    bcdedit /deletevalue tscsyncpolicy
+    bcdedit /timeout 3
+    bcdedit /deletevalue bootux
+    bcdedit /set bootmenupolicy standard
     bcdedit /set hypervisorlaunchtype Auto
+	bcdedit /deletevalue tpmbootentropy
+	bcdedit /deletevalue quietboot
+	bcdedit /set nx optin
+	bcdedit /set allowedinmemorysettings 0x17000077
+    bcdedit /set isolatedcontext Yes
+    bcdedit /deletevalue vsmlaunchtype
+    bcdedit /deletevalue vm
+    bcdedit /deletevalue firstmegabytepolicy
+    bcdedit /deletevalue avoidlowmemory
+    bcdedit /deletevalue nolowmem
+    bcdedit /deletevalue configaccesspolicy
+    bcdedit /deletevalue x2apicpolicy
+    bcdedit /deletevalue usephysicaldestination
+    bcdedit /deletevalue usefirmwarepcisettings
+
     Write-Host "Default values restored."
     Pause
 }
