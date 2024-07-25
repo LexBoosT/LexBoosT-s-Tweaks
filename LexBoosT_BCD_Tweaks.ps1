@@ -57,7 +57,7 @@ function Show-Menu {
 # Fonction pour appliquer les tweaks
 function Apply-Tweaks {
     bcdedit /set tscsyncpolicy Enhanced
-	bcdedit /set /timeout 0
+	bcdedit /timeout 0
 	bcdedit /set bootux disabled
 	bcdedit /set bootmenupolicy standard
 	bcdedit /set quietboot yes
