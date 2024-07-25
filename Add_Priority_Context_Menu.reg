@@ -4,38 +4,38 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 "MUIVerb"="Run with priority"
 "SubCommands"=""
 
-[HKEY_CLASSES_ROOT\exefile\Shell\Priority\shell\001flyout]
+[HKEY_CLASSES_ROOT\exefile\Shell\Priority\shell\Realtime]
 @="Realtime"
 
-[HKEY_CLASSES_ROOT\exefile\Shell\Priority\shell\001flyout\command]
+[HKEY_CLASSES_ROOT\exefile\Shell\Priority\shell\Realtime\command]
 @="powershell start -file 'cmd' -args '/c start \"\"\"Realtime App\"\"\" /Realtime \"\"\"%1\"\"\"' -verb runas"
 
-[HKEY_CLASSES_ROOT\exefile\Shell\Priority\shell\002flyout]
+[HKEY_CLASSES_ROOT\exefile\Shell\Priority\shell\High]
 @="High"
 
-[HKEY_CLASSES_ROOT\exefile\Shell\Priority\shell\002flyout\command]
+[HKEY_CLASSES_ROOT\exefile\Shell\Priority\shell\High\command]
 @="cmd /c start \"\" /High \"%1\""
 
-[HKEY_CLASSES_ROOT\exefile\Shell\Priority\shell\003flyout]
+[HKEY_CLASSES_ROOT\exefile\Shell\Priority\shell\Above normal]
 @="Above normal"
 
-[HKEY_CLASSES_ROOT\exefile\Shell\Priority\shell\003flyout\command]
+[HKEY_CLASSES_ROOT\exefile\Shell\Priority\shell\Above normal\command]
 @="cmd /c start \"\" /AboveNormal \"%1\""
 
-[HKEY_CLASSES_ROOT\exefile\Shell\Priority\shell\004flyout]
+[HKEY_CLASSES_ROOT\exefile\Shell\Priority\shell\Normal]
 @="Normal"
 
-[HKEY_CLASSES_ROOT\exefile\Shell\Priority\shell\004flyout\command]
+[HKEY_CLASSES_ROOT\exefile\Shell\Priority\shell\Normal\command]
 @="cmd /c start \"\" /Normal \"%1\""
 
-[HKEY_CLASSES_ROOT\exefile\Shell\Priority\shell\005flyout]
+[HKEY_CLASSES_ROOT\exefile\Shell\Priority\shell\Below normal]
 @="Below normal"
 
-[HKEY_CLASSES_ROOT\exefile\Shell\Priority\shell\005flyout\command]
+[HKEY_CLASSES_ROOT\exefile\Shell\Priority\shell\Below normal\command]
 @="cmd /c start \"\" /BelowNormal \"%1\""
 
-[HKEY_CLASSES_ROOT\exefile\Shell\Priority\shell\006flyout]
+[HKEY_CLASSES_ROOT\exefile\Shell\Priority\shell\Low]
 @="Low"
 
-[HKEY_CLASSES_ROOT\exefile\Shell\Priority\shell\006flyout\command]
+[HKEY_CLASSES_ROOT\exefile\Shell\Priority\shell\Low\command]
 @="cmd /c start \"\" /Low \"%1\""
