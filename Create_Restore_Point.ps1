@@ -16,4 +16,7 @@ function Check-Admin {
 }
 Check-Admin
 
-Checkpoint-Computer -Description "LexBoosT_Nvidia_Drivers_Plus" -RestorePointType "MODIFY_SETTINGS"
+# Ajouter la clé au registre
+Set-ItemProperty -Path "HKLM:\Software\Microsoft\Windows NT\CurrentVersion\SystemRestore" -Name "SystemRestorePointCreationFrequency" -Value 0
+
+Checkpoint-Computer -Description "LexBoosT_Nvidia_Drivers_Plus" -RestorePointType "MODIFY_SETTINGS" 
