@@ -1,8 +1,28 @@
-# Vérification de l'installation de Winget
-if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
-    Write-Host "Winget is not installed. Loading installation..."
-	Set-ExecutionPolicy Bypass -Scope Process -Force; 
-    iwr -useb https://aka.ms/winget/install | iex
-}
+$host.ui.RawUI.BackgroundColor = "Black"
+$host.ui.RawUI.ForegroundColor = "White"
+Clear-Host
 
-winget -e install --id XP8JK4TBQ03LZ4
+# Vérifier les privilèges administratifs
+function Check-Admin {
+    Write-Host "Checking for Administrative Privileges..."
+    Start-Sleep -Seconds 3
+
+    $currentUser = [Security.Principal.WindowsIdentity]::GetCurrent()
+    $principal = New-Object Security.Principal.WindowsPrincipal($currentUser)
+    if (-not $principal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
+        Start-Process powershell -Verb runAs -ArgumentList "-NoProfile -ExecutionPolicy Bypass -File `"$PSCommandPath`""
+        exit
+    }
+}
+Check-Admin
+
+# Télécharger la dernière version de FxSound
+$downloadUrl = "https://www.fxsound.com/download" # Remplacez ceci par l'URL de la dernière version
+$outputPath = "$env:TEMP\FxSoundSetup.exe"
+
+Write-Host "Downloading FxSound..."
+Invoke-WebRequest -Uri $downloadUrl -OutFile $outputPath
+
+# Installer FxSound
+Write-Host "Installing FxSound..."
+Start-Process -FilePath $outputPath -Wait
