@@ -1,10 +1,20 @@
-# Vérifiez si le script est en cours d'exécution en tant qu'administrateur
-if (-NOT ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator"))
-{
-    # Relancez le script en tant qu'administrateur
-    Start-Process powershell.exe "-NoProfile -ExecutionPolicy Bypass -File `"$PSCommandPath`"" -Verb RunAs
-    exit
+$host.ui.RawUI.BackgroundColor = "Black"
+$host.ui.RawUI.ForegroundColor = "White"
+Clear-Host
+
+# Vérifier les privilèges administratifs
+function Check-Admin {
+    Write-Host "Checking for Administrative Privileges..."
+    Start-Sleep -Seconds 3
+
+    $currentUser = [Security.Principal.WindowsIdentity]::GetCurrent()
+    $principal = New-Object Security.Principal.WindowsPrincipal($currentUser)
+    if (-not $principal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
+        Start-Process powershell -Verb runAs -ArgumentList "-NoProfile -ExecutionPolicy Bypass -File `"$PSCommandPath`""
+        exit
+    }
 }
+Check-Admin
 
 $DOWNLOAD_GUI = "https://github.com/Equicord/Equilotl/releases/latest/download/Equilotl.exe"
 
