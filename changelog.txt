@@ -1,3 +1,17 @@
+# Version 4.4.0
+
+- Added Git.
+- Added NodeJS LTS.
+- Added Xbox Accessories.
+- Added Start11 V2 Official.
+- Added Visual Studio Code.
+- Added Visual Studio 2022.
+- Delete Free Download Manager.
+- User interface adjustment.
+- All powershell scripts will now be launched as administrators.
+- Added a box to select the recommended settings.
+
+
 # Version 4.3.3
 
 - Now you can scroll directly into the checkboxes.
