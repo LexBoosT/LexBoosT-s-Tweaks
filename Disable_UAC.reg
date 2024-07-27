@@ -10,4 +10,4 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 "ValidateAdminCodeSignatures"=dword:00000000
 "EnableUIADesktopToggle"=dword:00000000
 "ConsentPromptBehaviorUser"=dword:00000000
-"FilterAdministratorToken"=dword:00000000
+"FilterAdministratorToken"=dword:00000001
