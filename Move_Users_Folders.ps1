@@ -19,16 +19,6 @@ function Check-Admin {
 Check-Admin
 cls
 
-# Detect current locations of user folders
-#function Update-CurrentPaths {
-#    $global:currentDocumentsPath = [Environment]::GetFolderPath("MyDocuments")
-#    $global:currentPicturesPath = [Environment]::GetFolderPath("MyPictures")
-#    $global:currentMusicPath = [Environment]::GetFolderPath("MyMusic")
-#    $global:currentVideosPath = [Environment]::GetFolderPath("MyVideos")
-#    $global:currentDownloadsPath = (Get-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders" -Name "{374DE290-123F-4565-9164-39C4925E467B}")."{374DE290-123F-4565-9164-39C4925E467B}"
-#    $global:currentFavoritesPath = [Environment]::GetFolderPath("Favorites")
-#    $global:currentDesktopPath = [Environment]::GetFolderPath("Desktop")
-#}
 $folderPath = "$env:USERPROFILE\AppData\Local\Application Data"  # Chemin du dossier
 icacls $folderPath /grant "$($env:USERNAME):(F)" /T
 
@@ -37,7 +27,6 @@ function Update-CurrentPaths {
     $global:currentPicturesPath = [Environment]::GetFolderPath([Environment+SpecialFolder]::MyPictures)
     $global:currentMusicPath = [Environment]::GetFolderPath([Environment+SpecialFolder]::MyMusic)
     $global:currentVideosPath = [Environment]::GetFolderPath([Environment+SpecialFolder]::MyVideos)
-#    $global:currentDownloadsPath = [Environment]::GetFolderPath([Environment+SpecialFolder]::UserProfile) + "\Downloads"
     $global:currentDownloadsPath = [Environment]::ExpandEnvironmentVariables((Get-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders" -Name "{374DE290-123F-4565-9164-39C4925E467B}")."{374DE290-123F-4565-9164-39C4925E467B}")
     $global:currentFavoritesPath = [Environment]::GetFolderPath([Environment+SpecialFolder]::Favorites)
     $global:currentDesktopPath = [Environment]::GetFolderPath([Environment+SpecialFolder]::Desktop)
@@ -182,7 +171,7 @@ do {
             2 { $selectedFolders += @{"Name"="Pictures"; "Registry"="My Pictures"; "Path"=$currentPicturesPath} }
             3 { $selectedFolders += @{"Name"="Music"; "Registry"="My Music"; "Path"=$currentMusicPath} }
             4 { $selectedFolders += @{"Name"="Videos"; "Registry"="My Video"; "Path"=$currentVideosPath} }
-            5 { $selectedFolders += @{"Name"="Downloads"; "Registry"="{374DE290-123F-4565-9164-39C4925E467B}"; "Path"=$currentDownloadsPath} }
+            5 { $selectedFolders += @{"Name"="{374DE290-123F-4565-9164-39C4925E467B}"; "Registry"="{374DE290-123F-4565-9164-39C4925E467B}"; "Path"=$currentDownloadsPath} }
             6 { $selectedFolders += @{"Name"="Favorites"; "Registry"="Favorites"; "Path"=$currentFavoritesPath} }
             7 { $selectedFolders += @{"Name"="Desktop"; "Registry"="Desktop"; "Path"=$currentDesktopPath} }
             default { Write-Host "Invalid choice: $c. Please try again." -ForegroundColor Red }
