@@ -29,6 +29,9 @@ cls
 #    $global:currentFavoritesPath = [Environment]::GetFolderPath("Favorites")
 #    $global:currentDesktopPath = [Environment]::GetFolderPath("Desktop")
 #}
+$folderPath = "$env:USERPROFILE\AppData\Local\Application Data"  # Chemin du dossier
+icacls $folderPath /grant "$($env:USERNAME):(F)" /T
+
 function Update-CurrentPaths {
     $global:currentDocumentsPath = [Environment]::GetFolderPath([Environment+SpecialFolder]::MyDocuments)
     $global:currentPicturesPath = [Environment]::GetFolderPath([Environment+SpecialFolder]::MyPictures)
