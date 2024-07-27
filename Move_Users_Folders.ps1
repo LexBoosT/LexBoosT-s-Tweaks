@@ -20,15 +20,26 @@ Check-Admin
 cls
 
 # Detect current locations of user folders
+#function Update-CurrentPaths {
+#    $global:currentDocumentsPath = [Environment]::GetFolderPath("MyDocuments")
+#    $global:currentPicturesPath = [Environment]::GetFolderPath("MyPictures")
+#    $global:currentMusicPath = [Environment]::GetFolderPath("MyMusic")
+#    $global:currentVideosPath = [Environment]::GetFolderPath("MyVideos")
+#    $global:currentDownloadsPath = (Get-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders" -Name "{374DE290-123F-4565-9164-39C4925E467B}")."{374DE290-123F-4565-9164-39C4925E467B}"
+#    $global:currentFavoritesPath = [Environment]::GetFolderPath("Favorites")
+#    $global:currentDesktopPath = [Environment]::GetFolderPath("Desktop")
+#}
 function Update-CurrentPaths {
-    $global:currentDocumentsPath = [Environment]::GetFolderPath("MyDocuments")
-    $global:currentPicturesPath = [Environment]::GetFolderPath("MyPictures")
-    $global:currentMusicPath = [Environment]::GetFolderPath("MyMusic")
-    $global:currentVideosPath = [Environment]::GetFolderPath("MyVideos")
-    $global:currentDownloadsPath = (Get-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders" -Name "{374DE290-123F-4565-9164-39C4925E467B}")."{374DE290-123F-4565-9164-39C4925E467B}"
-    $global:currentFavoritesPath = [Environment]::GetFolderPath("Favorites")
-    $global:currentDesktopPath = [Environment]::GetFolderPath("Desktop")
+    $global:currentDocumentsPath = [Environment]::GetFolderPath([Environment+SpecialFolder]::MyDocuments)
+    $global:currentPicturesPath = [Environment]::GetFolderPath([Environment+SpecialFolder]::MyPictures)
+    $global:currentMusicPath = [Environment]::GetFolderPath([Environment+SpecialFolder]::MyMusic)
+    $global:currentVideosPath = [Environment]::GetFolderPath([Environment+SpecialFolder]::MyVideos)
+    $global:currentDownloadsPath = [Environment]::GetFolderPath([Environment+SpecialFolder]::UserProfile) + "\Downloads"
+#    $global:currentDownloadsPath = (Get-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders" -Name "{374DE290-123F-4565-9164-39C4925E467B}")."{374DE290-123F-4565-9164-39C4925E467B}"
+    $global:currentFavoritesPath = [Environment]::GetFolderPath([Environment+SpecialFolder]::Favorites)
+    $global:currentDesktopPath = [Environment]::GetFolderPath([Environment+SpecialFolder]::Desktop)
 }
+
 
 Update-CurrentPaths
 
