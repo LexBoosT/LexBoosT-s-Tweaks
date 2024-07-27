@@ -34,8 +34,8 @@ function Update-CurrentPaths {
     $global:currentPicturesPath = [Environment]::GetFolderPath([Environment+SpecialFolder]::MyPictures)
     $global:currentMusicPath = [Environment]::GetFolderPath([Environment+SpecialFolder]::MyMusic)
     $global:currentVideosPath = [Environment]::GetFolderPath([Environment+SpecialFolder]::MyVideos)
-    $global:currentDownloadsPath = [Environment]::GetFolderPath([Environment+SpecialFolder]::UserProfile) + "\Downloads"
-#    $global:currentDownloadsPath = (Get-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders" -Name "{374DE290-123F-4565-9164-39C4925E467B}")."{374DE290-123F-4565-9164-39C4925E467B}"
+#    $global:currentDownloadsPath = [Environment]::GetFolderPath([Environment+SpecialFolder]::UserProfile) + "\Downloads"
+    $global:currentDownloadsPath = (Get-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders" -Name "{374DE290-123F-4565-9164-39C4925E467B}")."{374DE290-123F-4565-9164-39C4925E467B}"
     $global:currentFavoritesPath = [Environment]::GetFolderPath([Environment+SpecialFolder]::Favorites)
     $global:currentDesktopPath = [Environment]::GetFolderPath([Environment+SpecialFolder]::Desktop)
 }
