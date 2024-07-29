@@ -1,3 +1,10 @@
+# Version 4.5.0
+
+- Added LexBoosT Windows Update Fixer.
+- Added Debloat Discord.
+- Removing “Hardcore Gamer Service Tweaks” replace it with a menu where you can choose Normal, Recommended or Gaming.
+
+
 # Version 4.4.0
 
 - Added Git.
