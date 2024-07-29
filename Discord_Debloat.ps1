@@ -245,12 +245,5 @@ $directoriesToProcess | ForEach-Object {
         Create-Shortcut -targetPath $discordExePath -shortcutPath $shortcutPath
     }
 }
-
-Write-Host "Everything done!"
-Start-Sleep -Seconds 1
-Write-Host ""
-Start-Sleep -Seconds 1
-Write-Host "A new shortcut has just been created on the desktop"
-Start-Sleep -Seconds 1
 Pause
 
