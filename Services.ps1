@@ -71,7 +71,7 @@ function gaming{
         "MSDTC"
         "NahimicService"
         "PerfHost"
-        "QWAVE"
+        #"QWAVE"
         "RtkBtManServ"
         "SharedAccess"
         "ssh-agent"
