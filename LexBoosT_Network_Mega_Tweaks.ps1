@@ -108,7 +108,7 @@ function Invoke-Tweaks {
     }
     if ($mtu -eq "*") {
         Write-Host "Setting MTU Size"
-        netsh interface ipv4 set subinterface “Ethernet” mtu=1492 store=persistent
+        netsh interface ipv4 set subinterface "Ethernet" mtu=1492 store=persistent
     }
     if ($nonsackrtt -eq "*") {
         Write-Host "Disabling Non Sack RTT Resiliency"
@@ -168,7 +168,7 @@ function Restore-Defaults {
     reg delete "HKLM\SYSTEM\CurrentControlSet\Services\Ndis\Parameters" /v "RssBaseCpu" /f >> APB_Log.txt
     netsh int tcp set global timestamps=enabled
     netsh int tcp set global initialRto=3000
-    netsh interface ipv4 set subinterface “Ethernet” mtu=1492 store=persistent
+    netsh interface ipv4 set subinterface "Ethernet" mtu=1492 store=persistent
     netsh int tcp set global nonsackrttresiliency=enabled
     netsh int tcp set global maxsynretransmissions=2
     netsh int tcp set security mpp=enabled
