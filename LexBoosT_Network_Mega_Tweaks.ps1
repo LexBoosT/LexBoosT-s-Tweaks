@@ -114,7 +114,7 @@ if ($wifiConnection) {
 } else {
     if ($mtu -eq "*") {
         Write-Host "Setting MTU Size"
-        netsh interface ipv4 set subinterface="Ethernet" mtu=1492 store=persistent
+        netsh interface ipv4 set subinterface=Ethernet mtu=1492 store=persistent
     }
 }
 
@@ -184,7 +184,7 @@ if ($wifiConnection) {
 } else {
     if ($mtu -eq "*") {
         Write-Host "Setting MTU Size"
-        netsh interface ipv4 set subinterface="Ethernet" mtu=1492 store=persistent
+        netsh interface ipv4 set subinterface=Ethernet mtu=1492 store=persistent
     }
 }
 
