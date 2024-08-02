@@ -105,13 +105,17 @@ function Invoke-Tweaks {
         netsh int tcp set global initialRto=2000
     }
     $wifiConnection = Get-NetAdapter | Where-Object {$_.Name -like "*Wi-Fi*" -and $_.Status -eq "Up"}
+    $ethernetConnection = Get-NetAdapter | Where-Object {$_.Name -like "*Ethernet*" -and $_.Status -eq "Up"}
 
 	if ($wifiConnection) {
-		Write-Host "The connection is via Wi-Fi, the MTU command will not be executed."
-	} else {
 		if ($mtu -eq "*") {
 			Write-Host "Setting MTU Size"
-			netsh interface ipv4 set subinterface "Ethernet" mtu=1492 store=persistent
+			netsh interface ipv4 set subinterface "Wi-Fi" mtu=1500 store=persistent
+		}
+	} elseif ($ethernetConnection) {
+		if ($mtu -eq "*") {
+			Write-Host "Setting MTU Size"
+			netsh interface ipv4 set subinterface "Ethernet" mtu=1500 store=persistent
 		}
 	}
     if ($nonsackrtt -eq "*") {
@@ -174,12 +178,18 @@ function Restore-Defaults {
     netsh int tcp set global initialRto=3000
     netsh interface ipv4 set subinterface "Ethernet" mtu=1492 store=persistent
 	$wifiConnection = Get-NetAdapter | Where-Object {$_.Name -like "*Wi-Fi*" -and $_.Status -eq "Up"}
+        $ethernetConnection = Get-NetAdapter | Where-Object {$_.Name -like "*Ethernet*" -and $_.Status -eq "Up"}
 
 	if ($wifiConnection) {
-		Write-Host "The connection is via Wi-Fi, the MTU command will not be executed."
-	} else {
-		Write-Host "Setting MTU Size"
-		netsh interface ipv4 set subinterface "Ethernet" mtu=1492 store=persistent
+		if ($mtu -eq "*") {
+			Write-Host "Setting MTU Size"
+			netsh interface ipv4 set subinterface "Wi-Fi" mtu=1500 store=persistent
+		}
+	} elseif ($ethernetConnection) {
+		if ($mtu -eq "*") {
+			Write-Host "Setting MTU Size"
+			netsh interface ipv4 set subinterface "Ethernet" mtu=1500 store=persistent
+		}
 	}
     netsh int tcp set global nonsackrttresiliency=enabled
     netsh int tcp set global maxsynretransmissions=2
