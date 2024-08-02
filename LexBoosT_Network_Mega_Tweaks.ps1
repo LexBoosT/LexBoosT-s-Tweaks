@@ -53,7 +53,7 @@ function Show-Menu {
     Write-Host "5.  Enable Recieve Side Scaling $rss"
     Write-Host "6.  Disable TCP Timestamps $timestamps"
     Write-Host "7.  Set Initial Retransmission Timer $initialrto"
-    Write-Host "8.  Set MTU Size (1492) $mtu"
+    Write-Host "8.  Set MTU Size (1500) $mtu"
     Write-Host "9.  Disable Non Sack RTT Resiliency $nonsackrtt"
     Write-Host "10. Set Max Syn Retransmissions $maxsyn"
     Write-Host "11. Disable Memory Pressure Protection $mpp"
