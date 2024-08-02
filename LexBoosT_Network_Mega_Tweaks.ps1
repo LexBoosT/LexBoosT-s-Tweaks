@@ -74,6 +74,8 @@ function Show-Menu {
     Write-Host "=============================================="
 }
 
+$wifiConnection = Get-NetAdapter | Where-Object {$_.Name -like "*Wi-Fi*" -and $_.Status -eq "Up"}
+
 function Invoke-Tweaks {
     if ($ecn -eq "*") {
         Write-Host "Disabling Explicit Congestion Notification"
@@ -104,15 +106,12 @@ function Invoke-Tweaks {
         Write-Host "Setting Initial Retransmission Timer"
         netsh int tcp set global initialRto=2000
     }
-    # Vérifier si la connexion est en Wi-Fi
-    $wifiConnection = Get-NetAdapter | Where-Object {$_.Name -like "*Wi-Fi*" -and $_.Status -eq "Up"}
-
     if ($wifiConnection) {
         Write-Host "La connexion est en Wi-Fi, la commande MTU ne sera pas exécutée."
     } else {
         if ($mtu -eq "*") {
             Write-Host "Setting MTU Size"
-            netsh interface ipv4 set subinterface="Ethernet" mtu=1492 store=persistent
+            netsh interface ipv4 set subinterface "Ethernet" mtu=1492 store=persistent
         }
     }
 
