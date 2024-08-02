@@ -74,8 +74,6 @@ function Show-Menu {
     Write-Host "=============================================="
 }
 
-#$wifiConnection = Get-NetAdapter | Where-Object {$_.Name -like "*Wi-Fi*" -and $_.Status -eq "Up"}
-
 function Invoke-Tweaks {
     if ($ecn -eq "*") {
         Write-Host "Disabling Explicit Congestion Notification"
