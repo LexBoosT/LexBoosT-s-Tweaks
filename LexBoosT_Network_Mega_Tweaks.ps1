@@ -106,10 +106,18 @@ function Invoke-Tweaks {
         Write-Host "Setting Initial Retransmission Timer"
         netsh int tcp set global initialRto=2000
     }
+    # Vérifier si la connexion est en Wi-Fi
+$wifiConnection = Get-NetAdapter | Where-Object {$_.Name -like "*Wi-Fi*" -and $_.Status -eq "Up"}
+
+if ($wifiConnection) {
+    Write-Host "La connexion est en Wi-Fi, la commande MTU ne sera pas exécutée."
+} else {
     if ($mtu -eq "*") {
         Write-Host "Setting MTU Size"
-        netsh interface ipv4 set subinterface "Ethernet" mtu=1492 store=persistent
+        netsh interface ipv4 set subinterface="Ethernet" mtu=1492 store=persistent
     }
+}
+
     if ($nonsackrtt -eq "*") {
         Write-Host "Disabling Non Sack RTT Resiliency"
         netsh int tcp set global nonsackrttresiliency=disabled
@@ -168,7 +176,18 @@ function Restore-Defaults {
     reg delete "HKLM\SYSTEM\CurrentControlSet\Services\Ndis\Parameters" /v "RssBaseCpu" /f >> APB_Log.txt
     netsh int tcp set global timestamps=enabled
     netsh int tcp set global initialRto=3000
-    netsh interface ipv4 set subinterface "Ethernet" mtu=1492 store=persistent
+    # Vérifier si la connexion est en Wi-Fi
+$wifiConnection = Get-NetAdapter | Where-Object {$_.Name -like "*Wi-Fi*" -and $_.Status -eq "Up"}
+
+if ($wifiConnection) {
+    Write-Host "La connexion est en Wi-Fi, la commande MTU ne sera pas exécutée."
+} else {
+    if ($mtu -eq "*") {
+        Write-Host "Setting MTU Size"
+        netsh interface ipv4 set subinterface="Ethernet" mtu=1492 store=persistent
+    }
+}
+
     netsh int tcp set global nonsackrttresiliency=enabled
     netsh int tcp set global maxsynretransmissions=2
     netsh int tcp set security mpp=enabled
