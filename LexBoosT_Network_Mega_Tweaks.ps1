@@ -53,7 +53,7 @@ function Show-Menu {
     Write-Host "5.  Enable Recieve Side Scaling $rss"
     Write-Host "6.  Disable TCP Timestamps $timestamps"
     Write-Host "7.  Set Initial Retransmission Timer $initialrto"
-    Write-Host "8.  Set MTU Size (1500) $mtu"
+    Write-Host "8.  Set MTU Size (1492) $mtu"
     Write-Host "9.  Disable Non Sack RTT Resiliency $nonsackrtt"
     Write-Host "10. Set Max Syn Retransmissions $maxsyn"
     Write-Host "11. Disable Memory Pressure Protection $mpp"
@@ -66,8 +66,8 @@ function Show-Menu {
     Write-Host "18. Disable ISATAP $isatap"
     Write-Host "19. Disable Teredo $teredo"
     Write-Host "=============================================="
-	Write-Host "| 20. Select All                             |" -ForegroundColor Yellow
-	Write-Host "| 21. Unselect All                           |" -ForegroundColor Cyan
+    Write-Host "| 20. Select All                             |" -ForegroundColor Yellow
+    Write-Host "| 21. Unselect All                           |" -ForegroundColor Cyan
     Write-Host "| 22. Apply Selected Tweaks                  |" -ForegroundColor Blue
     Write-Host "| 23. Restore Default Network Values         |" -ForegroundColor Magenta
     Write-Host "| Q.  Quit                                   |" -ForegroundColor Red
@@ -104,9 +104,15 @@ function Invoke-Tweaks {
         Write-Host "Setting Initial Retransmission Timer"
         netsh int tcp set global initialRto=2000
     }
-    if ($mtu -eq "*") {
-        Write-Host "Setting MTU Size"
-        netsh interface ipv4 set subinterface “Ethernet” mtu=1500 store=persistent
+    $wifiConnection = Get-NetAdapter | Where-Object {$_.Name -like "*Wi-Fi*" -and $_.Status -eq "Up"}
+
+    if ($wifiConnection) {
+        Write-Host "The connection is via Wi-Fi, the MTU command will not be executed."
+    } else {
+        if ($mtu -eq "*") {
+	    Write-Host "Setting MTU Size"
+	    netsh interface ipv4 set subinterface “Ethernet” mtu=1492 store=persistent
+        }
     }
     if ($nonsackrtt -eq "*") {
         Write-Host "Disabling Non Sack RTT Resiliency"
@@ -166,7 +172,7 @@ function Restore-Defaults {
     reg delete "HKLM\SYSTEM\CurrentControlSet\Services\Ndis\Parameters" /v "RssBaseCpu" /f >> APB_Log.txt
     netsh int tcp set global timestamps=enabled
     netsh int tcp set global initialRto=3000
-    netsh interface ipv4 set subinterface “Ethernet” mtu=1500 store=persistent
+    netsh interface ipv4 set subinterface “Ethernet” mtu=1492 store=persistent
     netsh int tcp set global nonsackrttresiliency=enabled
     netsh int tcp set global maxsynretransmissions=2
     netsh int tcp set security mpp=enabled
