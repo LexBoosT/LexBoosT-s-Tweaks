@@ -510,6 +510,14 @@ PowerShell -ExecutionPolicy Unrestricted -Command "$pathGlobPattern = "^""%WINDI
 :: Start service: DPS (with state flag)
 PowerShell -ExecutionPolicy Unrestricted -Command "$serviceName = 'DPS'; $stateFilePath = '%APPDATA%\privacy.sexy-DPS'; $expandedStateFilePath = [System.Environment]::ExpandEnvironmentVariables($stateFilePath); if (-not (Test-Path -Path $expandedStateFilePath)) {; Write-Host "^""Skipping starting the service: It was not running before."^""; } else {; try {; Remove-Item -Path $expandedStateFilePath -Force -ErrorAction SilentlyContinue; Write-Host 'The service is expected to be started.'; } catch {; Write-Warning "^""Failed to delete the service state file `"^""$expandedStateFilePath`"^"": $_"^""; }; }; $service = Get-Service -Name $serviceName -ErrorAction SilentlyContinue; if (!$service) {; throw "^""Failed to start service `"^""$serviceName`"^"": Service not found."^""; }; if ($service.Status -eq [System.ServiceProcess.ServiceControllerStatus]::Running) {; Write-Host "^""Skipping, `"^""$serviceName`"^"" is already running, no need to start."^""; exit 0; }; Write-Host "^""`"^""$serviceName`"^"" is not running, starting it."^""; try {; $service | Start-Service -ErrorAction SilentlyContinue; Write-Host "^""Successfully started the service: `"^""$serviceName`"^""."^""; } catch {; Write-Warning "^""Failed to start the service: `"^""$serviceName`"^""."^""; exit 1; }"
 echo ----------------------------------------------------------
+echo.
+echo.
+echo ----------------------------------------------------------
+echo -----------------Clear Windows.old------------------------
+echo ----------------------------------------------------------
+echo.
+if exist C:\Windows.old rd /s /q C:\Windows.old
+echo ----------------------------------------------------------
 
 :: Restore previous environment settings
 endlocal
