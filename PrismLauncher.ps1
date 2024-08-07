@@ -23,4 +23,11 @@ if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
     iwr -useb https://aka.ms/winget/install | iex
 }
 
-winget install --id=PrismLauncher.PrismLauncher -e --force
+$package = winget list --id=PrismLauncher.PrismLauncher -e
+if ($package) {
+    Write-Host "PrismLauncher is already installed. Checking for updates..."
+    winget upgrade --id=PrismLauncher.PrismLauncher -e --force
+} else {
+    Write-Host "Install PrismLauncher..."
+    winget install --id=PrismLauncher.PrismLauncher -e --force
+}
