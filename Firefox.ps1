@@ -23,4 +23,11 @@ if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
     iwr -useb https://aka.ms/winget/install | iex
 }
 
-winget install --id=Mozilla.Firefox  -e --force
+$package = winget list --id=Mozilla.Firefox -e
+if ($package) {
+    Write-Host "Firefox is already installed. Checking for updates..."
+    winget upgrade --id=Mozilla.Firefox -e --force
+} else {
+    Write-Host "Install Firefox..."
+    winget install --id=Mozilla.Firefox -e --force
+}
