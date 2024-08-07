@@ -23,4 +23,11 @@ if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
     iwr -useb https://aka.ms/winget/install | iex
 }
 
-winget install --id=Google.Chrome  -e --force
+$package = winget list --id=Google.Chrome -e
+if ($package) {
+    Write-Host "Google Chrome is already installed. Checking for updates..."
+    winget upgrade --id=Google.Chrome -e --force
+} else {
+    Write-Host "Install Google Chrome..."
+    winget install --id=Google.Chrome -e --force
+}
