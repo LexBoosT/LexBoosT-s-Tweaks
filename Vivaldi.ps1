@@ -23,4 +23,11 @@ if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
     iwr -useb https://aka.ms/winget/install | iex
 }
 
-winget install --id=Vivaldi.Vivaldi  -e --force
+$package = winget list --id=Vivaldi.Vivaldi -e
+if ($package) {
+    Write-Host "Vivaldi is already installed. Checking for updates..."
+    winget upgrade --id=Vivaldi.Vivaldi -e --force
+} else {
+    Write-Host "Install Vivaldi..."
+    winget install --id=Vivaldi.Vivaldi -e --force
+}
