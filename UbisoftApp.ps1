@@ -23,4 +23,11 @@ if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
     iwr -useb https://aka.ms/winget/install | iex
 }
 
-winget install --id=Ubisoft.Connect  -e --force
+$package = winget list --id=Ubisoft.Connect -e
+if ($package) {
+    Write-Host "Ubisoft Connect is already installed. Checking for updates..."
+    winget upgrade --id=Ubisoft.Connect -e --force
+} else {
+    Write-Host "Install Ubisoft Connect..."
+    winget install --id=Ubisoft.Connect -e --force
+}
