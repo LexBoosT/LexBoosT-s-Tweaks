@@ -23,4 +23,11 @@ if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
     iwr -useb https://aka.ms/winget/install | iex
 }
 
-winget install --id=Audacity.Audacity  -e --force
+$package = winget list --id=Audacity.Audacity -e
+if ($package) {
+    Write-Host "Armory Crate is already installed. Checking for updates..."
+    winget upgrade --id=Audacity.Audacity  -e --force
+} else {
+    Write-Host "Install Armoury Crate..."
+    winget install --id=Audacity.Audacity -e --force
+}
