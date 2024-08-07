@@ -23,4 +23,11 @@ if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
     iwr -useb https://aka.ms/winget/install | iex
 }
 
-winget install --id=BleachBit.BleachBit  -e --force
+$package = winget list --id=BleachBit.BleachBit -e
+if ($package) {
+    Write-Host "BleachBit is already installed. Checking for updates..."
+    winget upgrade --id=BleachBit.BleachBit -e --force
+} else {
+    Write-Host "Install BleachBit..."
+    winget install --id=BleachBit.BleachBit -e --force
+}
