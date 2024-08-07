@@ -23,4 +23,11 @@ if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
     iwr -useb https://aka.ms/winget/install | iex
 }
 
-winget install -e --id SteelSeries.GG --force
+$package = winget list --id=SteelSeries.GG -e
+if ($package) {
+    Write-Host "SteelSeries is already installed. Checking for updates..."
+    winget upgrade --id=SteelSeries.GG -e --force
+} else {
+    Write-Host "Install SteelSeries..."
+    winget install --id=SteelSeries.GG -e --force
+}
