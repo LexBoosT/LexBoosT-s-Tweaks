@@ -23,4 +23,11 @@ if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
     iwr -useb https://aka.ms/winget/install | iex
 }
 
-winget install --id=ElectronicArts.EADesktop  -e --force
+$package = winget list --id=ElectronicArts.EADesktop -e
+if ($package) {
+    Write-Host "EADesktop is already installed. Checking for updates..."
+    winget upgrade --id=ElectronicArts.EADesktop -e --force
+} else {
+    Write-Host "Install EADesktop..."
+    winget install --id=ElectronicArts.EADesktop -e --force
+}
