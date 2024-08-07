@@ -23,4 +23,11 @@ if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
     iwr -useb https://aka.ms/winget/install | iex
 }
 
-winget install --id=GOG.Galaxy -e --force
+$package = winget list --id=GOG.Galaxy -e
+if ($package) {
+    Write-Host "GOG Galaxy is already installed. Checking for updates..."
+    winget upgrade --id=GOG.Galaxy -e --force
+} else {
+    Write-Host "Install GOG Galaxy..."
+    winget install --id=GOG.Galaxy -e --force
+}
