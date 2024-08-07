@@ -23,4 +23,11 @@ if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
     iwr -useb https://aka.ms/winget/install | iex
 }
 
-winget install -e --id CPUID.HWMonitor --force
+$package = winget list --id=CPUID.HWMonitor -e
+if ($package) {
+    Write-Host "HWMonitor is already installed. Checking for updates..."
+    winget upgrade --id=CPUID.HWMonitor -e --force
+} else {
+    Write-Host "Install HWMonitor..."
+    winget install --id=CPUID.HWMonitor -e --force
+}
