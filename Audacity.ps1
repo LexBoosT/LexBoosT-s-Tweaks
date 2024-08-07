@@ -26,7 +26,7 @@ if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
 $package = winget list --id=Audacity.Audacity -e
 if ($package) {
     Write-Host "Armory Crate is already installed. Checking for updates..."
-    winget upgrade --id=Audacity.Audacity  -e --force
+    winget upgrade --id=Audacity.Audacity -e --force
 } else {
     Write-Host "Install Armoury Crate..."
     winget install --id=Audacity.Audacity -e --force
