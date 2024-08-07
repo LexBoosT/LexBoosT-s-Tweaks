@@ -23,4 +23,11 @@ if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
     iwr -useb https://aka.ms/winget/install | iex
 }
 
-winget install --id=Brave.Brave  -e --force
+$package = winget list --id --id=Brave.Brave -e
+if ($package) {
+    Write-Host "Brave is already installed. Checking for updates..."
+    winget upgrade --id=Brave.Brave -e --force
+} else {
+    Write-Host "Install Brave..."
+    winget install --id=Brave.Brave -e --force
+}
