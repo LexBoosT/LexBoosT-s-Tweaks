@@ -23,4 +23,11 @@ if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
     iwr -useb https://aka.ms/winget/install | iex
 }
 
-winget install --id=Mojang.MinecraftLauncher -e --force
+$package = winget list --id=Mojang.MinecraftLauncher -e
+if ($package) {
+    Write-Host "Minecraft is already installed. Checking for updates..."
+    winget upgrade --id=Mojang.MinecraftLauncher -e --force
+} else {
+    Write-Host "Install Minecraft..."
+    winget install --id=Mojang.MinecraftLauncher -e --force
+}
