@@ -1,3 +1,13 @@
+# Version 4.7.0
+
+- Added Disable Disk Check on Boot.
+- Added Import Power plan on context menu on .pow files.
+- Added IRQ 8 and IRQ 16 tweaks.
+- Added Optimize Game Fluidity tweaks.
+- Delete LexBoosT Intel and AMD Powerplan and replace by LexBoosT Ultra PowerPlan [Intel™]&[AMD™].
+- Update LexBoosT nVidia Profile.
+
+
 # Version 4.6.1
 
 - Fix Tooltip for LexBoosT MarkC Mouse Fix .
