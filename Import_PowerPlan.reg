@@ -12,8 +12,8 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 
 [HKEY_CLASSES_ROOT\.pow\shell]
 
-[HKEY_CLASSES_ROOT\.pow\shell\Import]
+[HKEY_CLASSES_ROOT\.pow\shell\Import Power Plan]
 "Icon"="powercpl.dll"
 
-[HKEY_CLASSES_ROOT\.pow\shell\Import\command]
+[HKEY_CLASSES_ROOT\.pow\shell\Import Power Plan\command]
 @="powercfg /import \"%1\""
