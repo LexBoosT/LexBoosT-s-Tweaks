@@ -1,3 +1,13 @@
+# Version 4.6.0
+
+- Added LexBoosT Drives Compactor.
+- Improve adapter detection on LexBoosT Network Mega Tweaks.
+- Modification of the "Delete Temp" Button, now deletes logs and caches.
+- Added LexBoost MarkC DPI Mouse Fix with the possibility of choosing the dpi you want or doing automatic detection and application of the fix.
+- Added Lively Wallpaper.
+- Added Rainmeter.
+
+
 # Version 4.5.0
 
 - Added LexBoosT Windows Update Fixer.
