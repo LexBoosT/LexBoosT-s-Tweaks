@@ -1,3 +1,10 @@
+# Version 4.6.1
+
+- Fix Tooltip for LexBoosT MarkC Mouse Fix .
+- Added tooltip for Rainmeter.
+- Added tooltip for Lively Wallpaper.
+
+
 # Version 4.6.0
 
 - Added LexBoosT Drives Compactor.
