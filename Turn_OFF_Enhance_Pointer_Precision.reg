@@ -4,8 +4,14 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 "MouseSpeed"="0"
 "MouseThreshold1"="0"
 "MouseThreshold2"="0"
+"DoubleClickSpeed"="500"
+"DoubleClickHeight"="4"
+"DoubleClickWidth"="4"
 
 [HKEY_CURRENT_USER\.DEFAULT\Control Panel\Mouse]
 "MouseSpeed"="0"
 "MouseThreshold1"="0"
 "MouseThreshold2"="0"
+"DoubleClickSpeed"="500"
+"DoubleClickHeight"="4"
+"DoubleClickWidth"="4"
