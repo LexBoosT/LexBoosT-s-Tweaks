@@ -5,6 +5,12 @@
     <Executeables />
     <Settings>
       <ProfileSetting>
+        <SettingNameInfo />
+        <SettingID>983226</SettingID>
+        <SettingValue>1</SettingValue>
+        <ValueType>Dword</ValueType>
+      </ProfileSetting>
+      <ProfileSetting>
         <SettingNameInfo>Shader Cache</SettingNameInfo>
         <SettingID>1675263</SettingID>
         <SettingValue>1</SettingValue>
@@ -74,6 +80,12 @@
         <SettingNameInfo>Vertical Sync</SettingNameInfo>
         <SettingID>11041231</SettingID>
         <SettingValue>138504007</SettingValue>
+        <ValueType>Dword</ValueType>
+      </ProfileSetting>
+      <ProfileSetting>
+        <SettingNameInfo>Shader disk cache maximum size</SettingNameInfo>
+        <SettingID>11306135</SettingID>
+        <SettingValue>4294967295</SettingValue>
         <ValueType>Dword</ValueType>
       </ProfileSetting>
       <ProfileSetting>
@@ -217,13 +229,13 @@
       <ProfileSetting>
         <SettingNameInfo>Toggle the VRR global feature</SettingNameInfo>
         <SettingID>278196567</SettingID>
-        <SettingValue>0</SettingValue>
+        <SettingValue>1</SettingValue>
         <ValueType>Dword</ValueType>
       </ProfileSetting>
       <ProfileSetting>
         <SettingNameInfo>VRR requested state</SettingNameInfo>
         <SettingID>278196727</SettingID>
-        <SettingValue>0</SettingValue>
+        <SettingValue>2</SettingValue>
         <ValueType>Dword</ValueType>
       </ProfileSetting>
       <ProfileSetting>
@@ -241,19 +253,19 @@
       <ProfileSetting>
         <SettingNameInfo>G-SYNC</SettingNameInfo>
         <SettingID>279476652</SettingID>
-        <SettingValue>1</SettingValue>
+        <SettingValue>0</SettingValue>
         <ValueType>Dword</ValueType>
       </ProfileSetting>
       <ProfileSetting>
         <SettingNameInfo>Variable refresh Rate</SettingNameInfo>
         <SettingID>279476686</SettingID>
-        <SettingValue>0</SettingValue>
+        <SettingValue>1</SettingValue>
         <ValueType>Dword</ValueType>
       </ProfileSetting>
       <ProfileSetting>
         <SettingNameInfo>G-SYNC</SettingNameInfo>
         <SettingID>279476687</SettingID>
-        <SettingValue>1</SettingValue>
+        <SettingValue>0</SettingValue>
         <ValueType>Dword</ValueType>
       </ProfileSetting>
       <ProfileSetting>
@@ -271,7 +283,7 @@
       <ProfileSetting>
         <SettingNameInfo>Enable G-SYNC globally</SettingNameInfo>
         <SettingID>294973784</SettingID>
-        <SettingValue>0</SettingValue>
+        <SettingValue>2</SettingValue>
         <ValueType>Dword</ValueType>
       </ProfileSetting>
       <ProfileSetting>
@@ -309,6 +321,12 @@
         <SettingID>549528094</SettingID>
         <SettingValue>1</SettingValue>
         <ValueType>Dword</ValueType>
+      </ProfileSetting>
+      <ProfileSetting>
+        <SettingNameInfo>Preferred OpenGL GPU</SettingNameInfo>
+        <SettingID>550564838</SettingID>
+        <SettingValue>id,2.0:1E0710DE,00000100,GF - (352,2,161,11264) @ (0)</SettingValue>
+        <ValueType>String</ValueType>
       </ProfileSetting>
       <ProfileSetting>
         <SettingNameInfo />
