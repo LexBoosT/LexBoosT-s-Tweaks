@@ -1,7 +1,13 @@
+# Version 4.7.2
+
+- Added Deactivate Button.
+
+
 # Version 4.7.1
 
 - Fix Download Premium files.
 - Added Disable Virtualization Based Security.
+
 
 # Version 4.7.0
 
