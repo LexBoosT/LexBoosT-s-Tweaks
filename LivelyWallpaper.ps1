@@ -23,11 +23,4 @@ if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
     iwr -useb https://aka.ms/winget/install | iex
 }
 
-$package = winget list --id=rocksdanister.LivelyWallpaper -e
-if ($package) {
-    Write-Host "LivelyWallpaper is already installed. Checking for updates..."
-    winget upgrade --id=rocksdanister.LivelyWallpaper -e --force
-} else {
-    Write-Host "Install LivelyWallpaper..."
-    winget install --id=rocksdanister.LivelyWallpaper -e --force
-}
+winget install --id=rocksdanister.LivelyWallpaper -e --force
