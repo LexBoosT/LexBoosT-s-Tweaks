@@ -23,11 +23,4 @@ if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
     iwr -useb https://aka.ms/winget/install | iex
 }
 
-$package = winget list --id=EpicGames.EpicGamesLauncher -e
-if ($package) {
-    Write-Host "EpicGamesLauncher is already installed. Checking for updates..."
-    winget upgrade --id=EpicGames.EpicGamesLauncher -e --force
-} else {
-    Write-Host "Install EpicGamesLauncher..."
-    winget install --id=EpicGames.EpicGamesLauncher -e --force
-}
+winget install --id=EpicGames.EpicGamesLauncher -e --force
