@@ -23,11 +23,4 @@ if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
     iwr -useb https://aka.ms/winget/install | iex
 }
 
-$package = winget list --id BlueStack.BlueStacks -e
-if ($package) {
-    Write-Host "BlueStack is already installed. Checking for updates..."
-    winget upgrade --id BlueStack.BlueStacks -e --force
-} else {
-    Write-Host "Install BlueStack..."
-    winget install --id BlueStack.BlueStacks -e --force
-}
+winget install --id BlueStack.BlueStacks -e --force
