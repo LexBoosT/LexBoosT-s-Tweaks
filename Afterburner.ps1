@@ -23,11 +23,4 @@ if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
     iwr -useb https://aka.ms/winget/install | iex
 }
 
-$package = winget list --id Guru3D.Afterburner -e
-if ($package) {
-    Write-Host "Guru3D Afterburner is already installed. Checking for updates..."
-    winget upgrade --id Guru3D.Afterburner -e --force
-} else {
-    Write-Host "Installing Guru3D Afterburner..."
-    winget install --id Guru3D.Afterburner -e --force
-}
+winget install --id Guru3D.Afterburner -e --force
