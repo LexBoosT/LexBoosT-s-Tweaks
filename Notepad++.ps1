@@ -23,11 +23,4 @@ if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
     iwr -useb https://aka.ms/winget/install | iex
 }
 
-$package = winget list --id=Notepad++.Notepad++ -e
-if ($package) {
-    Write-Host "Notepad++ is already installed. Checking for updates..."
-    winget upgrade --id=Notepad++.Notepad++ -e --force
-} else {
-    Write-Host "Install Notepad++..."
-    winget install --id=Notepad++.Notepad++ -e --force
-}
+winget install --id=Notepad++.Notepad++ -e --force
