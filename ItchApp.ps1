@@ -23,11 +23,4 @@ if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
     iwr -useb https://aka.ms/winget/install | iex
 }
 
-$package = winget list --id=ItchIo.Itch -e
-if ($package) {
-    Write-Host "ItchIo is already installed. Checking for updates..."
-    winget upgrade --id=ItchIo.Itch -e --force
-} else {
-    Write-Host "Install ItchIo..."
-    winget install --id=ItchIo.Itch -e --force
-}
+winget install --id=ItchIo.Itch -e --force
