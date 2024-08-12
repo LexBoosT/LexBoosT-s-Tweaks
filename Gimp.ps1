@@ -23,11 +23,4 @@ if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
     iwr -useb https://aka.ms/winget/install | iex
 }
 
-$package = winget list --id=GIMP.GIMP -e
-if ($package) {
-    Write-Host "GIMP is already installed. Checking for updates..."
-    winget upgrade --id=GIMP.GIMP -e --force
-} else {
-    Write-Host "Install GIMP..."
-    winget install --id=GIMP.GIMP -e --force
-}
+winget install --id=GIMP.GIMP -e --force
