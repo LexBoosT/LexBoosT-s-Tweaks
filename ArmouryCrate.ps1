@@ -23,11 +23,4 @@ if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
     iwr -useb https://aka.ms/winget/install | iex
 }
 
-$package = winget list --id 9PM9DFQRDH3F -e
-if ($package) {
-    Write-Host "Armory Crate is already installed. Checking for updates..."
-    winget upgrade --id 9PM9DFQRDH3F -e --force
-} else {
-    Write-Host "Install Armoury Crate..."
-    winget install --id 9PM9DFQRDH3F -e --force
-}
+winget install --id 9PM9DFQRDH3F -e --force
