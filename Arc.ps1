@@ -23,11 +23,4 @@ if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
     iwr -useb https://aka.ms/winget/install | iex
 }
 
-$package = winget list --id TheBrowserCompany.Arc -e
-if ($package) {
-    Write-Host "Arc is already installed. Checking for updates..."
-    winget upgrade --id TheBrowserCompany.Arc -e --force
-} else {
-    Write-Host "Installing Arc..."
-    winget install --id TheBrowserCompany.Arc -e --force
-}
+winget install --id TheBrowserCompany.Arc -e --force
