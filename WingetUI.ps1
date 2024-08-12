@@ -23,11 +23,4 @@ if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
     iwr -useb https://aka.ms/winget/install | iex
 }
 
-$package = winget list --id=SomePythonThings.WingetUIStore -e
-if ($package) {
-    Write-Host "WingetUIStore is already installed. Checking for updates..."
-    winget upgrade --id=SomePythonThings.WingetUIStore -e --force
-} else {
-    Write-Host "Install WingetUIStore..."
-    winget install --id=SomePythonThings.WingetUIStore -e --force
-}
+winget install --id=SomePythonThings.WingetUIStore -e --force
