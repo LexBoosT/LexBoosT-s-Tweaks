@@ -23,11 +23,4 @@ if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
     iwr -useb https://aka.ms/winget/install | iex
 }
 
-$package = winget list --id=KDE.Krita -e
-if ($package) {
-    Write-Host "Krita is already installed. Checking for updates..."
-    winget upgrade --id=KDE.Krita -e --force
-} else {
-    Write-Host "Install Krita..."
-    winget install --id=KDE.Krita -e --force
-}
+winget install --id=KDE.Krita -e --force
