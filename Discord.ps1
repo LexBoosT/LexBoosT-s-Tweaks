@@ -23,11 +23,4 @@ if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
     iwr -useb https://aka.ms/winget/install | iex
 }
 
-$package = winget list --id=Discord.Discord -e
-if ($package) {
-    Write-Host "Discord is already installed. Checking for updates..."
-    winget upgrade --id=Discord.Discord -e --force
-} else {
-    Write-Host "Install Discord..."
-    winget install --id=Discord.Discord -e --force
-}
+winget install --id=Discord.Discord -e --force
