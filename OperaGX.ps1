@@ -23,11 +23,4 @@ if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
     iwr -useb https://aka.ms/winget/install | iex
 }
 
-$package = winget list --id=Opera.OperaGX -e
-if ($package) {
-    Write-Host "OperaGX is already installed. Checking for updates..."
-    winget upgrade --id=Opera.OperaGX -e --force
-} else {
-    Write-Host "Install OperaGX..."
-    winget install --id=Opera.OperaGX -e --force
-}
+winget install --id=Opera.OperaGX -e --force
