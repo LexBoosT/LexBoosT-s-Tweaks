@@ -16,4 +16,4 @@ function Check-Admin {
 }
 Check-Admin
 
-Disable-MMAgent -mc
+Disable-MMAgent -MemoryCompression
