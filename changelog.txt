@@ -2,6 +2,7 @@
 
 - Added Windows Defender Killer.
 - Added LexBoosT Ram Management.
+- Added LexBoosT Disk Optimization.
 - Fix Install_Fonts Class.
 - Optimize the code.
 
