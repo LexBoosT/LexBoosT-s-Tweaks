@@ -139,7 +139,7 @@ function Show-Menu {
     Write-Host "|        LexBoosT Win Update Fix Menu       |"
     Write-Host "============================================="
     Write-Host "| 1. Fix Windows Update                     |" -ForegroundColor Blue
-    Write-Host "| 2. Exit                                   |" -ForegroundColor Red
+    Write-Host "| 0. Exit                                   |" -ForegroundColor Red
     Write-Host "============================================="
 }
 
@@ -148,7 +148,7 @@ while ($true) {
     $choice = Read-Host "Enter your choice (1 or 2 for Exit)"
     switch ($choice) {
         1 { Invoke-FixesUpdate }
-        2 { Write-Host "Goodbye!"; Exit }
+        0 { Write-Host "Goodbye!"; Exit }
         default { Write-Host "Invalid choice. Please try again."; Pause }
     }
 }
