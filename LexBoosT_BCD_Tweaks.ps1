@@ -50,7 +50,7 @@ function Show-Menu {
     Write-Host "============================================="
     Write-Host "| 1. Apply BCD tweaks                       |" -ForegroundColor Blue
     Write-Host "| 2. Restore default BCD values             |" -ForegroundColor Magenta
-    Write-Host "| 3. Exit                                   |" -ForegroundColor Red
+    Write-Host "| 0. Exit                                   |" -ForegroundColor Red
     Write-Host "============================================="
 }
 
@@ -115,7 +115,7 @@ while ($true) {
     switch ($choice) {
         1 { Apply-Tweaks }
         2 { Restore-Defaults }
-        3 { Write-Host "Goodbye!"; Exit }
+        0 { Write-Host "Goodbye!"; Exit }
         default { Write-Host "Invalid choice. Please try again."; Pause }
     }
 }
