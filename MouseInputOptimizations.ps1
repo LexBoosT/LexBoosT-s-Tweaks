@@ -32,7 +32,7 @@ function Show-Menu {
         Write-Host "| 8. Set scaling to 300%                    |" -ForegroundColor Yellow
         Write-Host "| 9. Set scaling to 350%                    |" -ForegroundColor Green
 		Write-Host "| 10. Automatic Scaling                     |" -ForegroundColor Blue
-        Write-Host "| 0. Quit                                   |" -ForegroundColor Red
+        Write-Host "| 0. Exit                                   |" -ForegroundColor Red
         Write-Host "============================================="
 
         $choice = Read-Host "Enter your choice"
