@@ -70,7 +70,7 @@ function Show-Menu {
     Write-Host "| 21. Unselect All                           |" -ForegroundColor Cyan
     Write-Host "| 22. Apply Selected Tweaks                  |" -ForegroundColor Blue
     Write-Host "| 23. Restore Default Network Values         |" -ForegroundColor Magenta
-    Write-Host "| 99.  Quit                                  |" -ForegroundColor Red
+    Write-Host "| 0.  Exit                                  |" -ForegroundColor Red
     Write-Host "=============================================="
 }
 
@@ -412,7 +412,7 @@ while ($true) {
         23 {
             Restore-Defaults
         }
-        99 {
+        0 {
             Write-Host "Goodbye!"
             Exit
         }
