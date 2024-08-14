@@ -147,7 +147,7 @@ function Show-Menu {
 	Write-Host "| 5. Downloads                               |" -ForegroundColor White
 	Write-Host "| 6. Favorites                               |" -ForegroundColor Gray
 	Write-Host "| 7. Desktop                                 |" -ForegroundColor Yellow
-	Write-Host "| 0. Quit                                    |" -ForegroundColor Red
+	Write-Host "| 0. Exit                                    |" -ForegroundColor Red
 	Write-Host "=============================================="
 
 }
