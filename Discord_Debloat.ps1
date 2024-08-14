@@ -83,7 +83,7 @@ function Show-Menu {
     Write-Host "| 1. Disable Updates                        |" -ForegroundColor Blue
     Write-Host "| 2. Debloat Discord                        |" -ForegroundColor Magenta
     Write-Host "| 3. Remove Overlay                         |" -ForegroundColor Yellow
-    Write-Host "| 4. Exit                                   |" -ForegroundColor Red
+    Write-Host "| 0. Exit                                   |" -ForegroundColor Red
     Write-Host "============================================="
 }
 
@@ -218,8 +218,8 @@ do {
 
             Write-Host "Overlay removed!"
         }
-        '4' {
-            break
+        '0' {
+            Exit
         }
     }
 } while ($choice -ne '4')
