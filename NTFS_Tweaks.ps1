@@ -51,7 +51,7 @@ function Show-Menu {
     Write-Host "============================================="
     Write-Host "| 1. Apply NTFS tweaks                      |" -ForegroundColor Blue
     Write-Host "| 2. Restore default NTFS values            |" -ForegroundColor Magenta
-    Write-Host "| Q. Quit                                   |" -ForegroundColor Red
+    Write-Host "| 0. Exit                                   |" -ForegroundColor Red
     Write-Host "============================================="
 }
 
@@ -87,7 +87,7 @@ while ($true) {
     switch ($choice) {
         1 { Apply-Tweaks }
         2 { Restore-Defaults }
-        Q { Write-Host "Goodbye!"; Exit }
+        0 { Write-Host "Goodbye!"; Exit }
         default { Write-Host "Invalid choice. Please try again."; Pause }
     }
 }
