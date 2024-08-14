@@ -41,7 +41,7 @@ function Show-Menu {
     Write-Host "| 3. Compress with   Xpress16K  (40-50%)    |" -ForegroundColor Cyan
     Write-Host "| 4. Compress with   LZX        (50-60%)    |" -ForegroundColor Green
     Write-Host "| 5. Decompress                             |" -ForegroundColor Yellow
-    Write-Host "| 6. Exit                                   |" -ForegroundColor Red
+    Write-Host "| 0. Exit                                   |" -ForegroundColor Red
     Write-Host "============================================="
 }
 
@@ -148,7 +148,7 @@ do {
         5 {
             $algorithm = "Decompress"
         }
-        6 {
+        0 {
             Write-Host "Goodbye!..." -ForegroundColor Yellow
             break
         }
