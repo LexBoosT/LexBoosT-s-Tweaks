@@ -254,7 +254,7 @@ function Show-Menu
     Write-Host "| 1. Normal mode                            |" -ForegroundColor Blue
     Write-Host "| 2. Recommended mode                       |" -ForegroundColor Cyan
     Write-Host "| 3. Gaming mode                            |" -ForegroundColor Magenta
-    Write-Host "| 4. Exit                                   |" -ForegroundColor Red
+    Write-Host "| 0. Exit                                   |" -ForegroundColor Red
     Write-Host "============================================="
 }
 
@@ -266,7 +266,7 @@ while ($true) {
         1 { normal }
         2 { recommended }
 		3 { gaming }
-        4 { Exit }
+        0 { Exit }
         default { Write-Host "Invalid choice. Please try again."; Pause }
     }
 }
