@@ -1,3 +1,8 @@
+# Version 4.8.1
+
+- Fix Windows Defender Killer Launch
+
+
 # Version 4.8.0
 
 - Added Windows Defender Killer.
