@@ -23,4 +23,4 @@ if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
     iwr -useb https://aka.ms/winget/install | iex
 }
 
-winget install --id=Discord.Discord -e --force
+winget install --id "Discord.Discord" --accept-source-agreements --silent --disable-interactivity --accept-package-agreements --exact --force
