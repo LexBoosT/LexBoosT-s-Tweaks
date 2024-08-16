@@ -130,7 +130,7 @@ pause
 
 do {
     Show-Menu
-    $choice = Read-Host "Enter your choice (1, 2, 3, 4, 5 or 6 for Quit)"
+    $choice = Read-Host "Enter your choice (1, 2, 3, 4, 5 or 0 for Quit)"
     Write-Host "Choice entered: $choice"
     switch ($choice) {
         1 {
