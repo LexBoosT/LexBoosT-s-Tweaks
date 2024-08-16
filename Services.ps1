@@ -71,7 +71,6 @@ function gaming{
         "MSDTC"
         "NahimicService"
         "PerfHost"
-        #"QWAVE"
         "RtkBtManServ"
         "SharedAccess"
         "ssh-agent"
@@ -261,7 +260,7 @@ function Show-Menu
 # Boucle pour afficher le menu et gérer les choix de l'utilisateur
 while ($true) {
     Show-Menu
-    $choice = Read-Host "Enter your choice (1, 2, 3 or 4 for Exit)"
+    $choice = Read-Host "Enter your choice (1, 2, 3 or 0 for Exit)"
     switch ($choice) {
         1 { normal }
         2 { recommended }
