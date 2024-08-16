@@ -11,6 +11,7 @@ Jeffix
 hkliszi
 Preston
 Ptr
+RadosławGrzędzicki
 shorty_gr
 SSentry
 TASbot
