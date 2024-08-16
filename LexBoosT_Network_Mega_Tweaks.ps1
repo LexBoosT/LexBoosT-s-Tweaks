@@ -229,7 +229,7 @@ $teredo = ""
 
 while ($true) {
     Show-Menu
-    $choice = Read-Host "Enter your choice (1-24) or 0 for Quit"
+    $choice = Read-Host "Enter your choice (1-23) or 0 for Quit"
     switch ($choice) {
         1 {
             if ($ecn -eq "*") {
