@@ -83,7 +83,7 @@ function Restore-Defaults {
 # Boucle pour afficher le menu et gérer les choix de l'utilisateur
 while ($true) {
     Show-Menu
-    $choice = Read-Host "Enter your choice (1, 2) or Q for Quit"
+    $choice = Read-Host "Enter your choice (1, 2) or 0 for Quit"
     switch ($choice) {
         1 { Apply-Tweaks }
         2 { Restore-Defaults }
