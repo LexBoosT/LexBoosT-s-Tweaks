@@ -145,7 +145,7 @@ function Show-Menu {
 
 while ($true) {
     Show-Menu
-    $choice = Read-Host "Enter your choice (1 or 2 for Exit)"
+    $choice = Read-Host "Enter your choice (1 or 0 for Exit)"
     switch ($choice) {
         1 { Invoke-FixesUpdate }
         0 { Write-Host "Goodbye!"; Exit }
