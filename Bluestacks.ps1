@@ -23,4 +23,4 @@ if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
     iwr -useb https://aka.ms/winget/install | iex
 }
 
-winget install --id BlueStack.BlueStacks -e --force
+winget install --id "BlueStack.BlueStacks" -e --force
