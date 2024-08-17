@@ -29,16 +29,16 @@ while ($true) {
 	Write-Host "2. Corsair iCUE 4"
 	Write-Host "3. Corsair iCUE 5"
 	Write-Host "4. Corsair iCUE GameBar Widgets"
-	Write-Host "5. Quit"
+	Write-Host "0. Exit"
 
-	$choice = Read-Host "Enter your choice (1-5)"
+	$choice = Read-Host "Enter your choice (1, 2, 3, 4 or 0 for Quit)"
 
 	switch ($choice) {
-		'1' { winget install -e --id Corsair.iCUE.3 --force }
-		'2' { winget install -e --id Corsair.iCUE.4 --force }
-		'3' { winget install -e --id Corsair.iCUE.5 --force }
-		'4' { winget install -e --id 9PG940D1ZDVP --force }
-		'5' { exit }
+		'1' { winget install -e --id "Corsair.iCUE.3" --force }
+		'2' { winget install -e --id "Corsair.iCUE.4" --force }
+		'3' { winget install -e --id "Corsair.iCUE.5" --force }
+		'4' { winget install -e --id "9PG940D1ZDVP" --force }
+		'0' { exit }
 		default { Write-Host "Invalid choice. Please enter a number between 1 and 5." }
 	}
 }
