@@ -23,11 +23,4 @@ if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
     iwr -useb https://aka.ms/winget/install | iex
 }
 
-$package = winget list --id=WinMerge.WinMerge -e
-if ($package) {
-    Write-Host "WinMerge is already installed. Checking for updates..."
-    winget upgrade --id=WinMerge.WinMerge -e --force
-} else {
-    Write-Host "Install WinMerge..."
-    winget install --id=WinMerge.WinMerge -e --force
-}
+winget install --id "WinMerge.WinMerge" -e --force
