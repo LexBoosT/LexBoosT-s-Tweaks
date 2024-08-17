@@ -23,4 +23,4 @@ if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
     iwr -useb https://aka.ms/winget/install | iex
 }
 
-Start-Process -Wait -FilePath "winget" -ArgumentList "install -e --id 9NBLGGH30XJ3 --accept-source-agreements --silent --disable-interactivity --accept-package-agreements --force"
+winget install -e --id "9NBLGGH30XJ3" --silent --disable-interactivity --accept-package-agreements --force
