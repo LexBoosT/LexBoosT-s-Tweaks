@@ -38,7 +38,7 @@ while ($true) {
 
 	switch ($choice) {
 		'1' { choco install razer-synapse-2 -y --no-progress --force }
-		'2' { winget install -e --id RazerInc.RazerInstaller --force }
+		'2' { winget install -e --id "RazerInc.RazerInstaller" --force }
 		'0' { exit }
 		default { Write-Host "Invalid choice. Please enter a number between 1 and 3." }
 	}
