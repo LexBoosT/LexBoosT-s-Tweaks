@@ -23,4 +23,4 @@ if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
     iwr -useb https://aka.ms/winget/install | iex
 }
 
-Start-Process -Wait -FilePath "winget" -ArgumentList "install -e --id Microsoft.VisualStudio.2022.Community --force"
+winget install -e --id "Microsoft.VisualStudio.2022.Community" --force
