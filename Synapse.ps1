@@ -34,12 +34,12 @@ while ($true) {
 	Write-Host "2. Razer Synapse 3"
 	Write-Host "0. Exit"
 
-	$choice = Read-Host "Enter your choice (1-3)"
+	$choice = Read-Host "Enter your choice (1, 2 or 0 for Quit)"
 
 	switch ($choice) {
 		'1' { choco install razer-synapse-2 -y --no-progress --force }
 		'2' { winget install -e --id "RazerInc.RazerInstaller" --force }
 		'0' { exit }
-		default { Write-Host "Invalid choice. Please enter a number between 1 and 3." }
+		default { Write-Host "Invalid choice. Please try again." }
 	}
 }
