@@ -23,4 +23,4 @@ if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
     iwr -useb https://aka.ms/winget/install | iex
 }
 
-winget install -e --id Microsoft.PCManager --force
+winget install -e --id "Microsoft.PCManager" --force
