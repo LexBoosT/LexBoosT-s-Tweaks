@@ -39,6 +39,6 @@ while ($true) {
 		'3' { winget install -e --id "Corsair.iCUE.5" --force }
 		'4' { winget install -e --id "9PG940D1ZDVP" --force }
 		'0' { exit }
-		default { Write-Host "Invalid choice. Please enter a number between 1 and 5." }
+		default { Write-Host "Invalid choice. Please try again." }
 	}
 }
