@@ -1,17 +1,17 @@
 # Version 4.8.3
 
-- Fix Premium Folder download Link (again)
-- Fix Defender Killer Folder download Link
+- Fix Premium Folder download Link (again).
+- Fix Defender Killer Folder download Link.
 
 
 # Version 4.8.2
 
-- Fix Premium Folder download Link
+- Fix Premium Folder download Link.
 
 
 # Version 4.8.1
 
-- Fix Windows Defender Killer Launch
+- Fix Windows Defender Killer Launch.
 
 
 # Version 4.8.0
