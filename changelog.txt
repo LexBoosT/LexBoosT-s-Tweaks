@@ -1,3 +1,8 @@
+# Version 4.8.4
+
+- Removal of Defender Killer due to the questionable security of the programs it embeds.
+
+
 # Version 4.8.3
 
 - Fix Premium Folder download Link (again).
