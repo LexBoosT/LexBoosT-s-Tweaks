@@ -15,6 +15,7 @@ Ptr
 RadosławGrzędzicki
 shorty_gr
 SSentry
+Strixluca
 TASbot
 TrashForReal
 woes.slash
