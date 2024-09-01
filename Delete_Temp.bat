@@ -18,59 +18,6 @@ echo ----------------------------------------------------------
 echo.
 echo.
 echo ----------------------------------------------------------
-echo -----Clearing Epic Games and Fortnite Temporary Files-----
-echo ----------------------------------------------------------
-echo.
-PowerShell -ExecutionPolicy Unrestricted -Command "
-$directoryGlob = '%SystemDrive%\Users\*\AppData\Local\Temp';
-$pathGlobPattern = if ($directoryGlob.EndsWith('\*')) { $directoryGlob } elseif ($directoryGlob.EndsWith('\')) { ""$($directoryGlob)*"" } else { ""$($directoryGlob)\*"" };
-$expandedPath = [System.Environment]::ExpandEnvironmentVariables($pathGlobPattern);
-Write-Host ""Searching for items matching pattern: `"$($expandedPath)`"."";
-$deletedCount = 0;
-$failedCount = 0;
-$foundAbsolutePaths = @();
-Write-Host 'Iterating files and directories recursively.';
-try {
-    $foundAbsolutePaths += @(Get-ChildItem -Path $expandedPath -Force -Recurse -ErrorAction SilentlyContinue | Select-Object -ExpandProperty FullName);
-} catch [System.Management.Automation.ItemNotFoundException] {
-    <# Swallow, do not run `Test-Path` before, it's unreliable for globs requiring extra permissions #>
-};
-try {
-    $foundAbsolutePaths += @(Get-Item -Path $expandedPath -ErrorAction SilentlyContinue | Select-Object -ExpandProperty FullName);
-} catch [System.Management.Automation.ItemNotFoundException] {
-    <# Swallow, do not run `Test-Path` before, it's unreliable for globs requiring extra permissions #>
-};
-$foundAbsolutePaths = $foundAbsolutePaths | Select-Object -Unique | Sort-Object -Property { $_.Length } -Descending;
-if (!$foundAbsolutePaths) {
-    Write-Host 'Skipping, no items available.';
-    exit 0;
-};
-Write-Host ""Initiating processing of $($foundAbsolutePaths.Count) items from `"$expandedPath`"."";
-foreach ($path in $foundAbsolutePaths) {
-    if (-not (Test-Path $path)) {
-        <# Re-check existence as prior deletions might remove subsequent items (e.g., subdirectories). #>
-        Write-Host ""Successfully deleted: $($path) (already deleted)."";
-        $deletedCount++;
-        continue;
-    };
-    try {
-        Remove-Item -Path $path -Force -Recurse -ErrorAction SilentlyContinue;
-        $deletedCount++;
-        Write-Host ""Successfully deleted: $($path)"";
-    } catch {
-        $failedCount++;
-        Write-Warning ""Unable to delete $($path): $_"";
-    };
-};
-Write-Host ""Successfully deleted $($deletedCount) items."";
-if ($failedCount -gt 0) {
-    Write-Warning ""Failed to delete $($failedCount) items."";
-}
-"
-echo ----------------------------------------------------------
-echo.
-echo.
-echo ----------------------------------------------------------
 echo ------------------Clear prefetch folder-------------------
 echo ----------------------------------------------------------
 echo.
