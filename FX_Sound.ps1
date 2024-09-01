@@ -18,7 +18,7 @@ Check-Admin
 
 # Télécharger la dernière version de FxSound
 $downloadUrl = "https://github.com/fxsound2/fxsound-app/raw/latest/release/fxsound_setup.exe" # Lien direct vers la dernière version
-$outputPath = "$env:TEMP\FxSoundSetup.exe"
+$outputPath = "$env:TEMP\fxsound_setup.exe"
 
 Write-Host "Downloading FxSound..."
 Invoke-WebRequest -Uri $downloadUrl -OutFile $outputPath
