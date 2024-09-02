@@ -1,3 +1,9 @@
+# Version 4.9.0
+
+- Added Restart to Bios Menu for Enable/Disable Restart to Bios on Context Menu.
+- Code optimization.
+
+
 # Version 4.8.4
 
 - Removal of Defender Killer due to the questionable security of the programs it embeds.
