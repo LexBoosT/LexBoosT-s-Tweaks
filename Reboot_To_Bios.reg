@@ -4,10 +4,10 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 
 [HKEY_CURRENT_USER\Software\Classes\DesktopBackground\Shell]
 
-[HKEY_CURRENT_USER\Software\Classes\DesktopBackground\Shell\RestartToBIOS]
+[HKEY_CURRENT_USER\Software\Classes\DesktopBackground\Shell\Restart To BIOS]
 @="Reboot to BIOS"
 "Icon"="C:\\Windows\\System32\\shell32.dll,24"
 
-[HKEY_CURRENT_USER\Software\Classes\DesktopBackground\Shell\RestartToBIOS\command]
+[HKEY_CURRENT_USER\Software\Classes\DesktopBackground\Shell\Restart To BIOS\command]
 @="powershell.exe -NoProfile -ExecutionPolicy Bypass -Command `"Start-Process shutdown.exe -ArgumentList '/r /fw /t 1' -Verb RunAs`""
 
