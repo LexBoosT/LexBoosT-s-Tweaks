@@ -56,7 +56,7 @@ function Show-Compression-Menu {
     Write-Host "|     C:\Program Files\WindowsApps,         |"
     Write-Host "|     C:\Windows\InfusedApps,               |"
     Write-Host "|     C:\Windows\installer)                 |"
-    Write-Host "| 2. Compress a custom folder               |" -ForegroundColor Magenta
+    Write-Host "| 2. Compress a folder by drag and drop     |" -ForegroundColor Magenta
     Write-Host "| 0. Back                                   |" -ForegroundColor Red
     Write-Host "============================================="
 }
@@ -66,7 +66,7 @@ function Get-FolderSize {
         [string]$FolderPath
     )
     $size = (Get-ChildItem -Path $FolderPath -Recurse -ErrorAction SilentlyContinue | Measure-Object -Property Length -Sum).Sum
-    return [math]::Round($size / 1MB, 2)
+    return [math]::Round($size / 1KB, 2)
 }
 
 function Compress-Folders {
@@ -120,9 +120,9 @@ function Compress-Folders {
     }
 
     Write-Host "Compression complete!"
-    Write-Host "Total size before compression: $totalSizeBefore MB"
-    Write-Host "Total size after compression: $totalSizeAfter MB"
-    Write-Host "Total size reduction: $sizeReduction MB ($percentageReduction%)"
+    Write-Host "Total size before compression: $totalSizeBefore KB"
+    Write-Host "Total size after compression: $totalSizeAfter KB"
+    Write-Host "Total size reduction: $sizeReduction KB ($percentageReduction%)"
     Pause
 }
 
@@ -162,9 +162,9 @@ function Compress-Custom-Folder {
     }
 
     Write-Host "Compression complete!"
-    Write-Host "Size before compression: $sizeBefore MB"
-    Write-Host "Size after compression: $sizeAfter MB"
-    Write-Host "Size reduction: $sizeReduction MB ($percentageReduction%)"
+    Write-Host "Size before compression: $sizeBefore KB"
+    Write-Host "Size after compression: $sizeAfter KB"
+    Write-Host "Size reduction: $sizeReduction KB ($percentageReduction%)"
     Pause
 }
 
@@ -177,14 +177,43 @@ function Expand-Folders {
         "$env:windir\installer"
     )
 
+    $totalSizeBefore = 0
+    $totalSizeAfter = 0
+
     foreach ($folder in $folders) {
+        $sizeBefore = Get-FolderSize -FolderPath $folder
+        $totalSizeBefore += $sizeBefore
+
         Write-Host "Decompressing $folder..."
-        compact /u /s:$folder /a /i /f > $null 2>&1
+        $files = Get-ChildItem -Path $folder -Recurse -File
+        $totalFiles = $files.Count
+        $processedFiles = 0
+
+        foreach ($file in $files) {
+            compact /u /s:$file.FullName /a /i /f > $null 2>&1
+            $processedFiles++
+            $progress = [math]::Round(($processedFiles / $totalFiles) * 100, 2)
+            Write-Progress -Activity "Decompressing $folder" -Status "$progress% Complete" -PercentComplete $progress
+        }
+
+        $sizeAfter = Get-FolderSize -FolderPath $folder
+        $totalSizeAfter += $sizeAfter
+    }
+
+    $sizeReduction = $totalSizeBefore - $totalSizeAfter
+    if ($totalSizeBefore -ne 0) {
+        $percentageReduction = [math]::Round(($sizeReduction / $totalSizeBefore) * 100, 2)
+    } else {
+        $percentageReduction = 0
     }
 
     Write-Host "Decompression complete!"
+    Write-Host "Total size before decompression: $totalSizeBefore KB"
+    Write-Host "Total size after decompression: $totalSizeAfter KB"
+    Write-Host "Total size reduction: $sizeReduction KB ($percentageReduction%)"
     Pause
 }
+
 
 do {
     Show-Menu
@@ -220,7 +249,7 @@ do {
                         break
                     }
                     2 {
-                        $folderPath = Read-Host "Chose the folder to compress"
+                        $folderPath = Read-Host "Drag and drop the folder to compress"
                         Compress-Custom-Folder -Algorithm $algorithm -FolderPath $folderPath
                         break
                     }
@@ -228,11 +257,4 @@ do {
                         break
                     }
                     default {
-                        Write-Host "Invalid option, please try again." -ForegroundColor Red
-                    }
-                }
-            } while ($compressionChoice -ne 0)
-        }
-        Read-Host "Press Enter to continue..."
-    }
-} while ($choice -ne 0)
+                        Write-Host "Invalid option, please try again." -
