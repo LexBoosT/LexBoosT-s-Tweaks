@@ -68,8 +68,14 @@ function Get-FolderSize {
     param (
         [string]$FolderPath
     )
-    $size = (Get-ChildItem -Path $FolderPath -Recurse -ErrorAction SilentlyContinue | Measure-Object -Property Length -Sum).Sum
-    return [math]::Round($size / 1KB, 2)
+    [System.IO.Directory]::GetFiles($FolderPath, '*', 'AllDirectories') | % { $_.Length } | Measure-Object -Sum -ErrorAction SilentlyContinue | % { [math]::Round($_.Sum / 1KB, 2) }
+}
+
+function Refresh-Folder {
+    param (
+        [string]$FolderPath
+    )
+    [System.IO.Directory]::GetFiles($FolderPath, '*', 'AllDirectories') | Out-Null
 }
 
 function Compress-Folders {
@@ -86,6 +92,7 @@ function Compress-Folders {
     )
 
     foreach ($folder in $folders) {
+        Refresh-Folder -FolderPath $folder
         $sizeBefore = Get-FolderSize -FolderPath $folder
         Write-Host "Size before compression: $sizeBefore KB"
 
@@ -100,7 +107,7 @@ function Compress-Folders {
         Remove-Item "$folder.acl" > $null 2>&1
 
         Start-Sleep -Seconds 5  # Pause to ensure changes are applied
-
+        Refresh-Folder -FolderPath $folder
         $sizeAfter = Get-FolderSize -FolderPath $folder
         $sizeReduction = $sizeBefore - $sizeAfter
         if ($sizeBefore -ne 0) {
@@ -122,6 +129,7 @@ function Compress-Custom-Folder {
         [string]$FolderPath
     )
 
+    Refresh-Folder -FolderPath $FolderPath
     $sizeBefore = Get-FolderSize -FolderPath $FolderPath
     Write-Host "Size before compression: $sizeBefore KB"
 
@@ -136,7 +144,7 @@ function Compress-Custom-Folder {
     Remove-Item "$FolderPath.acl" > $null 2>&1
 
     Start-Sleep -Seconds 5  # Pause to ensure changes are applied
-
+    Refresh-Folder -FolderPath $FolderPath
     $sizeAfter = Get-FolderSize -FolderPath $FolderPath
     $sizeReduction = $sizeBefore - $sizeAfter
     if ($sizeBefore -ne 0) {
@@ -156,6 +164,7 @@ function Expand-Folders {
         [string]$FolderPath
     )
 
+    Refresh-Folder -FolderPath $FolderPath
     $sizeBefore = Get-FolderSize -FolderPath $FolderPath
     Write-Host "Size before decompression: $sizeBefore KB"
 
@@ -163,7 +172,7 @@ function Expand-Folders {
     compact /u /s:$FolderPath /a /i /f > $null 2>&1
 
     Start-Sleep -Seconds 5  # Pause to ensure changes are applied
-
+    Refresh-Folder -FolderPath $FolderPath
     $sizeAfter = Get-FolderSize -FolderPath $FolderPath
     $sizeIncrease = $sizeAfter - $sizeBefore
     if ($sizeBefore -ne 0) {
@@ -188,7 +197,8 @@ do {
         3 { $algorithm = "Xpress16K" }
         4 { $algorithm = "LZX" }
         5 { 
-            do {                 Show-Decompression-Menu
+            do {
+                Show-Decompression-Menu
                 $decompressionChoice = Read-Host "Enter your choice (1, 2 or 0 for Back)"
                 Write-Host "Choice entered: $decompressionChoice"
                 switch ($decompressionChoice) {
@@ -258,4 +268,3 @@ do {
         Read-Host "Press Enter to continue..."
     }
 } while ($choice -ne 0)
-
