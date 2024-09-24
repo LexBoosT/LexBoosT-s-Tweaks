@@ -64,13 +64,6 @@ function Show-Decompression-Menu {
     Write-Host "============================================="
 }
 
-function Get-FolderSize {
-    param (
-        [string]$FolderPath
-    )
-    [System.IO.Directory]::GetFiles($FolderPath, '*', 'AllDirectories') | % { $_.Length } | Measure-Object -Sum -ErrorAction SilentlyContinue | % { [math]::Round($_.Sum / 1KB, 2) }
-}
-
 function Refresh-Folder {
     param (
         [string]$FolderPath
@@ -93,8 +86,6 @@ function Compress-Folders {
 
     foreach ($folder in $folders) {
         Refresh-Folder -FolderPath $folder
-        $sizeBefore = Get-FolderSize -FolderPath $folder
-        Write-Host "Size before compression: $sizeBefore KB"
 
         Write-Host "Compressing $folder with $Algorithm..."
         icacls $folder /save "$folder.acl" /t /c > $null 2>&1
@@ -108,17 +99,8 @@ function Compress-Folders {
 
         Start-Sleep -Seconds 5  # Pause to ensure changes are applied
         Refresh-Folder -FolderPath $folder
-        $sizeAfter = Get-FolderSize -FolderPath $folder
-        $sizeReduction = $sizeBefore - $sizeAfter
-        if ($sizeBefore -ne 0) {
-            $percentageReduction = [math]::Round(($sizeReduction / $sizeBefore) * 100, 2)
-        } else {
-            $percentageReduction = 0
-        }
 
         Write-Host "Compression complete for $folder!"
-        Write-Host "Size after compression: $sizeAfter KB"
-        Write-Host "Size reduction: $sizeReduction KB ($percentageReduction%)"
     }
     Pause
 }
@@ -130,8 +112,6 @@ function Compress-Custom-Folder {
     )
 
     Refresh-Folder -FolderPath $FolderPath
-    $sizeBefore = Get-FolderSize -FolderPath $FolderPath
-    Write-Host "Size before compression: $sizeBefore KB"
 
     Write-Host "Compressing $FolderPath with $Algorithm..."
     icacls $FolderPath /save "$FolderPath.acl" /t /c > $null 2>&1
@@ -145,17 +125,8 @@ function Compress-Custom-Folder {
 
     Start-Sleep -Seconds 5  # Pause to ensure changes are applied
     Refresh-Folder -FolderPath $FolderPath
-    $sizeAfter = Get-FolderSize -FolderPath $FolderPath
-    $sizeReduction = $sizeBefore - $sizeAfter
-    if ($sizeBefore -ne 0) {
-        $percentageReduction = [math]::Round(($sizeReduction / $sizeBefore) * 100, 2)
-    } else {
-        $percentageReduction = 0
-    }
 
     Write-Host "Compression complete!"
-    Write-Host "Size after compression: $sizeAfter KB"
-    Write-Host "Size reduction: $sizeReduction KB ($percentageReduction%)"
     Pause
 }
 
@@ -165,25 +136,14 @@ function Expand-Folders {
     )
 
     Refresh-Folder -FolderPath $FolderPath
-    $sizeBefore = Get-FolderSize -FolderPath $FolderPath
-    Write-Host "Size before decompression: $sizeBefore KB"
 
     Write-Host "Decompressing $FolderPath..."
     compact /u /s:$FolderPath /a /i /f > $null 2>&1
 
     Start-Sleep -Seconds 5  # Pause to ensure changes are applied
     Refresh-Folder -FolderPath $FolderPath
-    $sizeAfter = Get-FolderSize -FolderPath $FolderPath
-    $sizeIncrease = $sizeAfter - $sizeBefore
-    if ($sizeBefore -ne 0) {
-        $percentageIncrease = [math]::Round(($sizeIncrease / $sizeBefore) * 100, 2)
-    } else {
-        $percentageIncrease = 0
-    }
 
     Write-Host "Decompression complete for $FolderPath!"
-    Write-Host "Size after decompression: $sizeAfter KB"
-    Write-Host "Size increase: $sizeIncrease KB ($percentageIncrease%)"
     Pause
 }
 
@@ -199,72 +159,16 @@ do {
         5 { 
             do {
                 Show-Decompression-Menu
-                $decompressionChoice = Read-Host "Enter your choice (1, 2 or 0 for Back)"
-                Write-Host "Choice entered: $decompressionChoice"
+                $decompressionChoice = Read-Host "Enter your choice (1, 2, 3, or 0 for Back)"
                 switch ($decompressionChoice) {
-                    1 {
-                        $folders = @(
-                            "$env:windir\winsxs",
-                            "$env:windir\System32\DriverStore\FileRepository",
-                            "C:\Program Files\WindowsApps",
-                            "$env:windir\InfusedApps",
-                            "$env:windir\installer"
-                        )
-                        foreach ($folder in $folders) {
-                            Expand-Folders -FolderPath $folder
-                        }
-                        break
-                    }
-                    2 {
-                        $folderPath = Read-Host "Chose the custom folder to decompress"
-                        Expand-Folders -FolderPath $folderPath
-                        break
-                    }
-                    0 {
-                        Show-Menu
-                    }
-                    default {
-                        Write-Host "Invalid option, please try again." -ForegroundColor Red
+                    1 { Expand-Folders -FolderPath "C:\Windows\winsxs" }
+                    2 { Expand-Folders -FolderPath "C:\Windows\System32\DriverStore\FileRepository" }
+                    3 { 
+                        $customFolderPath = Read-Host "Enter the path of the custom folder to decompress"
+                        Expand-Folders -FolderPath $customFolderPath
                     }
                 }
             } while ($decompressionChoice -ne 0)
-            break
         }
-        0 {
-            Write-Host "Goodbye!..." -ForegroundColor Yellow
-            break
-        }
-        default {
-            Write-Host "Invalid option, please try again." -ForegroundColor Red
-            continue
-        }
-    }
-
-    if ($choice -ne 0) {
-        if ($algorithm -ne "Decompress") {
-            do {
-                Show-Compression-Menu
-                $compressionChoice = Read-Host "Enter your choice (1, 2 or 0 for Back)"
-                Write-Host "Choice entered: $compressionChoice"
-                switch ($compressionChoice) {
-                    1 {
-                        Compress-Folders -Algorithm $algorithm
-                        break
-                    }
-                    2 {
-                        $folderPath = Read-Host "Chose the custom folder to compress"
-                        Compress-Custom-Folder -Algorithm $algorithm -FolderPath $folderPath
-                        break
-                    }
-                    0 {
-                        Show-Menu
-                    }
-                    default {
-                        Write-Host "Invalid option, please try again." -ForegroundColor Red
-                    }
-                }
-            } while ($compressionChoice -ne 0)
-        }
-        Read-Host "Press Enter to continue..."
     }
 } while ($choice -ne 0)
