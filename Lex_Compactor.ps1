@@ -45,87 +45,78 @@ function Show-Menu {
     Write-Host "============================================="
 }
 
-function Compress-Drive {
-    param (
-        [string]$Algorithm,
-        [string]$DriveLetter
-    )
-
-    $batchCommands = @"
-@echo off
-echo Starting compression...
-setlocal enabledelayedexpansion
-set totalFiles=0
-for /r ${DriveLetter}:\ %%i in (*.*) do (
-    set /a totalFiles+=1
-)
-
-set processedFiles=0
-for /r ${DriveLetter}:\ %%i in (*.*) do (
-    set exclude=0
-    if "%%i"=="${DriveLetter}:\Windows" set exclude=1
-    if "%%i"=="${DriveLetter}:\System Volume Information" set exclude=1
-    if "%%i"=="${DriveLetter}:\$*" set exclude=1
-    for %%j in (7z aac avi ba bik bk2 bnk pc_binkvid br bz2 cab dl_ docx flac flv gif gz jpeg jpg log lz4 lzma lzx m2v m4v m4a mkv mp2 mp3 mp4 mpeg mpg ogg onepkg png pptx rar upk vob vss vstx wem webm wma wmv xap xnb xlsx xz zst zstd) do (
-        if /i "%%~xi"==".%%j" set exclude=1
-    )
-    if !exclude!==0 (
-        compact /c /q "%%i" | find "%%i" | find /i "compressed" >nul
-        if errorlevel 1 (
-            compact /c /a /i /f /EXE:$Algorithm "%%i"
-        )
-    )
-)
-echo Compression complete!
-pause
-"@
-    $batchFile = [System.IO.Path]::GetTempFileName() + ".bat"
-    Set-Content -Path $batchFile -Value $batchCommands
-
-    Start-Process cmd -ArgumentList "/c $batchFile" -NoNewWindow -Wait
-
-    Remove-Item -Path $batchFile
+function Show-Compression-Menu {
+    Clear-Host
+    Write-Host "============================================="
+    Write-Host "|         Compression Options               |"
+    Write-Host "============================================="
+    Write-Host "| 1. Compress specific folders              |" -ForegroundColor Blue
+    Write-Host "| 2. Compress a folder by drag and drop     |" -ForegroundColor Magenta
+    Write-Host "| 0. Back                                   |" -ForegroundColor Red
+    Write-Host "============================================="
 }
 
-function Expand-Drive {
+function Compress-Folders {
     param (
-        [string]$DriveLetter
+        [string]$Algorithm
     )
 
-    $batchCommands = @"
-@echo off
-echo Starting decompression...
-setlocal enabledelayedexpansion
-set totalFiles=0
-for /r ${DriveLetter}:\ %%i in (*.*) do (
-    set /a totalFiles+=1
-)
-
-set processedFiles=0
-for /r ${DriveLetter}:\ %%i in (*.*) do (
-    set exclude=0
-    if "%%i"=="${DriveLetter}:\Windows" set exclude=1
-    if "%%i"=="${DriveLetter}:\System Volume Information" set exclude=1
-    if "%%i"=="${DriveLetter}:\$*" set exclude=1
-    for %%j in (7z aac avi ba bik bk2 bnk pc_binkvid br bz2 cab dl_ docx flac flv gif gz jpeg jpg log lz4 lzma lzx m2v m4v m4a mkv mp2 mp3 mp4 mpeg mpg ogg onepkg png pptx rar upk vob vss vstx wem webm wma wmv xap xnb xlsx xz zst zstd) do (
-        if /i "%%~xi"==".%%j" set exclude=1
+    $folders = @(
+        "$env:windir\winsxs",
+        "$env:windir\System32\DriverStore\FileRepository",
+        "C:\Program Files\WindowsApps",
+        "$env:windir\InfusedApps",
+        "$env:windir\installer"
     )
-    if !exclude!==0 (
-        compact /c /q "%%i" | find "%%i" | find /i "compressed" >nul
-        if errorlevel 0 (
-            compact /u /a /i /f "%%i"
-        )
+
+    foreach ($folder in $folders) {
+        Write-Host "Compressing $folder with $Algorithm..."
+        icacls $folder /save "$folder.acl" /t /c
+        takeown /f $folder /r
+        icacls $folder /grant "$env:userdomain\$env:username":(F) /t /c
+        compact /c /s:$folder /a /i /f /exe:$Algorithm
+        icacls $folder /restore "$folder.acl" /c
+        Remove-Item "$folder.acl"
+    }
+
+    Write-Host "Compression complete!"
+    Pause
+}
+
+function Compress-Custom-Folder {
+    param (
+        [string]$Algorithm,
+        [string]$FolderPath
     )
-)
-echo Decompression complete!
-pause
-"@
-    $batchFile = [System.IO.Path]::GetTempFileName() + ".bat"
-    Set-Content -Path $batchFile -Value $batchCommands
 
-    Start-Process cmd -ArgumentList "/c $batchFile" -NoNewWindow -Wait
+    Write-Host "Compressing $FolderPath with $Algorithm..."
+    icacls $FolderPath /save "$FolderPath.acl" /t /c
+    takeown /f $FolderPath /r
+    icacls $FolderPath /grant "$env:userdomain\$env:username":(F) /t /c
+    compact /c /s:$FolderPath /a /i /f /exe:$Algorithm
+    icacls $FolderPath /restore "$FolderPath.acl" /c
+    Remove-Item "$FolderPath.acl"
 
-    Remove-Item -Path $batchFile
+    Write-Host "Compression complete!"
+    Pause
+}
+
+function Expand-Folders {
+    $folders = @(
+        "$env:windir\winsxs",
+        "$env:windir\System32\DriverStore\FileRepository",
+        "C:\Program Files\WindowsApps",
+        "$env:windir\InfusedApps",
+        "$env:windir\installer"
+    )
+
+    foreach ($folder in $folders) {
+        Write-Host "Decompressing $folder..."
+        compact /u /s:$folder /a /i /f
+    }
+
+    Write-Host "Decompression complete!"
+    Pause
 }
 
 do {
@@ -133,21 +124,11 @@ do {
     $choice = Read-Host "Enter your choice (1, 2, 3, 4, 5 or 0 for Quit)"
     Write-Host "Choice entered: $choice"
     switch ($choice) {
-        1 {
-            $algorithm = "Xpress4K"
-        }
-        2 {
-            $algorithm = "Xpress8K"
-        }
-        3 {
-            $algorithm = "Xpress16K"
-        }
-        4 {
-            $algorithm = "LZX"
-        }
-        5 {
-            $algorithm = "Decompress"
-        }
+        1 { $algorithm = "Xpress4K" }
+        2 { $algorithm = "Xpress8K" }
+        3 { $algorithm = "Xpress16K" }
+        4 { $algorithm = "LZX" }
+        5 { $algorithm = "Decompress" }
         0 {
             Write-Host "Goodbye!..." -ForegroundColor Yellow
             break
@@ -158,14 +139,33 @@ do {
         }
     }
 
-    if ($choice -ne 6) {
-        $driveLetter = Read-Host "Enter the drive letter to compress (ex: C)"
-        Write-Host "Drive letter entered: $driveLetter"
+    if ($choice -ne 0) {
         if ($algorithm -eq "Decompress") {
-            Expand-Drive -DriveLetter $driveLetter
+            Expand-Folders
         } else {
-            Compress-Drive -Algorithm $algorithm -DriveLetter $driveLetter
+            do {
+                Show-Compression-Menu
+                $compressionChoice = Read-Host "Enter your choice (1, 2 or 0 for Back)"
+                Write-Host "Choice entered: $compressionChoice"
+                switch ($compressionChoice) {
+                    1 {
+                        Compress-Folders -Algorithm $algorithm
+                        break
+                    }
+                    2 {
+                        $folderPath = Read-Host "Drag and drop the folder to compress"
+                        Compress-Custom-Folder -Algorithm $algorithm -FolderPath $folderPath
+                        break
+                    }
+                    0 {
+                        break
+                    }
+                    default {
+                        Write-Host "Invalid option, please try again." -ForegroundColor Red
+                    }
+                }
+            } while ($compressionChoice -ne 0)
         }
         Read-Host "Press Enter to continue..."
     }
-} while ($choice -ne 6)
+} while ($choice -ne 0)
