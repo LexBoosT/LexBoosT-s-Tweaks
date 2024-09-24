@@ -87,6 +87,7 @@ function Compress-Folders {
 
     foreach ($folder in $folders) {
         $sizeBefore = Get-FolderSize -FolderPath $folder
+        Write-Host "Size before compression: $sizeBefore KB"
 
         Write-Host "Compressing $folder with $Algorithm..."
         icacls $folder /save "$folder.acl" /t /c > $null 2>&1
@@ -107,7 +108,6 @@ function Compress-Folders {
         }
 
         Write-Host "Compression complete for $folder!"
-        Write-Host "Size before compression: $sizeBefore KB"
         Write-Host "Size after compression: $sizeAfter KB"
         Write-Host "Size reduction: $sizeReduction KB ($percentageReduction%)"
     }
@@ -121,6 +121,7 @@ function Compress-Custom-Folder {
     )
 
     $sizeBefore = Get-FolderSize -FolderPath $FolderPath
+    Write-Host "Size before compression: $sizeBefore KB"
 
     Write-Host "Compressing $FolderPath with $Algorithm..."
     icacls $FolderPath /save "$FolderPath.acl" /t /c > $null 2>&1
@@ -141,7 +142,6 @@ function Compress-Custom-Folder {
     }
 
     Write-Host "Compression complete!"
-    Write-Host "Size before compression: $sizeBefore KB"
     Write-Host "Size after compression: $sizeAfter KB"
     Write-Host "Size reduction: $sizeReduction KB ($percentageReduction%)"
     Pause
@@ -153,6 +153,7 @@ function Expand-Folders {
     )
 
     $sizeBefore = Get-FolderSize -FolderPath $FolderPath
+    Write-Host "Size before decompression: $sizeBefore KB"
 
     Write-Host "Decompressing $FolderPath..."
     compact /u /s:$FolderPath /a /i /f > $null 2>&1
@@ -166,7 +167,6 @@ function Expand-Folders {
     }
 
     Write-Host "Decompression complete for $FolderPath!"
-    Write-Host "Size before decompression: $sizeBefore KB"
     Write-Host "Size after decompression: $sizeAfter KB"
     Write-Host "Size increase: $sizeIncrease KB ($percentageIncrease%)"
     Pause
@@ -190,10 +190,10 @@ do {
                     1 {
                         $folders = @(
                             "$env:windir\winsxs",
-                                                        "$env:windir\System32\DriverStore\FileRepository",
+                            "$env:windir\System32\DriverStore\FileRepository",
                             "C:\Program Files\WindowsApps",
                             "$env:windir\InfusedApps",
-                            "$env:windir\installer"
+                                                        "$env:windir\installer"
                         )
                         foreach ($folder in $folders) {
                             Expand-Folders -FolderPath $folder
@@ -206,7 +206,7 @@ do {
                         break
                     }
                     0 {
-                        Show-Menu
+                        break
                     }
                     default {
                         Write-Host "Invalid option, please try again." -ForegroundColor Red
@@ -242,7 +242,7 @@ do {
                         break
                     }
                     0 {
-                        Show-Menu
+                        break
                     }
                     default {
                         Write-Host "Invalid option, please try again." -ForegroundColor Red
