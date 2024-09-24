@@ -78,7 +78,7 @@ function Compress-Folders {
         Write-Host "Compressing $folder with $Algorithm..."
         icacls $folder /save "$folder.acl" /t /c > $null 2>&1
         takeown /f $folder /r > $null 2>&1
-        icacls $folder /grant "$env:userdomain\$env:username":(F) /t /c > $null 2>&1
+        icacls $folder /grant "$env:userdomain\$env:username":'(F)' /t /c > $null 2>&1
         compact /c /s:$folder /a /i /f /exe:$Algorithm > $null 2>&1
         icacls $folder /restore "$folder.acl" /c > $null 2>&1
         Remove-Item "$folder.acl" > $null 2>&1
@@ -97,7 +97,7 @@ function Compress-Custom-Folder {
     Write-Host "Compressing $FolderPath with $Algorithm..."
     icacls $FolderPath /save "$FolderPath.acl" /t /c > $null 2>&1
     takeown /f $FolderPath /r > $null 2>&1
-    icacls $FolderPath /grant "$env:userdomain\$env:username":(F) /t /c > $null 2>&1
+    icacls $FolderPath /grant "$env:userdomain\$env:username":'(F)' /t /c > $null 2>&1
     compact /c /s:$FolderPath /a /i /f /exe:$Algorithm > $null 2>&1
     icacls $FolderPath /restore "$FolderPath.acl" /c > $null 2>&1
     Remove-Item "$FolderPath.acl" > $null 2>&1
@@ -174,4 +174,3 @@ do {
         Read-Host "Press Enter to continue..."
     }
 } while ($choice -ne 0)
-
