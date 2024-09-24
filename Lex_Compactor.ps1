@@ -55,7 +55,7 @@ function Show-Compression-Menu {
     Write-Host "|     C:\Program Files\WindowsApps,         |"
     Write-Host "|     C:\Windows\InfusedApps,               |"
     Write-Host "|     C:\Windows\installer)                 |"
-    Write-Host "| 2. Compress a folder by drag and drop     |" -ForegroundColor Magenta
+    Write-Host "| 2. Compress a custom folder               |" -ForegroundColor Magenta
     Write-Host "| 0. Back                                   |" -ForegroundColor Red
     Write-Host "============================================="
 }
@@ -71,7 +71,7 @@ function Show-Decompression-Menu {
     Write-Host "|     C:\Program Files\WindowsApps,         |"
     Write-Host "|     C:\Windows\InfusedApps,               |"
     Write-Host "|     C:\Windows\installer)                 |"
-    Write-Host "| 2. Decompress a folder by path            |" -ForegroundColor Magenta
+    Write-Host "| 2. Decompress a custom folder             |" -ForegroundColor Magenta
     Write-Host "| 0. Back                                   |" -ForegroundColor Red
     Write-Host "============================================="
 }
@@ -261,22 +261,6 @@ function Expand-Custom-Folder {
     Write-Host "Size after decompression: $sizeAfter KB"
     Write-Host "Size reduction: $sizeReduction KB ($percentageReduction%)"
     Pause
-}
-
-function Show-Decompression-Menu {
-    Clear-Host
-    Write-Host "============================================="
-    Write-Host "|         Decompression Options             |"
-    Write-Host "============================================="
-    Write-Host "| 1. Decompress specific folders            |" -ForegroundColor Blue
-    Write-Host "|    (C:\Windows\winsxs,                    |"
-    Write-Host "|     C:\Windows\System32\DriverStore,      |"
-    Write-Host "|     C:\Program Files\WindowsApps,         |"
-    Write-Host "|     C:\Windows\InfusedApps,               |"
-    Write-Host "|     C:\Windows\installer)                 |"
-    Write-Host "| 2. Decompress a folder by path            |" -ForegroundColor Magenta
-    Write-Host "| 0. Back                                   |" -ForegroundColor Red
-    Write-Host "============================================="
 }
 
 # Menu principal
