@@ -113,7 +113,11 @@ function Compress-Folders {
     }
 
     $sizeReduction = $totalSizeBefore - $totalSizeAfter
-    $percentageReduction = [math]::Round(($sizeReduction / $totalSizeBefore) * 100, 2)
+    if ($totalSizeBefore -ne 0) {
+        $percentageReduction = [math]::Round(($sizeReduction / $totalSizeBefore) * 100, 2)
+    } else {
+        $percentageReduction = 0
+    }
 
     Write-Host "Compression complete!"
     Write-Host "Total size before compression: $totalSizeBefore MB"
@@ -151,7 +155,11 @@ function Compress-Custom-Folder {
 
     $sizeAfter = Get-FolderSize -FolderPath $FolderPath
     $sizeReduction = $sizeBefore - $sizeAfter
-    $percentageReduction = [math]::Round(($sizeReduction / $sizeBefore) * 100, 2)
+    if ($sizeBefore -ne 0) {
+        $percentageReduction = [math]::Round(($sizeReduction / $sizeBefore) * 100, 2)
+    } else {
+        $percentageReduction = 0
+    }
 
     Write-Host "Compression complete!"
     Write-Host "Size before compression: $sizeBefore MB"
@@ -212,7 +220,7 @@ do {
                         break
                     }
                     2 {
-                        $folderPath = Read-Host "Path of the custom folder to compress"
+                        $folderPath = Read-Host "Chose the folder to compress"
                         Compress-Custom-Folder -Algorithm $algorithm -FolderPath $folderPath
                         break
                     }
