@@ -69,38 +69,41 @@ function Compress-Folders {
         "$env:windir\installer"
     )
 
-    $totalSizeBefore = 0
-    $totalSizeAfter = 0
-
     foreach ($folder in $folders) {
         $sizeBefore = Get-FolderSize -FolderPath $folder
-        $totalSizeBefore += $sizeBefore
 
         Write-Host "Compressing $folder with $Algorithm..."
         icacls $folder /save "$folder.acl" /t /c > $null 2>&1
         takeown /f $folder /r > $null 2>&1
         icacls $folder /grant "$env:userdomain\$env:username":'(F)' /t /c > $null 2>&1
 
-        compact /c /s:$folder /a /i /f /exe:$Algorithm > $null 2>&1
+        $files = Get-ChildItem -Path $folder -Recurse -File
+        $totalFiles = $files.Count
+        $processedFiles = 0
+
+        foreach ($file in $files) {
+            compact /c /s:$file.FullName /a /i /f /exe:$Algorithm > $null 2>&1
+            $processedFiles++
+            $progress = [math]::Round(($processedFiles / $totalFiles) * 100, 2)
+            Write-Progress -Activity "Compressing $folder" -Status "$progress% Complete" -PercentComplete $progress
+        }
 
         icacls $folder /restore "$folder.acl" /c > $null 2>&1
         Remove-Item "$folder.acl" > $null 2>&1
 
         $sizeAfter = Get-FolderSize -FolderPath $folder
-        $totalSizeAfter += $sizeAfter
-    }
+        $sizeReduction = $sizeBefore - $sizeAfter
+        if ($sizeBefore -ne 0) {
+            $percentageReduction = [math]::Round(($sizeReduction / $sizeBefore) * 100, 2)
+        } else {
+            $percentageReduction = 0
+        }
 
-    $sizeReduction = $totalSizeBefore - $totalSizeAfter
-    if ($totalSizeBefore -ne 0) {
-        $percentageReduction = [math]::Round(($sizeReduction / $totalSizeBefore) * 100, 2)
-    } else {
-        $percentageReduction = 0
+        Write-Host "Compression complete for $folder!"
+        Write-Host "Size before compression: $sizeBefore KB"
+        Write-Host "Size after compression: $sizeAfter KB"
+        Write-Host "Size reduction: $sizeReduction KB ($percentageReduction%)"
     }
-
-    Write-Host "Compression complete!"
-    Write-Host "Total size before compression: $totalSizeBefore KB"
-    Write-Host "Total size after compression: $totalSizeAfter KB"
-    Write-Host "Total size reduction: $sizeReduction KB ($percentageReduction%)"
     Pause
 }
 
@@ -117,7 +120,16 @@ function Compress-Custom-Folder {
     takeown /f $FolderPath /r > $null 2>&1
     icacls $FolderPath /grant "$env:userdomain\$env:username":'(F)' /t /c > $null 2>&1
 
-    compact /c /s:$FolderPath /a /i /f /exe:$Algorithm > $null 2>&1
+    $files = Get-ChildItem -Path $FolderPath -Recurse -File
+    $totalFiles = $files.Count
+    $processedFiles = 0
+
+    foreach ($file in $files) {
+        compact /c /s:$file.FullName /a /i /f /exe:$Algorithm > $null 2>&1
+        $processedFiles++
+        $progress = [math]::Round(($processedFiles / $totalFiles) * 100, 2)
+        Write-Progress -Activity "Compressing $FolderPath" -Status "$progress% Complete" -PercentComplete $progress
+    }
 
     icacls $FolderPath /restore "$FolderPath.acl" /c > $null 2>&1
     Remove-Item "$FolderPath.acl" > $null 2>&1
@@ -147,6 +159,8 @@ function Expand-Folders {
     )
 
     foreach ($folder in $folders) {
+        $sizeBefore = Get-FolderSize -FolderPath $folder
+
         Write-Host "Decompressing $folder..."
         $files = Get-ChildItem -Path $folder -Recurse -File
         $totalFiles = $files.Count
@@ -158,9 +172,20 @@ function Expand-Folders {
             $progress = [math]::Round(($processedFiles / $totalFiles) * 100, 2)
             Write-Progress -Activity "Decompressing $folder" -Status "$progress% Complete" -PercentComplete $progress
         }
-    }
 
-    Write-Host "Decompression complete!"
+        $sizeAfter = Get-FolderSize -FolderPath $folder
+        $sizeIncrease = $sizeAfter - $sizeBefore
+        if ($sizeBefore -ne 0) {
+            $percentageIncrease = [math]::Round(($sizeIncrease / $sizeBefore) * 100, 2)
+        } else {
+            $percentageIncrease = 0
+        }
+
+        Write-Host "Decompression complete for $folder!"
+        Write-Host "Size before decompression: $sizeBefore KB"
+        Write-Host "Size after decompression: $sizeAfter KB"
+        Write-Host "Size increase: $sizeIncrease KB ($percentageIncrease%)"
+    }
     Pause
 }
 
@@ -209,7 +234,7 @@ do {
                         Write-Host "Invalid option, please try again." -ForegroundColor Red
                     }
                 }
-                        } while ($compressionChoice -ne 0)
+            } while ($compressionChoice -ne 0)
         }
         Read-Host "Press Enter to continue..."
     }
