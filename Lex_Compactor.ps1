@@ -1,4 +1,3 @@
-
 $host.ui.RawUI.BackgroundColor = "Black"
 $host.ui.RawUI.ForegroundColor = "White"
 Clear-Host
@@ -56,7 +55,7 @@ function Show-Compression-Menu {
     Write-Host "|     C:\Program Files\WindowsApps,         |"
     Write-Host "|     C:\Windows\InfusedApps,               |"
     Write-Host "|     C:\Windows\installer)                 |"
-    Write-Host "| 2. Compress a folder by drag and drop     |" -ForegroundColor Magenta
+    Write-Host "| 2. Compress a folder                      |" -ForegroundColor Magenta
     Write-Host "| 0. Back                                   |" -ForegroundColor Red
     Write-Host "============================================="
 }
@@ -192,7 +191,7 @@ function Expand-Folders {
         foreach ($file in $files) {
             compact /u /s:$file.FullName /a /i /f > $null 2>&1
             $processedFiles++
-            $progress = [math]::Round(($processedFiles / $totalFiles) * 100, 2)
+                        $progress = [math]::Round(($processedFiles / $totalFiles) * 100, 2)
             Write-Progress -Activity "Decompressing $folder" -Status "$progress% Complete" -PercentComplete $progress
         }
 
@@ -214,54 +213,17 @@ function Expand-Folders {
     Pause
 }
 
-
-do {
+# Menu principal
+while ($true) {
     Show-Menu
-    $choice = Read-Host "Enter your choice (1, 2, 3, 4, 5 or 0 for Quit)"
-    Write-Host "Choice entered: $choice"
+    $choice = Read-Host "Enter your choice"
     switch ($choice) {
-        1 { $algorithm = "Xpress4K" }
-        2 { $algorithm = "Xpress8K" }
-        3 { $algorithm = "Xpress16K" }
-        4 { $algorithm = "LZX" }
-        5 { $algorithm = "Decompress" }
-        0 {
-            Write-Host "Goodbye!..." -ForegroundColor Yellow
-            break
-        }
-        default {
-            Write-Host "Invalid option, please try again." -ForegroundColor Red
-            continue
-        }
+        1 { Compress-Folders -Algorithm "Xpress4K" }
+        2 { Compress-Folders -Algorithm "Xpress8K" }
+        3 { Compress-Folders -Algorithm "Xpress16K" }
+        4 { Compress-Folders -Algorithm "LZX" }
+        5 { Expand-Folders }
+        0 { exit }
+        default { Write-Host "Invalid choice. Please try again." }
     }
-
-    if ($choice -ne 0) {
-        if ($algorithm -eq "Decompress") {
-            Expand-Folders
-        } else {
-            do {
-                Show-Compression-Menu
-                $compressionChoice = Read-Host "Enter your choice (1, 2 or 0 for Back)"
-                Write-Host "Choice entered: $compressionChoice"
-                switch ($compressionChoice) {
-                    1 {
-                        Compress-Folders -Algorithm $algorithm
-                        break
-                    }
-                    2 {
-                        $folderPath = Read-Host "Chose the folder to compress"
-                        Compress-Custom-Folder -Algorithm $algorithm -FolderPath $folderPath
-                        break
-                    }
-                    0 {
-                        break
-                    }
-                    default {
-                        Write-Host "Invalid option, please try again." -ForegroundColor Red
-                    }
-                }
-            } while ($compressionChoice -ne 0)
-        }
-        Read-Host "Press Enter to continue..."
-    }
-} while ($choice -ne 0)
+}
