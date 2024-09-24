@@ -271,9 +271,7 @@ while ($true) {
         2 { Compress-Folders -Algorithm "Xpress8K" }
         3 { Compress-Folders -Algorithm "Xpress16K" }
         4 { Compress-Folders -Algorithm "LZX" }
-        5 {
-            while ($true) {
-                Show-Decompression-Menu
+        5 { Show-Decompression-Menu
                 $decompressChoice = Read-Host "Enter your choice"
                 switch ($decompressChoice) {
                     1 { Expand-Folders }
@@ -281,11 +279,10 @@ while ($true) {
                         $folderPath = Read-Host "Enter the path of the folder to decompress"
                         Expand-Custom-Folder -FolderPath $folderPath
                     }
-                    0 { break }
+                    0 { Show-Menu }
                     default { Write-Host "Invalid choice. Please try again." }
                 }
             }
-        }
         0 { exit }
         default { Write-Host "Invalid choice. Please try again." }
     }
