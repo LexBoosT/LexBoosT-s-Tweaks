@@ -206,7 +206,7 @@ do {
                         break
                     }
                     0 {
-                        break
+                        Show-Menu
                     }
                     default {
                         Write-Host "Invalid option, please try again." -ForegroundColor Red
@@ -242,7 +242,7 @@ do {
                         break
                     }
                     0 {
-                        break
+                        Show-Menu
                     }
                     default {
                         Write-Host "Invalid option, please try again." -ForegroundColor Red
