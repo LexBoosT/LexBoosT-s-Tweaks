@@ -53,7 +53,7 @@ function Get-FolderSize {
         [string]$FolderPath
     )
     $size = (Get-ChildItem -Path $FolderPath -Recurse -ErrorAction SilentlyContinue | Measure-Object -Property Length -Sum).Sum
-    return [math]::Round($size / 1MB, 2)
+    return [math]::Round($size / 1KB, 2)
 }
 
 function Compress-Folders {
@@ -100,12 +100,16 @@ function Compress-Folders {
     }
 
     $sizeReduction = $totalSizeBefore - $totalSizeAfter
-    $percentageReduction = [math]::Round(($sizeReduction / $totalSizeBefore) * 100, 2)
+    if ($totalSizeBefore -ne 0) {
+        $percentageReduction = [math]::Round(($sizeReduction / $totalSizeBefore) * 100, 2)
+    } else {
+        $percentageReduction = 0
+    }
 
     Write-Host "Compression complete!"
-    Write-Host "Total size before compression: $totalSizeBefore MB"
-    Write-Host "Total size after compression: $totalSizeAfter MB"
-    Write-Host "Total size reduction: $sizeReduction MB ($percentageReduction%)"
+    Write-Host "Total size before compression: $totalSizeBefore KB"
+    Write-Host "Total size after compression: $totalSizeAfter KB"
+    Write-Host "Total size reduction: $sizeReduction KB ($percentageReduction%)"
     Pause
 }
 
@@ -138,12 +142,16 @@ function Compress-Custom-Folder {
 
     $sizeAfter = Get-FolderSize -FolderPath $FolderPath
     $sizeReduction = $sizeBefore - $sizeAfter
-    $percentageReduction = [math]::Round(($sizeReduction / $sizeBefore) * 100, 2)
+    if ($sizeBefore -ne 0) {
+        $percentageReduction = [math]::Round(($sizeReduction / $sizeBefore) * 100, 2)
+    } else {
+        $percentageReduction = 0
+    }
 
     Write-Host "Compression complete!"
-    Write-Host "Size before compression: $sizeBefore MB"
-    Write-Host "Size after compression: $sizeAfter MB"
-    Write-Host "Size reduction: $sizeReduction MB ($percentageReduction%)"
+    Write-Host "Size before compression: $sizeBefore KB"
+    Write-Host "Size after compression: $sizeAfter KB"
+    Write-Host "Size reduction: $sizeReduction KB ($percentageReduction%)"
     Pause
 }
 
@@ -158,7 +166,16 @@ function Expand-Folders {
 
     foreach ($folder in $folders) {
         Write-Host "Decompressing $folder..."
-        compact /u /s:$folder /a /i /f > $null 2>&1
+        $files = Get-ChildItem -Path $folder -Recurse -File
+        $totalFiles = $files.Count
+        $processedFiles = 0
+
+        foreach ($file in $files) {
+            compact /u /s:$file.FullName /a /i /f > $null 2>&1
+            $processedFiles++
+            $progress = [math]::Round(($processedFiles / $totalFiles) * 100, 2)
+            Write-Progress -Activity "Decompressing $folder" -Status "$progress% Complete" -PercentComplete $progress
+        }
     }
 
     Write-Host "Decompression complete!"
@@ -176,42 +193,42 @@ do {
         4 { $algorithm = "LZX" }
         5 { $algorithm = "Decompress" }
         0 {
-            Write-Host "Goodbye!..." -ForegroundColor Yellow
-            break
-        }
-        default {
-            Write-Host "Invalid option, please try again." -ForegroundColor Red
-            continue
-        }
+                    Write-Host "Goodbye!..." -ForegroundColor Yellow
+        break
     }
+    default {
+        Write-Host "Invalid option, please try again." -ForegroundColor Red
+        continue
+    }
+}
 
-    if ($choice -ne 0) {
-        if ($algorithm -eq "Decompress") {
-            Expand-Folders
-        } else {
-            do {
-                Show-Compression-Menu
-                $compressionChoice = Read-Host "Enter your choice (1, 2 or 0 for Back)"
-                Write-Host "Choice entered: $compressionChoice"
-                switch ($compressionChoice) {
-                    1 {
-                        Compress-Folders -Algorithm $algorithm
-                        break
-                    }
-                    2 {
-                        $folderPath = Read-Host "Chose the custom folder to compress"
-                        Compress-Custom-Folder -Algorithm $algorithm -FolderPath $folderPath
-                        break
-                    }
-                    0 {
-                        break
-                    }
-                    default {
-                        Write-Host "Invalid option, please try again." -ForegroundColor Red
-                    }
+if ($choice -ne 0) {
+    if ($algorithm -eq "Decompress") {
+        Expand-Folders
+    } else {
+        do {
+            Show-Compression-Menu
+            $compressionChoice = Read-Host "Enter your choice (1, 2 or 0 for Back)"
+            Write-Host "Choice entered: $compressionChoice"
+            switch ($compressionChoice) {
+                1 {
+                    Compress-Folders -Algorithm $algorithm
+                    break
                 }
-            } while ($compressionChoice -ne 0)
-        }
-        Read-Host "Press Enter to continue..."
+                2 {
+                    $folderPath = Read-Host "Chose the custom folder to compress"
+                    Compress-Custom-Folder -Algorithm $algorithm -FolderPath $folderPath
+                    break
+                }
+                0 {
+                    break
+                }
+                default {
+                    Write-Host "Invalid option, please try again." -ForegroundColor Red
+                }
+            }
+        } while ($compressionChoice -ne 0)
     }
+    Read-Host "Press Enter to continue..."
+}
 } while ($choice -ne 0)
