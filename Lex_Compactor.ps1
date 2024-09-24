@@ -48,6 +48,22 @@ function Show-Compression-Menu {
     Write-Host "============================================="
 }
 
+function Show-Decompression-Menu {
+    Clear-Host
+    Write-Host "============================================="
+    Write-Host "|         Decompression Options             |"
+    Write-Host "============================================="
+    Write-Host "| 1. Decompress specific folders            |" -ForegroundColor Blue
+    Write-Host "|    (C:\Windows\winsxs,                    |"
+    Write-Host "|     C:\Windows\System32\DriverStore,      |"
+    Write-Host "|     C:\Program Files\WindowsApps,         |"
+    Write-Host "|     C:\Windows\InfusedApps,               |"
+    Write-Host "|     C:\Windows\installer)                 |"
+    Write-Host "| 2. Decompress a custom folder             |" -ForegroundColor Magenta
+    Write-Host "| 0. Back                                   |" -ForegroundColor Red
+    Write-Host "============================================="
+}
+
 function Get-FolderSize {
     param (
         [string]$FolderPath
@@ -150,42 +166,36 @@ function Compress-Custom-Folder {
 }
 
 function Expand-Folders {
-    $folders = @(
-        "$env:windir\winsxs",
-        "$env:windir\System32\DriverStore\FileRepository",
-        "C:\Program Files\WindowsApps",
-        "$env:windir\InfusedApps",
-        "$env:windir\installer"
+    param (
+        [string]$FolderPath
     )
 
-    foreach ($folder in $folders) {
-        $sizeBefore = Get-FolderSize -FolderPath $folder
+    $sizeBefore = Get-FolderSize -FolderPath $FolderPath
 
-        Write-Host "Decompressing $folder..."
-        $files = Get-ChildItem -Path $folder -Recurse -File
-        $totalFiles = $files.Count
-        $processedFiles = 0
+    Write-Host "Decompressing $FolderPath..."
+    $files = Get-ChildItem -Path $FolderPath -Recurse -File
+    $totalFiles = $files.Count
+    $processedFiles = 0
 
-        foreach ($file in $files) {
-            compact /u /s:$file.FullName /a /i /f > $null 2>&1
-            $processedFiles++
-            $progress = [math]::Round(($processedFiles / $totalFiles) * 100, 2)
-            Write-Progress -Activity "Decompressing $folder" -Status "$progress% Complete" -PercentComplete $progress
-        }
-
-        $sizeAfter = Get-FolderSize -FolderPath $folder
-        $sizeIncrease = $sizeAfter - $sizeBefore
-        if ($sizeBefore -ne 0) {
-            $percentageIncrease = [math]::Round(($sizeIncrease / $sizeBefore) * 100, 2)
-        } else {
-            $percentageIncrease = 0
-        }
-
-        Write-Host "Decompression complete for $folder!"
-        Write-Host "Size before decompression: $sizeBefore KB"
-        Write-Host "Size after decompression: $sizeAfter KB"
-        Write-Host "Size increase: $sizeIncrease KB ($percentageIncrease%)"
+    foreach ($file in $files) {
+        compact /u /s:$file.FullName /a /i /f > $null 2>&1
+        $processedFiles++
+        $progress = [math]::Round(($processedFiles / $totalFiles) * 100, 2)
+        Write-Progress -Activity "Decompressing $FolderPath" -Status "$progress% Complete" -PercentComplete $progress
     }
+
+    $sizeAfter = Get-FolderSize -FolderPath $FolderPath
+    $sizeIncrease = $sizeAfter - $sizeBefore
+    if ($sizeBefore -ne 0) {
+        $percentageIncrease = [math]::Round(($sizeIncrease / $sizeBefore) * 100, 2)
+        } else {
+        $percentageIncrease = 0
+    }
+
+    Write-Host "Decompression complete for $FolderPath!"
+    Write-Host "Size before decompression: $sizeBefore KB"
+    Write-Host "Size after decompression: $sizeAfter KB"
+    Write-Host "Size increase: $sizeIncrease KB ($percentageIncrease%)"
     Pause
 }
 
@@ -198,7 +208,40 @@ do {
         2 { $algorithm = "Xpress8K" }
         3 { $algorithm = "Xpress16K" }
         4 { $algorithm = "LZX" }
-        5 { $algorithm = "Decompress" }
+        5 { 
+            do {
+                Show-Decompression-Menu
+                $decompressionChoice = Read-Host "Enter your choice (1, 2 or 0 for Back)"
+                Write-Host "Choice entered: $decompressionChoice"
+                switch ($decompressionChoice) {
+                    1 {
+                        $folders = @(
+                            "$env:windir\winsxs",
+                            "$env:windir\System32\DriverStore\FileRepository",
+                            "C:\Program Files\WindowsApps",
+                            "$env:windir\InfusedApps",
+                            "$env:windir\installer"
+                        )
+                        foreach ($folder in $folders) {
+                            Expand-Folders -FolderPath $folder
+                        }
+                        break
+                    }
+                    2 {
+                        $folderPath = Read-Host "Chose the custom folder to decompress"
+                        Expand-Folders -FolderPath $folderPath
+                        break
+                    }
+                    0 {
+                        Show-Menu
+                    }
+                    default {
+                        Write-Host "Invalid option, please try again." -ForegroundColor Red
+                    }
+                }
+            } while ($decompressionChoice -ne 0)
+            break
+        }
         0 {
             Write-Host "Goodbye!..." -ForegroundColor Yellow
             break
@@ -210,9 +253,7 @@ do {
     }
 
     if ($choice -ne 0) {
-        if ($algorithm -eq "Decompress") {
-            Expand-Folders
-        } else {
+        if ($algorithm -ne "Decompress") {
             do {
                 Show-Compression-Menu
                 $compressionChoice = Read-Host "Enter your choice (1, 2 or 0 for Back)"
@@ -228,7 +269,7 @@ do {
                         break
                     }
                     0 {
-                        break
+                        Show-Menu
                     }
                     default {
                         Write-Host "Invalid option, please try again." -ForegroundColor Red
