@@ -249,7 +249,7 @@ do {
                         break
                     }
                     2 {
-                        $folderPath = Read-Host "Drag and drop the folder to compress"
+                        $folderPath = Read-Host "Chose the folder to compress"
                         Compress-Custom-Folder -Algorithm $algorithm -FolderPath $folderPath
                         break
                     }
@@ -257,4 +257,11 @@ do {
                         break
                     }
                     default {
-                        Write-Host "Invalid option, please try again." -
+                        Write-Host "Invalid option, please try again." -ForegroundColor Red
+                    }
+                }
+            } while ($compressionChoice -ne 0)
+        }
+        Read-Host "Press Enter to continue..."
+    }
+} while ($choice -ne 0)
