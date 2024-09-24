@@ -99,6 +99,8 @@ function Compress-Folders {
         icacls $folder /restore "$folder.acl" /c > $null 2>&1
         Remove-Item "$folder.acl" > $null 2>&1
 
+        Start-Sleep -Seconds 5  # Pause to ensure changes are applied
+
         $sizeAfter = Get-FolderSize -FolderPath $folder
         $sizeReduction = $sizeBefore - $sizeAfter
         if ($sizeBefore -ne 0) {
@@ -133,6 +135,8 @@ function Compress-Custom-Folder {
     icacls $FolderPath /restore "$FolderPath.acl" /c > $null 2>&1
     Remove-Item "$FolderPath.acl" > $null 2>&1
 
+    Start-Sleep -Seconds 5  # Pause to ensure changes are applied
+
     $sizeAfter = Get-FolderSize -FolderPath $FolderPath
     $sizeReduction = $sizeBefore - $sizeAfter
     if ($sizeBefore -ne 0) {
@@ -158,6 +162,8 @@ function Expand-Folders {
     Write-Host "Decompressing $FolderPath..."
     compact /u /s:$FolderPath /a /i /f > $null 2>&1
 
+    Start-Sleep -Seconds 5  # Pause to ensure changes are applied
+
     $sizeAfter = Get-FolderSize -FolderPath $FolderPath
     $sizeIncrease = $sizeAfter - $sizeBefore
     if ($sizeBefore -ne 0) {
@@ -182,8 +188,7 @@ do {
         3 { $algorithm = "Xpress16K" }
         4 { $algorithm = "LZX" }
         5 { 
-            do {
-                Show-Decompression-Menu
+            do {                 Show-Decompression-Menu
                 $decompressionChoice = Read-Host "Enter your choice (1, 2 or 0 for Back)"
                 Write-Host "Choice entered: $decompressionChoice"
                 switch ($decompressionChoice) {
@@ -193,7 +198,7 @@ do {
                             "$env:windir\System32\DriverStore\FileRepository",
                             "C:\Program Files\WindowsApps",
                             "$env:windir\InfusedApps",
-                                                        "$env:windir\installer"
+                            "$env:windir\installer"
                         )
                         foreach ($folder in $folders) {
                             Expand-Folders -FolderPath $folder
@@ -253,3 +258,4 @@ do {
         Read-Host "Press Enter to continue..."
     }
 } while ($choice -ne 0)
+
