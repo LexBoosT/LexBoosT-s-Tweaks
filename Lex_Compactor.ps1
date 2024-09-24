@@ -56,9 +56,17 @@ function Show-Compression-Menu {
     Write-Host "|     C:\Program Files\WindowsApps,         |"
     Write-Host "|     C:\Windows\InfusedApps,               |"
     Write-Host "|     C:\Windows\installer)                 |"
-    Write-Host "| 2. Compress a folder                      |" -ForegroundColor Magenta
+    Write-Host "| 2. Compress a custom folder               |" -ForegroundColor Magenta
     Write-Host "| 0. Back                                   |" -ForegroundColor Red
     Write-Host "============================================="
+}
+
+function Get-FolderSize {
+    param (
+        [string]$FolderPath
+    )
+    $size = (Get-ChildItem -Path $FolderPath -Recurse -ErrorAction SilentlyContinue | Measure-Object -Property Length -Sum).Sum
+    return [math]::Round($size / 1MB, 2)
 }
 
 function Compress-Folders {
@@ -74,17 +82,43 @@ function Compress-Folders {
         "$env:windir\installer"
     )
 
+    $totalSizeBefore = 0
+    $totalSizeAfter = 0
+
     foreach ($folder in $folders) {
+        $sizeBefore = Get-FolderSize -FolderPath $folder
+        $totalSizeBefore += $sizeBefore
+
         Write-Host "Compressing $folder with $Algorithm..."
         icacls $folder /save "$folder.acl" /t /c > $null 2>&1
         takeown /f $folder /r > $null 2>&1
         icacls $folder /grant "$env:userdomain\$env:username":'(F)' /t /c > $null 2>&1
-        compact /c /s:$folder /a /i /f /exe:$Algorithm > $null 2>&1
+
+        $files = Get-ChildItem -Path $folder -Recurse -File
+        $totalFiles = $files.Count
+        $processedFiles = 0
+
+        foreach ($file in $files) {
+            compact /c /s:$file.FullName /a /i /f /exe:$Algorithm > $null 2>&1
+            $processedFiles++
+            $progress = [math]::Round(($processedFiles / $totalFiles) * 100, 2)
+            Write-Progress -Activity "Compressing $folder" -Status "$progress% Complete" -PercentComplete $progress
+        }
+
         icacls $folder /restore "$folder.acl" /c > $null 2>&1
         Remove-Item "$folder.acl" > $null 2>&1
+
+        $sizeAfter = Get-FolderSize -FolderPath $folder
+        $totalSizeAfter += $sizeAfter
     }
 
+    $sizeReduction = $totalSizeBefore - $totalSizeAfter
+    $percentageReduction = [math]::Round(($sizeReduction / $totalSizeBefore) * 100, 2)
+
     Write-Host "Compression complete!"
+    Write-Host "Total size before compression: $totalSizeBefore MB"
+    Write-Host "Total size after compression: $totalSizeAfter MB"
+    Write-Host "Total size reduction: $sizeReduction MB ($percentageReduction%)"
     Pause
 }
 
@@ -94,15 +128,35 @@ function Compress-Custom-Folder {
         [string]$FolderPath
     )
 
+    $sizeBefore = Get-FolderSize -FolderPath $FolderPath
+
     Write-Host "Compressing $FolderPath with $Algorithm..."
     icacls $FolderPath /save "$FolderPath.acl" /t /c > $null 2>&1
     takeown /f $FolderPath /r > $null 2>&1
     icacls $FolderPath /grant "$env:userdomain\$env:username":'(F)' /t /c > $null 2>&1
-    compact /c /s:$FolderPath /a /i /f /exe:$Algorithm > $null 2>&1
+
+    $files = Get-ChildItem -Path $FolderPath -Recurse -File
+    $totalFiles = $files.Count
+    $processedFiles = 0
+
+    foreach ($file in $files) {
+        compact /c /s:$file.FullName /a /i /f /exe:$Algorithm > $null 2>&1
+        $processedFiles++
+        $progress = [math]::Round(($processedFiles / $totalFiles) * 100, 2)
+        Write-Progress -Activity "Compressing $FolderPath" -Status "$progress% Complete" -PercentComplete $progress
+    }
+
     icacls $FolderPath /restore "$FolderPath.acl" /c > $null 2>&1
     Remove-Item "$FolderPath.acl" > $null 2>&1
 
+    $sizeAfter = Get-FolderSize -FolderPath $FolderPath
+    $sizeReduction = $sizeBefore - $sizeAfter
+    $percentageReduction = [math]::Round(($sizeReduction / $sizeBefore) * 100, 2)
+
     Write-Host "Compression complete!"
+    Write-Host "Size before compression: $sizeBefore MB"
+    Write-Host "Size after compression: $sizeAfter MB"
+    Write-Host "Size reduction: $sizeReduction MB ($percentageReduction%)"
     Pause
 }
 
@@ -158,7 +212,7 @@ do {
                         break
                     }
                     2 {
-                        $folderPath = Read-Host "Path of the folder to compress"
+                        $folderPath = Read-Host "Path of the custom folder to compress"
                         Compress-Custom-Folder -Algorithm $algorithm -FolderPath $folderPath
                         break
                     }
