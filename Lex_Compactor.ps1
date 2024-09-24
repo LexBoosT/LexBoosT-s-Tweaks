@@ -158,7 +158,7 @@ do {
                         break
                     }
                     2 {
-                        $folderPath = Read-Host "Chose the folder to compress"
+                        $folderPath = Read-Host "Path of the folder to compress"
                         Compress-Custom-Folder -Algorithm $algorithm -FolderPath $folderPath
                         break
                     }
