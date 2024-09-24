@@ -51,7 +51,12 @@ function Show-Compression-Menu {
     Write-Host "|         Compression Options               |"
     Write-Host "============================================="
     Write-Host "| 1. Compress specific folders              |" -ForegroundColor Blue
-    Write-Host "| 2. Compress a folder by drag and drop     |" -ForegroundColor Magenta
+    Write-Host "|    (C:\Windows\winsxs,                    |"
+    Write-Host "|     C:\Windows\System32\DriverStore,      |"
+    Write-Host "|     C:\Program Files\WindowsApps,         |"
+    Write-Host "|     C:\Windows\InfusedApps,               |"
+    Write-Host "|     C:\Windows\installer)                 |"
+    Write-Host "| 2. Compress a folder                      |" -ForegroundColor Magenta
     Write-Host "| 0. Back                                   |" -ForegroundColor Red
     Write-Host "============================================="
 }
@@ -71,12 +76,12 @@ function Compress-Folders {
 
     foreach ($folder in $folders) {
         Write-Host "Compressing $folder with $Algorithm..."
-        icacls $folder /save "$folder.acl" /t /c
-        takeown /f $folder /r
-        icacls $folder /grant "$env:userdomain\$env:username":(F) /t /c
-        compact /c /s:$folder /a /i /f /exe:$Algorithm
-        icacls $folder /restore "$folder.acl" /c
-        Remove-Item "$folder.acl"
+        icacls $folder /save "$folder.acl" /t /c > $null 2>&1
+        takeown /f $folder /r > $null 2>&1
+        icacls $folder /grant "$env:userdomain\$env:username":(F) /t /c > $null 2>&1
+        compact /c /s:$folder /a /i /f /exe:$Algorithm > $null 2>&1
+        icacls $folder /restore "$folder.acl" /c > $null 2>&1
+        Remove-Item "$folder.acl" > $null 2>&1
     }
 
     Write-Host "Compression complete!"
@@ -90,12 +95,12 @@ function Compress-Custom-Folder {
     )
 
     Write-Host "Compressing $FolderPath with $Algorithm..."
-    icacls $FolderPath /save "$FolderPath.acl" /t /c
-    takeown /f $FolderPath /r
-    icacls $FolderPath /grant "$env:userdomain\$env:username":(F) /t /c
-    compact /c /s:$FolderPath /a /i /f /exe:$Algorithm
-    icacls $FolderPath /restore "$FolderPath.acl" /c
-    Remove-Item "$FolderPath.acl"
+    icacls $FolderPath /save "$FolderPath.acl" /t /c > $null 2>&1
+    takeown /f $FolderPath /r > $null 2>&1
+    icacls $FolderPath /grant "$env:userdomain\$env:username":(F) /t /c > $null 2>&1
+    compact /c /s:$FolderPath /a /i /f /exe:$Algorithm > $null 2>&1
+    icacls $FolderPath /restore "$FolderPath.acl" /c > $null 2>&1
+    Remove-Item "$FolderPath.acl" > $null 2>&1
 
     Write-Host "Compression complete!"
     Pause
@@ -112,7 +117,7 @@ function Expand-Folders {
 
     foreach ($folder in $folders) {
         Write-Host "Decompressing $folder..."
-        compact /u /s:$folder /a /i /f
+        compact /u /s:$folder /a /i /f > $null 2>&1
     }
 
     Write-Host "Decompression complete!"
@@ -153,7 +158,7 @@ do {
                         break
                     }
                     2 {
-                        $folderPath = Read-Host "Drag and drop the folder to compress"
+                        $folderPath = Read-Host "Chose the folder to compress"
                         Compress-Custom-Folder -Algorithm $algorithm -FolderPath $folderPath
                         break
                     }
@@ -169,3 +174,4 @@ do {
         Read-Host "Press Enter to continue..."
     }
 } while ($choice -ne 0)
+
