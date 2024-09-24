@@ -2,18 +2,6 @@ $host.ui.RawUI.BackgroundColor = "Black"
 $host.ui.RawUI.ForegroundColor = "White"
 Clear-Host
 
-# Créer et exécuter un script batch temporaire
-function Invoke-TemporaryBatchScript {
-    param (
-        [string]$batchCommands
-    )
-    $tempBatchFile = [System.IO.Path]::GetTempFileName() + ".bat"
-    Set-Content -Path $tempBatchFile -Value $batchCommands
-    Write-Host "Running temporary batch script..."
-    Start-Process -FilePath $tempBatchFile -NoNewWindow -Wait
-    Remove-Item -Path $tempBatchFile
-}
-
 # Vérifier les privilèges administratifs
 function Test-Admin {
     Write-Host "Checking for Administrative Privileges..."
