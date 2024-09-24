@@ -81,16 +81,7 @@ function Compress-Folders {
         takeown /f $folder /r > $null 2>&1
         icacls $folder /grant "$env:userdomain\$env:username":'(F)' /t /c > $null 2>&1
 
-        $files = Get-ChildItem -Path $folder -Recurse -File
-        $totalFiles = $files.Count
-        $processedFiles = 0
-
-        foreach ($file in $files) {
-            compact /c /s:$file.FullName /a /i /f /exe:$Algorithm > $null 2>&1
-            $processedFiles++
-            $progress = [math]::Round(($processedFiles / $totalFiles) * 100, 2)
-            Write-Progress -Activity "Compressing $folder" -Status "$progress% Complete" -PercentComplete $progress
-        }
+        compact /c /s:$folder /a /i /f /exe:$Algorithm > $null 2>&1
 
         icacls $folder /restore "$folder.acl" /c > $null 2>&1
         Remove-Item "$folder.acl" > $null 2>&1
@@ -126,16 +117,7 @@ function Compress-Custom-Folder {
     takeown /f $FolderPath /r > $null 2>&1
     icacls $FolderPath /grant "$env:userdomain\$env:username":'(F)' /t /c > $null 2>&1
 
-    $files = Get-ChildItem -Path $FolderPath -Recurse -File
-    $totalFiles = $files.Count
-    $processedFiles = 0
-
-    foreach ($file in $files) {
-        compact /c /s:$file.FullName /a /i /f /exe:$Algorithm > $null 2>&1
-        $processedFiles++
-        $progress = [math]::Round(($processedFiles / $totalFiles) * 100, 2)
-        Write-Progress -Activity "Compressing $FolderPath" -Status "$progress% Complete" -PercentComplete $progress
-    }
+    compact /c /s:$FolderPath /a /i /f /exe:$Algorithm > $null 2>&1
 
     icacls $FolderPath /restore "$FolderPath.acl" /c > $null 2>&1
     Remove-Item "$FolderPath.acl" > $null 2>&1
@@ -193,42 +175,42 @@ do {
         4 { $algorithm = "LZX" }
         5 { $algorithm = "Decompress" }
         0 {
-                    Write-Host "Goodbye!..." -ForegroundColor Yellow
-        break
+            Write-Host "Goodbye!..." -ForegroundColor Yellow
+            break
+        }
+        default {
+            Write-Host "Invalid option, please try again." -ForegroundColor Red
+            continue
+        }
     }
-    default {
-        Write-Host "Invalid option, please try again." -ForegroundColor Red
-        continue
-    }
-}
 
-if ($choice -ne 0) {
-    if ($algorithm -eq "Decompress") {
-        Expand-Folders
-    } else {
-        do {
-            Show-Compression-Menu
-            $compressionChoice = Read-Host "Enter your choice (1, 2 or 0 for Back)"
-            Write-Host "Choice entered: $compressionChoice"
-            switch ($compressionChoice) {
-                1 {
-                    Compress-Folders -Algorithm $algorithm
-                    break
+    if ($choice -ne 0) {
+        if ($algorithm -eq "Decompress") {
+            Expand-Folders
+        } else {
+            do {
+                Show-Compression-Menu
+                $compressionChoice = Read-Host "Enter your choice (1, 2 or 0 for Back)"
+                Write-Host "Choice entered: $compressionChoice"
+                switch ($compressionChoice) {
+                    1 {
+                        Compress-Folders -Algorithm $algorithm
+                        break
+                    }
+                    2 {
+                        $folderPath = Read-Host "Chose the custom folder to compress"
+                        Compress-Custom-Folder -Algorithm $algorithm -FolderPath $folderPath
+                        break
+                    }
+                    0 {
+                        break
+                    }
+                    default {
+                        Write-Host "Invalid option, please try again." -ForegroundColor Red
+                    }
                 }
-                2 {
-                    $folderPath = Read-Host "Chose the custom folder to compress"
-                    Compress-Custom-Folder -Algorithm $algorithm -FolderPath $folderPath
-                    break
-                }
-                0 {
-                    break
-                }
-                default {
-                    Write-Host "Invalid option, please try again." -ForegroundColor Red
-                }
-            }
-        } while ($compressionChoice -ne 0)
+                        } while ($compressionChoice -ne 0)
+        }
+        Read-Host "Press Enter to continue..."
     }
-    Read-Host "Press Enter to continue..."
-}
 } while ($choice -ne 0)
