@@ -93,16 +93,7 @@ function Compress-Folders {
         takeown /f $folder /r > $null 2>&1
         icacls $folder /grant "$env:userdomain\$env:username":'(F)' /t /c > $null 2>&1
 
-        $files = Get-ChildItem -Path $folder -Recurse -File
-        $totalFiles = $files.Count
-        $processedFiles = 0
-
-        foreach ($file in $files) {
-            compact /c /s:$file.FullName /a /i /f /exe:$Algorithm > $null 2>&1
-            $processedFiles++
-            $progress = [math]::Round(($processedFiles / $totalFiles) * 100, 2)
-            Write-Progress -Activity "Compressing $folder" -Status "$progress% Complete" -PercentComplete $progress
-        }
+        compact /c /s:$folder /a /i /f /exe:$Algorithm > $null 2>&1
 
         icacls $folder /restore "$folder.acl" /c > $null 2>&1
         Remove-Item "$folder.acl" > $null 2>&1
@@ -136,16 +127,7 @@ function Compress-Custom-Folder {
     takeown /f $FolderPath /r > $null 2>&1
     icacls $FolderPath /grant "$env:userdomain\$env:username":'(F)' /t /c > $null 2>&1
 
-    $files = Get-ChildItem -Path $FolderPath -Recurse -File
-    $totalFiles = $files.Count
-    $processedFiles = 0
-
-    foreach ($file in $files) {
-        compact /c /s:$file.FullName /a /i /f /exe:$Algorithm > $null 2>&1
-        $processedFiles++
-        $progress = [math]::Round(($processedFiles / $totalFiles) * 100, 2)
-        Write-Progress -Activity "Compressing $FolderPath" -Status "$progress% Complete" -PercentComplete $progress
-    }
+    compact /c /s:$FolderPath /a /i /f /exe:$Algorithm > $null 2>&1
 
     icacls $FolderPath /restore "$FolderPath.acl" /c > $null 2>&1
     Remove-Item "$FolderPath.acl" > $null 2>&1
@@ -173,22 +155,13 @@ function Expand-Folders {
     $sizeBefore = Get-FolderSize -FolderPath $FolderPath
 
     Write-Host "Decompressing $FolderPath..."
-    $files = Get-ChildItem -Path $FolderPath -Recurse -File
-    $totalFiles = $files.Count
-    $processedFiles = 0
-
-    foreach ($file in $files) {
-        compact /u /s:$file.FullName /a /i /f > $null 2>&1
-        $processedFiles++
-        $progress = [math]::Round(($processedFiles / $totalFiles) * 100, 2)
-        Write-Progress -Activity "Decompressing $FolderPath" -Status "$progress% Complete" -PercentComplete $progress
-    }
+    compact /u /s:$FolderPath /a /i /f > $null 2>&1
 
     $sizeAfter = Get-FolderSize -FolderPath $FolderPath
     $sizeIncrease = $sizeAfter - $sizeBefore
     if ($sizeBefore -ne 0) {
         $percentageIncrease = [math]::Round(($sizeIncrease / $sizeBefore) * 100, 2)
-        } else {
+    } else {
         $percentageIncrease = 0
     }
 
@@ -217,7 +190,7 @@ do {
                     1 {
                         $folders = @(
                             "$env:windir\winsxs",
-                            "$env:windir\System32\DriverStore\FileRepository",
+                                                        "$env:windir\System32\DriverStore\FileRepository",
                             "C:\Program Files\WindowsApps",
                             "$env:windir\InfusedApps",
                             "$env:windir\installer"
@@ -233,7 +206,7 @@ do {
                         break
                     }
                     0 {
-                        Show-Menu
+                        break
                     }
                     default {
                         Write-Host "Invalid option, please try again." -ForegroundColor Red
@@ -269,7 +242,7 @@ do {
                         break
                     }
                     0 {
-                        Show-Menu
+                        break
                     }
                     default {
                         Write-Host "Invalid option, please try again." -ForegroundColor Red
