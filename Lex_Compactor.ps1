@@ -2,6 +2,18 @@ $host.ui.RawUI.BackgroundColor = "Black"
 $host.ui.RawUI.ForegroundColor = "White"
 Clear-Host
 
+# Créer et exécuter un script batch temporaire
+function Invoke-TemporaryBatchScript {
+    param (
+        [string]$batchCommands
+    )
+    $tempBatchFile = [System.IO.Path]::GetTempFileName() + ".bat"
+    Set-Content -Path $tempBatchFile -Value $batchCommands
+    Write-Host "Running temporary batch script..."
+    Start-Process -FilePath $tempBatchFile -NoNewWindow -Wait
+    Remove-Item -Path $tempBatchFile
+}
+
 # Vérifier les privilèges administratifs
 function Test-Admin {
     Write-Host "Checking for Administrative Privileges..."
@@ -43,7 +55,7 @@ function Show-Compression-Menu {
     Write-Host "|     C:\Program Files\WindowsApps,         |"
     Write-Host "|     C:\Windows\InfusedApps,               |"
     Write-Host "|     C:\Windows\installer)                 |"
-    Write-Host "| 2. Compress a custom folder               |" -ForegroundColor Magenta
+    Write-Host "| 2. Compress a folder by drag and drop     |" -ForegroundColor Magenta
     Write-Host "| 0. Back                                   |" -ForegroundColor Red
     Write-Host "============================================="
 }
@@ -59,7 +71,7 @@ function Show-Decompression-Menu {
     Write-Host "|     C:\Program Files\WindowsApps,         |"
     Write-Host "|     C:\Windows\InfusedApps,               |"
     Write-Host "|     C:\Windows\installer)                 |"
-    Write-Host "| 2. Decompress a custom folder             |" -ForegroundColor Magenta
+    Write-Host "| 2. Decompress a folder by path            |" -ForegroundColor Magenta
     Write-Host "| 0. Back                                   |" -ForegroundColor Red
     Write-Host "============================================="
 }
@@ -216,7 +228,6 @@ function Expand-Folders {
     Write-Host "Total size reduction: $sizeReduction KB ($percentageReduction%)"
     Pause
 }
-
 function Expand-Custom-Folder {
     param (
         [string]$FolderPath
