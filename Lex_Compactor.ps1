@@ -10,7 +10,8 @@ function Invoke-TemporaryBatchScript {
     $tempBatchFile = [System.IO.Path]::GetTempFileName() + ".bat"
     Set-Content -Path $tempBatchFile -Value $batchCommands
     Write-Host "Running temporary batch script..."
-    Start-Process -FilePath $tempBatchFile -NoNewWindow -Wait
+    $process = Start-Process -FilePath $tempBatchFile -NoNewWindow -Wait -PassThru
+    $process.WaitForExit()
     Remove-Item -Path $tempBatchFile
 }
 
@@ -114,7 +115,8 @@ function Compress-Folders {
         $processedFiles = 0
 
         foreach ($file in $files) {
-            compact /c /s:$file.FullName /a /i /f /exe:$Algorithm > $null 2>&1
+            $batchCommand = "compact /c /s:`"$($file.FullName)`" /a /i /f /exe:$Algorithm"
+            Invoke-TemporaryBatchScript -batchCommands $batchCommand
             $processedFiles++
             $progress = [math]::Round(($processedFiles / $totalFiles) * 100, 2)
             Write-Progress -Activity "Compressing $folder" -Status "$progress% Complete" -PercentComplete $progress
@@ -159,7 +161,8 @@ function Compress-Custom-Folder {
     $processedFiles = 0
 
     foreach ($file in $files) {
-        compact /c /s:$file.FullName /a /i /f /exe:$Algorithm > $null 2>&1
+        $batchCommand = "compact /c /s:`"$($file.FullName)`" /a /i /f /exe:$Algorithm"
+        Invoke-TemporaryBatchScript -batchCommands $batchCommand
         $processedFiles++
         $progress = [math]::Round(($processedFiles / $totalFiles) * 100, 2)
         Write-Progress -Activity "Compressing $FolderPath" -Status "$progress% Complete" -PercentComplete $progress
@@ -188,8 +191,8 @@ function Expand-Folders {
         "$env:windir\winsxs",
         "$env:windir\System32\DriverStore\FileRepository",
         "C:\Program Files\WindowsApps",
-            "$env:windir\InfusedApps",
-    "$env:windir\installer"
+        "$env:windir\InfusedApps",
+        "$env:windir\installer"
     )
 
     $totalSizeBefore = 0
@@ -205,7 +208,8 @@ function Expand-Folders {
         $processedFiles = 0
 
         foreach ($file in $files) {
-            compact /u /s:$file.FullName /a /i /f > $null 2>&1
+            $batchCommand = "compact /u /s:`"$($file.FullName)`" /a /i /f"
+            Invoke-TemporaryBatchScript -batchCommands $batchCommand
             $processedFiles++
             $progress = [math]::Round(($processedFiles / $totalFiles) * 100, 2)
             Write-Progress -Activity "Decompressing $folder" -Status "$progress% Complete" -PercentComplete $progress
@@ -242,7 +246,8 @@ function Expand-Custom-Folder {
     $processedFiles = 0
 
     foreach ($file in $files) {
-        compact /u /s:$file.FullName /a /i /f > $null 2>&1
+        $batchCommand = "compact /u /s:`"$($file.FullName)`" /a /i /f"
+        Invoke-TemporaryBatchScript -batchCommands $batchCommand
         $processedFiles++
         $progress = [math]::Round(($processedFiles / $totalFiles) * 100, 2)
         Write-Progress -Activity "Decompressing $FolderPath" -Status "$progress% Complete" -PercentComplete $progress
