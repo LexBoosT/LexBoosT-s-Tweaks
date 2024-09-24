@@ -188,8 +188,8 @@ function Expand-Folders {
         "$env:windir\winsxs",
         "$env:windir\System32\DriverStore\FileRepository",
         "C:\Program Files\WindowsApps",
-        "$env:windir\InfusedApps",
-        "$env:windir\installer"
+            "$env:windir\InfusedApps",
+    "$env:windir\installer"
     )
 
     $totalSizeBefore = 0
@@ -228,6 +228,7 @@ function Expand-Folders {
     Write-Host "Total size reduction: $sizeReduction KB ($percentageReduction%)"
     Pause
 }
+
 function Expand-Custom-Folder {
     param (
         [string]$FolderPath
@@ -267,11 +268,78 @@ while ($true) {
     Show-Menu
     $choice = Read-Host "Enter your choice"
     switch ($choice) {
-        1 { Compress-Folders -Algorithm "Xpress4K" }
-        2 { Compress-Folders -Algorithm "Xpress8K" }
-        3 { Compress-Folders -Algorithm "Xpress16K" }
-        4 { Compress-Folders -Algorithm "LZX" }
-        5 { Show-Decompression-Menu
+        1 {
+            $algorithm = "Xpress4K"
+            $backToMainMenu = $false
+            while (-not $backToMainMenu) {
+                Show-Compression-Menu
+                $compressChoice = Read-Host "Enter your choice"
+                switch ($compressChoice) {
+                    1 { Compress-Folders -Algorithm $algorithm }
+                    2 {
+                        $folderPath = Read-Host "Enter the path of the folder to compress"
+                        Compress-Custom-Folder -Algorithm $algorithm -FolderPath $folderPath
+                    }
+                    0 { $backToMainMenu = $true }
+                    default { Write-Host "Invalid choice. Please try again." }
+                }
+            }
+        }
+        2 {
+            $algorithm = "Xpress8K"
+            $backToMainMenu = $false
+            while (-not $backToMainMenu) {
+                Show-Compression-Menu
+                $compressChoice = Read-Host "Enter your choice"
+                switch ($compressChoice) {
+                    1 { Compress-Folders -Algorithm $algorithm }
+                    2 {
+                        $folderPath = Read-Host "Enter the path of the folder to compress"
+                        Compress-Custom-Folder -Algorithm $algorithm -FolderPath $folderPath
+                    }
+                    0 { $backToMainMenu = $true }
+                    default { Write-Host "Invalid choice. Please try again." }
+                }
+            }
+        }
+        3 {
+            $algorithm = "Xpress16K"
+            $backToMainMenu = $false
+            while (-not $backToMainMenu) {
+                Show-Compression-Menu
+                $compressChoice = Read-Host "Enter your choice"
+                switch ($compressChoice) {
+                    1 { Compress-Folders -Algorithm $algorithm }
+                    2 {
+                        $folderPath = Read-Host "Enter the path of the folder to compress"
+                        Compress-Custom-Folder -Algorithm $algorithm -FolderPath $folderPath
+                    }
+                    0 { $backToMainMenu = $true }
+                    default { Write-Host "Invalid choice. Please try again." }
+                }
+            }
+        }
+        4 {
+            $algorithm = "LZX"
+            $backToMainMenu = $false
+            while (-not $backToMainMenu) {
+                Show-Compression-Menu
+                $compressChoice = Read-Host "Enter your choice"
+                switch ($compressChoice) {
+                    1 { Compress-Folders -Algorithm $algorithm }
+                    2 {
+                        $folderPath = Read-Host "Enter the path of the folder to compress"
+                        Compress-Custom-Folder -Algorithm $algorithm -FolderPath $folderPath
+                    }
+                    0 { $backToMainMenu = $true }
+                    default { Write-Host "Invalid choice. Please try again." }
+                }
+            }
+        }
+        5 {
+            $backToMainMenu = $false
+            while (-not $backToMainMenu) {
+                Show-Decompression-Menu
                 $decompressChoice = Read-Host "Enter your choice"
                 switch ($decompressChoice) {
                     1 { Expand-Folders }
@@ -279,10 +347,11 @@ while ($true) {
                         $folderPath = Read-Host "Enter the path of the folder to decompress"
                         Expand-Custom-Folder -FolderPath $folderPath
                     }
-                    0 { Show-Menu }
+                    0 { $backToMainMenu = $true }
                     default { Write-Host "Invalid choice. Please try again." }
                 }
             }
+        }
         0 { exit }
         default { Write-Host "Invalid choice. Please try again." }
     }
