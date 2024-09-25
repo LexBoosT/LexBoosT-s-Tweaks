@@ -1,22 +1,14 @@
+# Elevate to run as administrator
+if (!([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator"))
+{
+    Start-Process powershell -ArgumentList "-NoProfile -ExecutionPolicy Bypass -File `"$PSCommandPath`"" -Verb RunAs
+    exit
+}
+
+# Set PowerShell window background to black and text to white
 $host.ui.RawUI.BackgroundColor = "Black"
 $host.ui.RawUI.ForegroundColor = "White"
 Clear-Host
-
-# Vérifier les privilèges administratifs
-function Test-Admin {
-    Write-Host "Checking for Administrative Privileges..."
-    Start-Sleep -Seconds 3
-
-    $currentUser = [Security.Principal.WindowsIdentity]::GetCurrent()
-    $principal = New-Object Security.Principal.WindowsPrincipal($currentUser)
-    if (-not $principal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
-        Write-Host "Not running as administrator. Relaunching..."
-        Start-Process powershell -Verb runAs -ArgumentList "-NoProfile -ExecutionPolicy Bypass -File `"$PSCommandPath`""
-        exit
-    }
-    Write-Host "Running as administrator."
-}
-Test-Admin
 
 function Show-Menu {
     Clear-Host
@@ -64,7 +56,7 @@ function Show-Decompression-Menu {
     Write-Host "============================================="
 }
 
-function Refresh-Folder {
+function Update-Folder {
     param (
         [string]$FolderPath
     )
@@ -85,24 +77,23 @@ function Compress-Folders {
     )
 
     foreach ($folder in $folders) {
-        Refresh-Folder -FolderPath $folder
+        Update-Folder -FolderPath $folder
 
         Write-Host "Compressing $folder with $Algorithm..."
-        icacls $folder /save "$folder.acl" /t /c > $null 2>&1
-        takeown /f $folder /r > $null 2>&1
-        icacls $folder /grant "$env:userdomain\$env:username":'(F)' /t /c > $null 2>&1
+        icacls "$folder" /save "$folder.acl" /t /c > $null 2>&1
+        takeown /f "$folder" /r 2>&1
+        icacls "$folder" /grant "`"$env:userdomain\$env:username`:(F)'" /t /c > $null 2>&1
 
-        compact /c /s:$folder /a /i /f /exe:$Algorithm > $null 2>&1
+        compact /c /s:"$folder" /a /i /f /exe:$Algorithm 2>&1
 
-        icacls $folder /restore "$folder.acl" /c > $null 2>&1
-        Remove-Item "$folder.acl" > $null 2>&1
+        icacls "$folder" /restore "$folder.acl" /c > $null 2>&1
+        Remove-Item "$folder.acl"
 
         Start-Sleep -Seconds 5  # Pause to ensure changes are applied
-        Refresh-Folder -FolderPath $folder
+        Update-Folder -FolderPath "$folder"
 
         Write-Host "Compression complete for $folder!"
     }
-    Pause
 }
 
 function Compress-Custom-Folder {
@@ -111,23 +102,21 @@ function Compress-Custom-Folder {
         [string]$FolderPath
     )
 
-    Refresh-Folder -FolderPath $FolderPath
+    Update-Folder -FolderPath $FolderPath
 
     Write-Host "Compressing $FolderPath with $Algorithm..."
-    icacls $FolderPath /save "$FolderPath.acl" /t /c > $null 2>&1
-    takeown /f $FolderPath /r > $null 2>&1
-    icacls $FolderPath /grant "$env:userdomain\$env:username":'(F)' /t /c > $null 2>&1
+    icacls "$FolderPath" /save "$FolderPath.acl" /t /c > $null 2>&1
+    takeown /f "$FolderPath" /r 2>&1
+    icacls "$FolderPath" /grant "$env:userdomain\$env:username":'(F)' /t /c > $null 2>&1
+    compact /c /s:"$FolderPath" /a /i /f /exe:$Algorithm 2>&1
 
-    compact /c /s:$FolderPath /a /i /f /exe:$Algorithm > $null 2>&1
-
-    icacls $FolderPath /restore "$FolderPath.acl" /c > $null 2>&1
-    Remove-Item "$FolderPath.acl" > $null 2>&1
+    icacls "$FolderPath" /restore "$FolderPath.acl" /c > $null 2>&1
+    Remove-Item "$FolderPath.acl"
 
     Start-Sleep -Seconds 5  # Pause to ensure changes are applied
-    Refresh-Folder -FolderPath $FolderPath
+    Update-Folder -FolderPath $FolderPath
 
     Write-Host "Compression complete!"
-    Pause
 }
 
 function Expand-Folders {
@@ -135,16 +124,39 @@ function Expand-Folders {
         [string]$FolderPath
     )
 
-    Refresh-Folder -FolderPath $FolderPath
+    Update-Folder -FolderPath $FolderPath
 
     Write-Host "Decompressing $FolderPath..."
-    compact /u /s:$FolderPath /a /i /f > $null 2>&1
+
+    compact /u /s:"$FolderPath" /a /i /f 2>&1
 
     Start-Sleep -Seconds 5  # Pause to ensure changes are applied
-    Refresh-Folder -FolderPath $FolderPath
+    Update-Folder -FolderPath $FolderPath
 
     Write-Host "Decompression complete for $FolderPath!"
-    Pause
+}
+
+function Expand-Specific-Folders {
+    $folders = @(
+        "$env:windir\winsxs",
+        "$env:windir\System32\DriverStore",
+        "C:\Program Files\WindowsApps",
+        "$env:windir\InfusedApps",
+        "$env:windir\installer"
+    )
+
+    foreach ($folder in $folders) {
+        Update-Folder -FolderPath $folder
+
+        Write-Host "Decompressing $folder..."
+
+        compact /u /s:"$folder" /a /i /f 2>&1
+
+        Start-Sleep -Seconds 5  # Pause to ensure changes are applied
+        Update-Folder -FolderPath $folder
+
+        Write-Host "Decompression complete for $folder!"
+    }
 }
 
 do {
@@ -152,21 +164,65 @@ do {
     $choice = Read-Host "Enter your choice (1, 2, 3, 4, 5 or 0 for Quit)"
     Write-Host "Choice entered: $choice"
     switch ($choice) {
-        1 { $algorithm = "Xpress4K" }
-        2 { $algorithm = "Xpress8K" }
-        3 { $algorithm = "Xpress16K" }
-        4 { $algorithm = "LZX" }
-        5 { 
+        1 {
+            $algorithm = "Xpress4K"
+            Show-Compression-Menu
+            $compressionChoice = Read-Host "Enter your choice (1, 2, or 0 for Back)"
+            switch ($compressionChoice) {
+                1 { Compress-Folders -Algorithm $algorithm }
+                2 {
+                    $customFolderPath = Read-Host "Enter the path of the custom folder to compress"
+                    Compress-Custom-Folder -Algorithm $algorithm -FolderPath $customFolderPath
+                }
+            }
+        }
+        2 {
+            $algorithm = "Xpress8K"
+            Show-Compression-Menu
+            $compressionChoice = Read-Host "Enter your choice (1, 2, or 0 for Back)"
+            switch ($compressionChoice) {
+                1 { Compress-Folders -Algorithm $algorithm }
+                2 {
+                    $customFolderPath = Read-Host "Enter the path of the custom folder to compress"
+                    Compress-Custom-Folder -Algorithm $algorithm -FolderPath $customFolderPath
+                }
+            }
+        }
+        3 {
+            $algorithm = "Xpress16K"
+            Show-Compression-Menu
+            $compressionChoice = Read-Host "Enter your choice (1, 2, or 0 for Back)"
+            switch ($compressionChoice) {
+                1 { Compress-Folders -Algorithm $algorithm }
+                2 {
+                    $customFolderPath = Read-Host "Enter the path of the custom folder to compress"
+                    Compress-Custom-Folder -Algorithm $algorithm -FolderPath $customFolderPath
+                }
+            }
+        }
+        4 {
+            $algorithm = "LZX"
+            Show-Compression-Menu
+            $compressionChoice = Read-Host "Enter your choice (1, 2, or 0 for Back)"
+            switch ($compressionChoice) {
+                1 { Compress-Folders -Algorithm $algorithm }
+                2 {
+                    $customFolderPath = Read-Host "Enter the path of the custom folder to compress"
+                    Compress-Custom-Folder -Algorithm $algorithm -FolderPath $customFolderPath
+                }
+            }
+        }
+        5 {
             do {
                 Show-Decompression-Menu
-                $decompressionChoice = Read-Host "Enter your choice (1, 2, 3, or 0 for Back)"
+                $decompressionChoice = Read-Host "Enter your choice (1, 2, or 0 for Back)"
                 switch ($decompressionChoice) {
-                    1 { Expand-Folders -FolderPath "C:\Windows\winsxs" }
-                    2 { Expand-Folders -FolderPath "C:\Windows\System32\DriverStore\FileRepository" }
-                    3 { 
+                    1 { Expand-Specific-Folders }
+                    2 {
                         $customFolderPath = Read-Host "Enter the path of the custom folder to decompress"
                         Expand-Folders -FolderPath $customFolderPath
                     }
+                    0 { Show-Menu }
                 }
             } while ($decompressionChoice -ne 0)
         }
