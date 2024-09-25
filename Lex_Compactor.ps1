@@ -10,6 +10,9 @@ $host.ui.RawUI.BackgroundColor = "Black"
 $host.ui.RawUI.ForegroundColor = "White"
 Clear-Host
 
+# Variable to store the chosen algorithm
+$global:chosenAlgorithm = "None"
+
 function Show-Menu {
     Clear-Host
     Write-Host "============================================="
@@ -37,6 +40,8 @@ function Show-Compression-Menu {
     Write-Host "|     C:\Windows\installer)                 |"
     Write-Host "| 2. Compress a custom folder               |" -ForegroundColor Magenta
     Write-Host "| 0. Back                                   |" -ForegroundColor Red
+    Write-Host "============================================="
+    Write-Host "Chosen Algorithm: $global:chosenAlgorithm" -ForegroundColor White
     Write-Host "============================================="
 }
 
@@ -165,50 +170,50 @@ do {
     Write-Host "Choice entered: $choice"
     switch ($choice) {
         1 {
-            $algorithm = "Xpress4K"
+            $global:chosenAlgorithm = "Xpress4K"
             Show-Compression-Menu
             $compressionChoice = Read-Host "Enter your choice (1, 2, or 0 for Back)"
             switch ($compressionChoice) {
-                1 { Compress-Folders -Algorithm $algorithm }
+                1 { Compress-Folders -Algorithm $global:chosenAlgorithm }
                 2 {
                     $customFolderPath = Read-Host "Enter the path of the custom folder to compress"
-                    Compress-Custom-Folder -Algorithm $algorithm -FolderPath $customFolderPath
+                    Compress-Custom-Folder -Algorithm $global:chosenAlgorithm -FolderPath $customFolderPath
                 }
             }
         }
         2 {
-            $algorithm = "Xpress8K"
+            $global:chosenAlgorithm = "Xpress8K"
             Show-Compression-Menu
             $compressionChoice = Read-Host "Enter your choice (1, 2, or 0 for Back)"
             switch ($compressionChoice) {
-                1 { Compress-Folders -Algorithm $algorithm }
+                1 { Compress-Folders -Algorithm $global:chosenAlgorithm }
                 2 {
                     $customFolderPath = Read-Host "Enter the path of the custom folder to compress"
-                    Compress-Custom-Folder -Algorithm $algorithm -FolderPath $customFolderPath
+                    Compress-Custom-Folder -Algorithm $global:chosenAlgorithm -FolderPath $customFolderPath
                 }
             }
         }
         3 {
-            $algorithm = "Xpress16K"
+            $global:chosenAlgorithm = "Xpress16K"
             Show-Compression-Menu
             $compressionChoice = Read-Host "Enter your choice (1, 2, or 0 for Back)"
             switch ($compressionChoice) {
-                1 { Compress-Folders -Algorithm $algorithm }
+                1 { Compress-Folders -Algorithm $global:chosenAlgorithm }
                 2 {
                     $customFolderPath = Read-Host "Enter the path of the custom folder to compress"
-                    Compress-Custom-Folder -Algorithm $algorithm -FolderPath $customFolderPath
+                    Compress-Custom-Folder -Algorithm $global:chosenAlgorithm -FolderPath $customFolderPath
                 }
             }
         }
         4 {
-            $algorithm = "LZX"
+            $global:chosenAlgorithm = "LZX"
             Show-Compression-Menu
             $compressionChoice = Read-Host "Enter your choice (1, 2, or 0 for Back)"
             switch ($compressionChoice) {
-                1 { Compress-Folders -Algorithm $algorithm }
+                1 { Compress-Folders -Algorithm $global:chosenAlgorithm }
                 2 {
                     $customFolderPath = Read-Host "Enter the path of the custom folder to compress"
-                    Compress-Custom-Folder -Algorithm $algorithm -FolderPath $customFolderPath
+                    Compress-Custom-Folder -Algorithm $global:chosenAlgorithm -FolderPath $customFolderPath
                 }
             }
         }
