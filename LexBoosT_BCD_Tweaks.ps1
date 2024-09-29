@@ -63,12 +63,13 @@ function Apply-Tweaks {
 	bcdedit /set quietboot yes
 	bcdedit /set allowedinmemorysettings 0x0
 	bcdedit /set vsmlaunchtype Off
-    bcdedit /set vm No
-    bcdedit /set x2apicpolicy Enable
-    bcdedit /set uselegacyapicmode No
-    bcdedit /set configaccesspolicy Default
-    bcdedit /set usephysicaldestination No
-    bcdedit /set usefirmwarepcisettings No
+  	bcdedit /deletevalue nx
+ 	bcdedit /set vm No
+	bcdedit /set x2apicpolicy Enable
+	bcdedit /set uselegacyapicmode No
+	bcdedit /set configaccesspolicy Default
+	bcdedit /set usephysicaldestination No
+	bcdedit /set usefirmwarepcisettings No
 if ((Get-WmiObject Win32_Processor).Name -like '*Intel*') {
 
   bcdedit /set nx optout
