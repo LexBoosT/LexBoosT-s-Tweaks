@@ -1,7 +1,7 @@
 Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\services\kbdclass\Parameters]
-"KeyboardDataQueueSize"=dword:00000019
+"KeyboardDataQueueSize"=dword:00000032
 
 [HKEY_CURRENT_USER\Control Panel\Keyboard]
 "KeyboardDelay"="0"
