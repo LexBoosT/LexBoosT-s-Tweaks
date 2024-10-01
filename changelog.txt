@@ -3,7 +3,7 @@
 - Added Restart to Bios Menu for Enable/Disable Restart to Bios on Context Menu.
 - Code optimization.
 *LexBoosT Drives Compactor updated. (25.09.24)
-
+*Update Nvidia Drivers 565.90. (01.10.24)
 
 # Version 4.8.4
 
