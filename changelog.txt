@@ -4,6 +4,7 @@
 - Code optimization.
 *LexBoosT Drives Compactor updated. (25.09.24)
 *Update Nvidia Drivers 565.90. (01.10.24)
+*Fix Logitech G-Hub Download. (05.10.24)
 
 # Version 4.8.4
 
