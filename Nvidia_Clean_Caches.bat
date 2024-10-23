@@ -31,5 +31,5 @@ for /d %%x in ("%localappdata%\Microsoft\DirectX\ShaderCache\*") do @rd /s /q "%
 timeout /t 3 /nobreak >nul
 
 echo Cleanup complete.
-pause
+timeout /t 3 /nobreak >nul
 exit
