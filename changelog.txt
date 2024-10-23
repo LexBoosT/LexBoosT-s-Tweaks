@@ -2,7 +2,7 @@
 
 - Added LexBoosT Devices Cleanup.
 *Update Nvidia Drivers 566.03 (23.10.24)
-*Improved clear Temp, Logs, Caches script (23.10.24)
+*Improved clear Temp, Logs, Caches script and add clearmgr with custom configuration + clear leftovers (23.10.24)
 
 
 # Version 4.9.0
