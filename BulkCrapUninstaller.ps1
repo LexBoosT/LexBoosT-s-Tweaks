@@ -23,4 +23,4 @@ if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
     iwr -useb https://aka.ms/winget/install | iex
 }
 
-winget install --id "Klocman.BulkCrapUninstaller" -e --force
+winget install -e --id "Klocman.BulkCrapUninstaller" --accept-package-agreements --accept-source-agreements --disable-interactivity --force -h
