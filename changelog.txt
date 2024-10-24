@@ -3,7 +3,7 @@
 - Added LexBoosT Devices Cleanup.
 *Update Nvidia Drivers 566.03 (23.10.24)
 *Improved clear Temp, Logs, Caches script and add cleanmgr with custom configuration + clear leftovers (23.10.24)
-
+*Installation of winget if no version is detected (24.10.24)
 
 # Version 4.9.0
 
