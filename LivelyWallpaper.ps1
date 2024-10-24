@@ -23,4 +23,4 @@ if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
     iwr -useb https://aka.ms/winget/install | iex
 }
 
-winget install --id "rocksdanister.LivelyWallpaper" -e --force
+winget install -e --id "rocksdanister.LivelyWallpaper" --accept-package-agreements --accept-source-agreements --disable-interactivity --force -h
