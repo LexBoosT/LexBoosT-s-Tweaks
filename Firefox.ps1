@@ -23,4 +23,4 @@ if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
     iwr -useb https://aka.ms/winget/install | iex
 }
 
-winget install --id "Mozilla.Firefox" -e --force
+winget install -e --id "Mozilla.Firefox" --accept-package-agreements --accept-source-agreements --disable-interactivity --force -h
