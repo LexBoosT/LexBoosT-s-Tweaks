@@ -23,4 +23,4 @@ if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
     iwr -useb https://aka.ms/winget/install | iex
 }
 
-winget install --exact --id MartiCliment.UniGetUI --source winget --force
+winget install -e --id "MartiCliment.UniGetUI" --accept-package-agreements --accept-source-agreements --disable-interactivity --force -h
