@@ -29,4 +29,4 @@ if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
 }
 
 choco install goxlr-driver -y --no-progress --force
-winget install -e --id GoXLR-on-Linux.GoXLR-Utility --force
+winget install -e --id "GoXLR-on-Linux.GoXLR-Utility" --accept-package-agreements --accept-source-agreements --disable-interactivity --force -h
