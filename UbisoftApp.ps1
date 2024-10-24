@@ -23,4 +23,4 @@ if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
     iwr -useb https://aka.ms/winget/install | iex
 }
 
-winget install --id "Ubisoft.Connect" -e --force
+winget install -e --id "Ubisoft.Connect" --accept-package-agreements --accept-source-agreements --disable-interactivity --force -h
