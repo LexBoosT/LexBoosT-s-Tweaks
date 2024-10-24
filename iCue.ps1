@@ -34,10 +34,10 @@ while ($true) {
 	$choice = Read-Host "Enter your choice (1, 2, 3, 4 or 0 for Quit)"
 
 	switch ($choice) {
-		'1' { winget install -e --id "Corsair.iCUE.3" --force }
-		'2' { winget install -e --id "Corsair.iCUE.4" --force }
-		'3' { winget install -e --id "Corsair.iCUE.5" --force }
-		'4' { winget install -e --id "9PG940D1ZDVP" --force }
+		'1' { winget install -e --id "Corsair.iCUE.3" --accept-package-agreements --accept-source-agreements --disable-interactivity --force -h }
+		'2' { winget install -e --id "Corsair.iCUE.4" --accept-package-agreements --accept-source-agreements --disable-interactivity --force -h }
+		'3' { winget install -e --id "Corsair.iCUE.5" --accept-package-agreements --accept-source-agreements --disable-interactivity --force -h }
+		'4' { winget install -e --id "9PG940D1ZDVP" --accept-package-agreements --accept-source-agreements --disable-interactivity --force -h }
 		'0' { exit }
 		default { Write-Host "Invalid choice. Please try again." }
 	}
