@@ -23,4 +23,4 @@ if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
     iwr -useb https://aka.ms/winget/install | iex
 }
 
-winget install --id "Guru3D.Afterburner" -e --force
+winget install -e --id "Guru3D.Afterburner" --accept-package-agreements --accept-source-agreements --disable-interactivity --force -h
