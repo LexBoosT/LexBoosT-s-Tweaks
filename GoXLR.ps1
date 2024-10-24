@@ -24,9 +24,11 @@ if (-not (Get-Command choco -ErrorAction SilentlyContinue)) {
 # Vérification de l'installation de Winget
 if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
     Write-Host "Winget is not installed. Loading installation..."
-	Set-ExecutionPolicy Bypass -Scope Process -Force; 
-    iwr -useb https://aka.ms/winget/install | iex
+    Set-ExecutionPolicy Bypass -Scope Process -Force;
+    Invoke-WebRequest -Uri "https://github.com/microsoft/winget-cli/releases/download/v1.9.25170/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle" -OutFile "$env:TEMP\Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle"
+    Add-AppxPackage -Path "$env:TEMP\Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle"
 }
+
 
 choco install goxlr-driver -y --no-progress --force
 winget install -e --id "GoXLR-on-Linux.GoXLR-Utility" --accept-package-agreements --accept-source-agreements --disable-interactivity --force -h
