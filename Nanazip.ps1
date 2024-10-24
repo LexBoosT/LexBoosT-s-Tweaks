@@ -23,4 +23,4 @@ if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
     iwr -useb https://aka.ms/winget/install | iex
 }
 
-winget install --id "M2Team.NanaZip" -e --force
+winget install -e --id "M2Team.NanaZip" --accept-package-agreements --accept-source-agreements --disable-interactivity --force -h
