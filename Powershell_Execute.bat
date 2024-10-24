@@ -1,8 +1,17 @@
 @echo off
+
+:: Check for WinGet installation
+powershell -ExecutionPolicy Unrestricted -Command "if (-not (Get-Command winget -ErrorAction SilentlyContinue)) { Write-Host 'Winget is not installed. Loading installation...'; Set-ExecutionPolicy Bypass -Scope Process -Force; Invoke-WebRequest -Uri 'https://github.com/microsoft/winget-cli/releases/download/v1.9.25170/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle' -OutFile '$env:TEMP\Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle'; Add-AppxPackage -Path '$env:TEMP\Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle' }"
+
+if %errorlevel% neq 0 start "" /wait /I /min powershell -NoProfile -Command start -verb runas "'%~s0'" && exit /b
+
+:: Check and add registry values if not exist
+echo Checking and adding registry values...
 reg query "HKCU\Console" /v "DelegationConsole" 2>nul
 if %errorlevel% neq 0 (
     reg add "HKCU\Console" /v "DelegationConsole" /t REG_SZ /d "{B23D10C0-E52E-411E-9D5B-C09FDF709C7D}" /f
 )
+
 reg query "HKCU\Console" /v "DelegationTerminal" 2>nul
 if %errorlevel% neq 0 (
     reg add "HKCU\Console" /v "DelegationTerminal" /t REG_SZ /d "{B23D10C0-E52E-411E-9D5B-C09FDF709C7D}" /f
