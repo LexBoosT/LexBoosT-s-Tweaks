@@ -23,5 +23,5 @@ if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
     iwr -useb https://aka.ms/winget/install | iex
 }
 
-winget install -e --id "Microsoft.VisualStudioCode" --force
+winget install -e --id "Microsoft.VisualStudioCode" --accept-package-agreements --accept-source-agreements --disable-interactivity --force -h
 Start-Process -FilePath "$env:LOCALAPPDATA\Packages\Microsoft.DesktopAppInstaller_8wekyb3d8bbwe\LocalCache\Local\Microsoft\WinGet"
