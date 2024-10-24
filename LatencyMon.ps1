@@ -23,5 +23,4 @@ if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
     iwr -useb https://aka.ms/winget/install | iex
 }
 
-winget install --id "Resplendence.LatencyMon" -e --force
-
+winget install -e --id "Resplendence.LatencyMon" --accept-package-agreements --accept-source-agreements --disable-interactivity --force -h
