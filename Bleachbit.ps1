@@ -23,4 +23,4 @@ if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
     iwr -useb https://aka.ms/winget/install | iex
 }
 
-winget install --id "BleachBit.BleachBit" -e --force
+winget install -e --id "BleachBit.BleachBit" --accept-package-agreements --accept-source-agreements --disable-interactivity --force -h
