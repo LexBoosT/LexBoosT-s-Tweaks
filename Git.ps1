@@ -23,5 +23,4 @@ if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
     iwr -useb https://aka.ms/winget/install | iex
 }
 
-Start-Process -Wait -FilePath "winget" -ArgumentList "install -e --id Git.Git --force"
-
+winget install -e --id "Git.Git" --accept-package-agreements --accept-source-agreements --disable-interactivity --force -h
