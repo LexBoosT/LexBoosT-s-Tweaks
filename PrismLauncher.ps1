@@ -23,4 +23,4 @@ if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
     iwr -useb https://aka.ms/winget/install | iex
 }
 
-winget install --id "PrismLauncher.PrismLauncher" -e --force
+winget install -e --id "PrismLauncher.PrismLauncher" --accept-package-agreements --accept-source-agreements --disable-interactivity --force -h
