@@ -23,5 +23,4 @@ if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
     iwr -useb https://aka.ms/winget/install | iex
 }
 
-winget install --id "CPUID.HWMonitor" -e --force
-
+winget install -e --id "CPUID.HWMonitor" --accept-package-agreements --accept-source-agreements --disable-interactivity --force -h
