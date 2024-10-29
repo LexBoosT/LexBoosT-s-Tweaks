@@ -10,6 +10,23 @@ fltmc >nul 2>&1 || (
 :: Initialize environment
 setlocal EnableExtensions DisableDelayedExpansion
 
+:menu
+cls
+echo ============================================
+echo            Debloat Windows Script
+echo ============================================
+echo 1. Debloat Windows
+echo 0. Quit
+echo ============================================
+set /p choice="Enter your choice (1 or 0): "
+
+if %choice%==1 goto debloat
+if %choice%==0 goto quit
+goto menu
+
+:debloat
+cls
+echo Debloating Windows...
 
 :: ----------------------------------------------------------
 :: --------------Remove insecure "Print 3D" app--------------
@@ -536,5 +553,12 @@ PowerShell -ExecutionPolicy Unrestricted -Command "$keyPath='HKLM\SOFTWARE\Micro
 
 :: Restore previous environment settings
 endlocal
-:: Exit the script successfully
-exit /b 0
+echo Windows has been debloated.
+timeout /t 3 /nobreak
+cls
+goto menu
+
+:quit
+echo Goodbye!
+timeout /t 3 /nobreak
+exit
