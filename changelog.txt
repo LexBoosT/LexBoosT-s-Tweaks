@@ -1,3 +1,11 @@
+# Version 5.0.0
+
+- Added LexBoosT OS Section.
+- Now when you click on Nvidia Clear Caches button you see cmd window.
+- Added OneDrive Deleter.
+- Added LexBoosT Windows Debloater.
+
+
 # Version 4.9.2
 
 - Added LexBoosT FreeRAM
