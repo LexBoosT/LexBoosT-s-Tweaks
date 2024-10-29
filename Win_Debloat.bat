@@ -16,12 +16,65 @@ echo ============================================
 echo            Debloat Windows Script
 echo ============================================
 echo 1. Debloat Windows
+echo 2. Deleted App List
 echo 0. Quit
 echo ============================================
 set /p choice="Enter your choice (1 or 0): "
 
 if %choice%==1 goto debloat
+if %choice%==2 goto List
 if %choice%==0 goto quit
+goto menu
+
+:List
+cls
+echo -Print 3D
+echo -Microsoft 3D Builder
+echo -3D Viewer
+echo -MSN Weather
+echo -MSN Sports
+echo -Microsoft News
+echo -MSN Money
+echo -Microsoft 365 (Office)
+echo -OneNote
+echo -Sway
+echo -Candy Crush Saga
+echo -Candy Crush Soda Saga
+echo -Shazam
+echo -Flipboard
+echo -Twitter
+echo -iHeart: Radio, Music, Podcasts
+echo -Duolingo - Language Lessons
+echo -Adobe Photoshop Express
+echo -Pandora
+echo -Eclipse Manager
+echo -Code Writer
+echo -Spotify - Music and Podcasts
+echo -Cortana
+echo -Microsoft Tips
+echo -Microsoft Messaging
+echo -Mixed Reality Portal
+echo -Feedback Hub
+echo -Windows Alarms and Clock
+echo -Windows Camera
+echo -Paint 3D
+echo -Windows Maps
+echo -Minecraft for Windows
+echo -Microsoft People
+echo -Microsoft Pay
+echo -Mobile Plans
+echo -Microsoft Solitaire Collection
+echo -Microsoft Sticky Notes
+echo -Mail and Calendar
+echo -Windows Media Player
+echo -Movies ^& TV
+echo -Skype
+echo -GroupMe
+echo -Windows Sound Recorder
+echo -Microsoft Remote Desktop
+echo -Network Speed Test
+echo -Microsoft To Do: Lists, Tasks ^& Reminders
+pause
 goto menu
 
 :debloat
