@@ -21,24 +21,23 @@ param(
     [string]$option
 )
 
-# Script to free up RAM at specified intervals
-param(
-    [ValidateSet("2", "5", "10", "15", "uninstall", "status")]
-    [string]$option
-)
-
 # Function to free up RAM
 function Free-RAM {
     Write-Host "Freeing up RAM..."
     # Exclude critical processes
     $excludedProcesses = @("explorer.exe", "csrss.exe", "winlogon.exe", "services.exe", "svchost.exe")
-    Get-Process | Where-Object { $_.ProcessName -notin $excludedProcesses } | ForEach-Object { 
-        $_.MinWorkingSet = [System.IntPtr]::Zero
-        $_.MaxWorkingSet = [System.IntPtr]::Zero
+    try {
+        Get-Process | Where-Object { $_.ProcessName -notin $excludedProcesses } | ForEach-Object {
+            $_.MinWorkingSet = [System.IntPtr]::Zero
+            $_.MaxWorkingSet = [System.IntPtr]::Zero
+        }
+        [System.GC]::Collect()
+        [System.GC]::WaitForPendingFinalizers()
+        [System.GC]::Collect()
     }
-    [System.GC]::Collect()
-    [System.GC]::WaitForPendingFinalizers()
-    [System.GC]::Collect()
+    catch {
+        Write-Host "An error occurred while freeing up RAM: $_" -ForegroundColor Red
+    }
 }
 
 # Function to create the scheduled task
@@ -46,33 +45,48 @@ function Create-ScheduledTask {
     param (
         [int]$minutes
     )
-    $taskName = "FreeRAM"
-    $taskAction = New-ScheduledTaskAction -Execute 'PowerShell.exe' -Argument "-NoProfile -WindowStyle Hidden -File `"$PSScriptRoot\FreeRAM.ps1`" -option $minutes"
-    $taskTrigger = New-ScheduledTaskTrigger -AtStartup
-    $taskPrincipal = New-ScheduledTaskPrincipal -UserId "SYSTEM" -LogonType ServiceAccount
-    Register-ScheduledTask -TaskName $taskName -Action $taskAction -Trigger $taskTrigger -Principal $taskPrincipal
-    Write-Host "Scheduled task created to free RAM every $minutes minutes."
+    try {
+        $taskName = "FreeRAM"
+        $taskAction = New-ScheduledTaskAction -Execute 'PowerShell.exe' -Argument "-NoProfile -WindowStyle Hidden -File `"$PSScriptRoot\FreeRAM.ps1`" -option $minutes"
+        $taskTrigger = New-ScheduledTaskTrigger -AtStartup
+        $taskPrincipal = New-ScheduledTaskPrincipal -UserId "SYSTEM" -LogonType ServiceAccount
+        Register-ScheduledTask -TaskName $taskName -Action $taskAction -Trigger $taskTrigger -Principal $taskPrincipal
+        Write-Host "Scheduled task created to free RAM every $minutes minutes."
+    }
+    catch {
+        Write-Host "An error occurred while creating the scheduled task: $_" -ForegroundColor Red
+    }
 }
 
 # Function to uninstall the scheduled task
 function Uninstall-ScheduledTask {
     $taskName = "FreeRAM"
-    if (Get-ScheduledTask -TaskName $taskName -ErrorAction SilentlyContinue) {
-        Unregister-ScheduledTask -TaskName $taskName -Confirm:$false
-        Write-Host "Scheduled task '$taskName' has been uninstalled."
-    } else {
-        Write-Host "No scheduled task named '$taskName' found."
+    try {
+        if (Get-ScheduledTask -TaskName $taskName -ErrorAction SilentlyContinue) {
+            Unregister-ScheduledTask -TaskName $taskName -Confirm:$false
+            Write-Host "Scheduled task '$taskName' has been uninstalled."
+        } else {
+            Write-Host "No scheduled task named '$taskName' found."
+        }
+    }
+    catch {
+        Write-Host "An error occurred while uninstalling the scheduled task: $_" -ForegroundColor Red
     }
 }
 
 # Function to show the status of the scheduled task
 function Show-Status {
     $taskName = "FreeRAM"
-    $task = Get-ScheduledTask -TaskName $taskName -ErrorAction SilentlyContinue
-    if ($task) {
-        Write-Host "Scheduled task '$taskName' is installed and configured."
-    } else {
-        Write-Host "Scheduled task '$taskName' is not found."
+    try {
+        $task = Get-ScheduledTask -TaskName $taskName -ErrorAction SilentlyContinue
+        if ($task) {
+            Write-Host "Scheduled task '$taskName' is installed and configured."
+        } else {
+            Write-Host "Scheduled task '$taskName' is not found."
+        }
+    }
+    catch {
+        Write-Host "An error occurred while checking the status of the scheduled task: $_" -ForegroundColor Red
     }
 }
 
