@@ -21,9 +21,21 @@ param(
     [string]$option
 )
 
+# Script to free up RAM at specified intervals
+param(
+    [ValidateSet("2", "5", "10", "15", "uninstall", "status")]
+    [string]$option
+)
+
 # Function to free up RAM
 function Free-RAM {
     Write-Host "Freeing up RAM..."
+    # Exclude critical processes
+    $excludedProcesses = @("explorer.exe", "csrss.exe", "winlogon.exe", "services.exe", "svchost.exe")
+    Get-Process | Where-Object { $_.ProcessName -notin $excludedProcesses } | ForEach-Object { 
+        $_.MinWorkingSet = [System.IntPtr]::Zero
+        $_.MaxWorkingSet = [System.IntPtr]::Zero
+    }
     [System.GC]::Collect()
     [System.GC]::WaitForPendingFinalizers()
     [System.GC]::Collect()
@@ -108,4 +120,3 @@ if (-not $option) {
         }
     }
 }
-
