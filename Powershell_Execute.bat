@@ -43,7 +43,7 @@ if '%errorlevel%' NEQ '0' (
 :--------------------------------------
 
 :: Check for WinGet installation
-powershell -ExecutionPolicy Unrestricted -Command "if (-not (Get-Command winget -ErrorAction SilentlyContinue)) { Write-Host 'Winget is not installed. Loading installation...'; Set-ExecutionPolicy Bypass -Scope Process -Force; Invoke-WebRequest -Uri 'https://github.com/microsoft/winget-cli/releases/download/v1.9.25180/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle' -OutFile '$env:TEMP\Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle'; Add-AppxPackage -Path '$env:TEMP\Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle' }"
+powershell -ExecutionPolicy Bypass -Command "if (-not (Get-Command winget -ErrorAction SilentlyContinue)) { Write-Host 'Winget is not installed. Loading installation...'; Set-ExecutionPolicy Bypass -Scope Process -Force; Invoke-WebRequest -Uri 'https://github.com/microsoft/winget-cli/releases/download/v1.9.25180/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle' -OutFile '$env:TEMP\Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle'; Add-AppxPackage -Path '$env:TEMP\Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle' }"
 
 if %errorlevel% neq 0 (
     start "" /wait /I /min powershell -NoProfile -Command start -verb runas "'%~s0'"
