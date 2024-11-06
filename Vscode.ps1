@@ -16,13 +16,5 @@ function Check-Admin {
 }
 Check-Admin
 
-# Vérification de l'installation de Winget
-if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
-    Write-Host "Winget is not installed. Loading installation..."
-    Set-ExecutionPolicy Bypass -Scope Process -Force;
-    Invoke-WebRequest -Uri "https://github.com/microsoft/winget-cli/releases/download/v1.9.25170/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle" -OutFile "$env:TEMP\Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle"
-    Add-AppxPackage -Path "$env:TEMP\Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle"
-}
-
 winget install -e --id "Microsoft.VisualStudioCode" --accept-package-agreements --accept-source-agreements --disable-interactivity --force -h
 Start-Process -FilePath "$env:LOCALAPPDATA\Packages\Microsoft.DesktopAppInstaller_8wekyb3d8bbwe\LocalCache\Local\Microsoft\WinGet"
