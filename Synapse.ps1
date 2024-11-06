@@ -21,13 +21,6 @@ if (-not (Get-Command choco -ErrorAction SilentlyContinue)) {
     Write-Host "Chocolatey is not installed. Loading installation..."
     Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 }
-# Vérification de l'installation de Winget
-if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
-    Write-Host "Winget is not installed. Loading installation..."
-    Set-ExecutionPolicy Bypass -Scope Process -Force;
-    Invoke-WebRequest -Uri "https://github.com/microsoft/winget-cli/releases/download/v1.9.25170/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle" -OutFile "$env:TEMP\Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle"
-    Add-AppxPackage -Path "$env:TEMP\Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle"
-}
 
 while ($true) {
 	Write-Host "Choose the package to install:"
