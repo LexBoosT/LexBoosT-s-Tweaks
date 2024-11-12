@@ -4,6 +4,7 @@
 - Now when you click on Nvidia Clear Caches button you see cmd window.
 - Added OneDrive Deleter.
 - Added LexBoosT Windows Debloater.
+*Update Nvidia Drivers 566.14 (12.11.24)
 
 
 # Version 4.9.2
