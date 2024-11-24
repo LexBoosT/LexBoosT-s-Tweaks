@@ -1,12 +1,12 @@
 # Version 5.1.1
 
-- Optimization of the application's RAM management
+- Optimization of the application's RAM management.
 - Fix tooltip for clean browsers caches.
 
 
 # Version 5.1.0
 
-- Added Clean Browsers Caches
+- Added Clean Browsers Caches.
 - Updated Nilsoft Shell for fix Right Click on Taskbar. (You need to deatize Nilsoft Shell with the script, deatize LexBoosT Tweaks Tools, and re-enable the software to download the new Premium Pack).
 
 
@@ -21,7 +21,7 @@
 
 # Version 4.9.2
 
-- Added LexBoosT FreeRAM
+- Added LexBoosT FreeRAM.
 
 
 # Version 4.9.1
