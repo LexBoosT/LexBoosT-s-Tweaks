@@ -1,3 +1,8 @@
+# Version 5.1.2
+
+- Updated Nilsoft Shell for fix Right Click on Taskbar. (You need to deatize Nilsoft Shell with the script, deatize LexBoosT Tweaks Tools, and re-enable the software to download the new Premium Pack). (Again)
+
+
 # Version 5.1.1
 
 - Optimization of the application's RAM management.
