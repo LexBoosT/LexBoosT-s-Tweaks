@@ -16,15 +16,10 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 "AutoColorDepthReduction_NA"=dword:00000000
 "D3PCLatency"=dword:00000001
 "DesktopStereoShortcuts"=dword:00000000
-"DisableAsyncPstates"=dword:00000001
 "DisableBlockWrite"=dword:00000000
-"DisableDMACopy"=dword:00000001
-"DisableDynamicPstate"=dword:00000001
 "DisableOverclockedPstates"=dword:00000000
 "DisableSAMUPowerGating"=dword:00000001
 "DisableUVDPowerGatingDynamic"=dword:00000001
-"DisableVCEPowerGating"=dword:00000001
-"DisablePowerGating"=dword:00000001
 "DisableDrmdmaPowerGating"=dword:00000001
 "ENABLE_OCA_LOGGING"=dword:00000000
 "EnableAspmL0s"=dword:00000000
