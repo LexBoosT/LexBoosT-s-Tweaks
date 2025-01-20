@@ -28,6 +28,7 @@ SSentry
 Strixluca
 TASbot
 TrashForReal
+Verhafter
 woes.slash
 YesIKeepASwitchInTact
 Yggdrasilly
