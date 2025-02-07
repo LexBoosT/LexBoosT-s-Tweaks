@@ -126,3 +126,14 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 "EnableRID73779"=dword:00000001
 "EnableRID73780"=dword:00000001
 "EnableRID74361"=dword:00000001
+
+[HKLM\SOFTWARE\NVIDIA Corporation\NvControlPanel2\Client]
+"OptInOrOutPreference"=dword:00000000
+
+[HKLM\SOFTWARE\NVIDIA Corporation\Global\FTS]
+"EnableRID44231"=dword:00000000
+"EnableRID64640"=dword:00000000
+"EnableRID66610"=dword:00000000
+
+[HKLM\SYSTEM\CurrentControlSet\Services\nvlddmkm\Global\Startup]
+"SendTelemetryData"=dword:00000000
