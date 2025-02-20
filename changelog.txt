@@ -6,6 +6,7 @@
 *Update Nvidia Drivers 572.16 (31.01.25)
 *Update Nvidia Drivers 572.24 (04.02.25)
 *Update Nvidia Drivers 572.42 (14.02.25)
+*Update Nvidia Drivers 572.47 (20.02.25)
 
 
 # Version 5.1.1
