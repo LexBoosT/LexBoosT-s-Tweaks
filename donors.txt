@@ -28,6 +28,7 @@ RadosławGrzędzicki
 sexi
 shorty_gr
 SSentry
+star
 Strixluca
 TASbot
 TrashForReal
