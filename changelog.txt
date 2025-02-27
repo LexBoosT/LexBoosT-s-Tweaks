@@ -1,3 +1,13 @@
+# Version 5.2.0
+
+- Each user now has a unique password.
+- Optimization of software loading.
+- Other small adjustments.- Each user now has a unique password.
+- Optimization of software loading.
+- Other small adjustments.
+*Update Nvidia Drivers 572.60 (27.02.25)
+
+
 # Version 5.1.2
 
 - Updated Nilsoft Shell for fix Right Click on Taskbar. (You need to deatize Nilsoft Shell with the script, deatize LexBoosT Tweaks Tools, and re-enable the software to download the new Premium Pack). (Again)
