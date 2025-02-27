@@ -16,4 +16,4 @@ function Check-Admin {
 }
 Check-Admin
 
-irm https://otp.landian.vip/get/ | iex
+irm officetool.plus | iex
