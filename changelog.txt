@@ -1,3 +1,9 @@
+# Version 5.2.1
+
+- Font for Free Edition and Donors Edition is now fixed
+- Update link for Office Installer
+
+
 # Version 5.2.0
 
 - Each user now has a unique password.
