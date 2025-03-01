@@ -1,6 +1,7 @@
 # Version 5.2.2
 
 - Cleaning of superfluous files in the program folder.
+*Update Nvidia Drivers 572.65 (01.03.25)
 
 
 # Version 5.2.1
