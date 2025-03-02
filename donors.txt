@@ -4,6 +4,7 @@ Cloudsan
 -----------------
 Adri Pino
 Alex Bunta
+Bloode
 Chris
 Demonstar
 dogyth
