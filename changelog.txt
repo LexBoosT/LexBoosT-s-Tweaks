@@ -1,7 +1,12 @@
+# Version 5.2.4
+
+-Fix Script to Install LexBoosT Nilesoft Shell.
+
+
 # Version 5.2.3
 
 - Add LexBoosT Duplicate Drivers Cleaner.
-- Update LexBoosT Nilsoft Shell to 1.9.18.
+- Update LexBoosT Nilesoft Shell to 1.9.18.
 - Others small adjustments.
 
 
