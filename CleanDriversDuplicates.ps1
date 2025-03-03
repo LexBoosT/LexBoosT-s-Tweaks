@@ -53,6 +53,7 @@ function Apply-Tweaks {
 		$Name = $($item.Driver).Trim()
 		& pnputil.exe /delete-driver "$Name" /force
 	}
+ Pause
 }
 
 while ($true) {
