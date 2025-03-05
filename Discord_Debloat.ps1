@@ -165,7 +165,7 @@ do {
                 "discord_media-1",
                 "discord_spellcheck-1",
                 "discord_krisp-1",
-                "discord_Spellcheck-1"
+                "discord_spellcheck-1"
                 # ... (add other module files)
             )
 
@@ -208,7 +208,8 @@ do {
 			# Delete specified overlay files quietly
                 $overlayFilesToRemove = @(
                     "discord_rpc-1",
-                    "discord_overlay2-1"
+                    "discord_overlay2-1",
+		    "discord_desktop_overlay-1"
                 )
 				
             foreach ($directory in $directoriesToProcess) {
