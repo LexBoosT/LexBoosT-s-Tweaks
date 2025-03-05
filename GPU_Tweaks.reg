@@ -29,6 +29,7 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 “ENABLE_OCA_LOGGING”=dword:00000000
 "EnableAspmL0s"=dword:00000000
 "EnableAspmL1"=dword:00000000
+"EnableDynamicTweak"=dword:00000001
 "EnableUlps"=dword:00000000
 "EnableUlps_NA"="0"
 “EnableMClkSlowdown”=dword:00000000
