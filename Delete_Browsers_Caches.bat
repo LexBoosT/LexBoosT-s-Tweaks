@@ -1,22 +1,21 @@
 @echo off
+setlocal enabledelayedexpansion
+set "___args="%~f0" %*"
+fltmc > nul 2>&1 || (
+	echo Administrator privileges are required.
+	powershell -c "Start-Process -Verb RunAs -FilePath 'cmd' -ArgumentList """/c $env:___args"""" 2> nul || (
+		echo You must run this script as admin.
+		if "%*"=="" pause
+		exit /b 1
+	)
+	exit /b
+)
 echo ============================================
 echo. Clearing browser caches
 echo ============================================
-
-REM Close all browsers to avoid issues during cache deletion
-taskkill /IM brave.exe /F 2>nul
-taskkill /IM msedge.exe /F 2>nul
-taskkill /IM opera.exe /F 2>nul
-taskkill /IM opera_gx.exe /F 2>nul
-taskkill /IM chrome.exe /F 2>nul
-taskkill /IM firefox.exe /F 2>nul
-taskkill /IM arc.exe /F 2>nul
-taskkill /IM vivaldi.exe /F 2>nul
-
-REM Wait a few seconds to ensure all browsers are completely closed
-timeout /t 5 /nobreak >nul
-
-REM Set paths to browser caches
+REM Liste des processus à tuer
+set "PROCESSES=brave.exe msedge.exe opera.exe opera_gx.exe chrome.exe firefox.exe arc.exe vivaldi.exe"
+REM Chemins des caches des navigateurs
 set "BRAVE_CACHE=%LOCALAPPDATA%\BraveSoftware\Brave-Browser\User Data\Default\Cache"
 set "EDGE_CACHE=%LOCALAPPDATA%\Microsoft\Edge\User Data\Default\Cache"
 set "OPERA_ONE_CACHE=%APPDATA%\Opera Software\Opera Stable\Cache"
@@ -25,72 +24,47 @@ set "CHROME_CACHE=%LOCALAPPDATA%\Google\Chrome\User Data\Default\Cache"
 set "FIREFOX_CACHE=%APPDATA%\Mozilla\Firefox\Profiles"
 set "ARC_CACHE=%LOCALAPPDATA%\Arc\User Data\Default\Cache"
 set "VIVALDI_CACHE=%LOCALAPPDATA%\Vivaldi\User Data\Default\Cache"
-
-REM Variable to track if any cache folder was found
-set "CACHE_FOUND=0"
-
-REM Check and delete caches if directories exist, set CACHE_FOUND if any cache is found
-if exist "%BRAVE_CACHE%" (
-    echo Clearing Brave cache...
-    rmdir /s /q "%BRAVE_CACHE%"
-    set "CACHE_FOUND=1"
-)
-
-if exist "%EDGE_CACHE%" (
-    echo Clearing Edge cache...
-    rmdir /s /q "%EDGE_CACHE%"
-    set "CACHE_FOUND=1"
-)
-
-if exist "%OPERA_ONE_CACHE%" (
-    echo Clearing Opera One cache...
-    rmdir /s /q "%OPERA_ONE_CACHE%"
-    set "CACHE_FOUND=1"
-)
-
-if exist "%OPERAGX_CACHE%" (
-    echo Clearing OperaGX cache...
-    rmdir /s /q "%OPERAGX_CACHE%"
-    set "CACHE_FOUND=1"
-)
-
-if exist "%CHROME_CACHE%" (
-    echo Clearing Chrome cache...
-    rmdir /s /q "%CHROME_CACHE%"
-    set "CACHE_FOUND=1"
-)
-
-if exist "%FIREFOX_CACHE%" (
-    echo Clearing Firefox cache...
-    REM Delete cache subfolders in Firefox profiles
-    for /d %%d in ("%FIREFOX_CACHE%\*") do (
-        if exist "%%d\cache2" (
-            echo Clearing cache in Firefox profile %%d...
-            rmdir /s /q "%%d\cache2"
-            set "CACHE_FOUND=1"
-        )
+REM Tuer les processus
+for %%P in (%PROCESSES%) do (
+    taskkill /F /IM %%P >nul 2>&1
+    if !errorlevel! equ 0 (
+        echo Process %%P stopped successfully.
     )
 )
-
-if exist "%ARC_CACHE%" (
-    echo Clearing Arc cache...
-    rmdir /s /q "%ARC_CACHE%"
-    set "CACHE_FOUND=1"
-)
-
-if exist "%VIVALDI_CACHE%" (
-    echo Clearing Vivaldi cache...
-    rmdir /s /q "%VIVALDI_CACHE%"
-    set "CACHE_FOUND=1"
-)
-
-REM Check if any cache was found and cleared
-if "%CACHE_FOUND%"=="0" (
-    echo No cache folders found to delete.
-)
-
+REM Nettoyer les caches
+set "total_size=0"
+call :clean_cache BRAVE_CACHE !BRAVE_CACHE!
+call :clean_cache EDGE_CACHE !EDGE_CACHE!
+call :clean_cache OPERA_ONE_CACHE !OPERA_ONE_CACHE!
+call :clean_cache OPERAGX_CACHE !OPERAGX_CACHE!
+call :clean_cache CHROME_CACHE !CHROME_CACHE!
+call :clean_cache FIREFOX_CACHE !FIREFOX_CACHE!
+call :clean_cache ARC_CACHE !ARC_CACHE!
+call :clean_cache VIVALDI_CACHE !VIVALDI_CACHE!
+REM Convertir la taille totale en Mo avec deux chiffres après la virgule
+set /a total_size_mb=total_size / 1024 / 1024
+set /a total_size_kb=(total_size / 1024) %% 1024
+set /a total_size_bytes=total_size %% 1024
+set "total_size_formatted=!total_size_mb!.!total_size_kb:~0,2!"
+echo.
+echo ============================================
+echo Total deleted files : !total_size_formatted! Mo
+echo ============================================
+echo.
+endlocal
 echo ============================================
 echo. Process completed.
 echo ============================================
 pause
-
+exit /b
+:clean_cache
+set "cache_key=%~1"
+set "cache_path=%~2"
+if exist "!cache_path!" (
+    echo Nettoyage du cache : !cache_path!
+    for /r "!cache_path!" %%F in (*) do (
+        set /a total_size+=%%~zF
+        del /q "%%F"
+    )
+)
+exit /b
