@@ -164,8 +164,7 @@ do {
                 "discord_game_utils-1",
                 "discord_media-1",
                 "discord_spellcheck-1",
-                "discord_krisp-1",
-                "discord_spellcheck-1"
+                "discord_krisp-1"
                 # ... (add other module files)
             )
 
