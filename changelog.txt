@@ -1,3 +1,13 @@
+# Version 6.0.0
+
+- Reworked interface.
+- Tweak a bit MMCS.
+- Tweak a bit Memory optimizations.
+- Add Multilanguage (For now English, French) Maybe other if i've community help.(Only Tabs, Checkboxs, Buttons, Tooltips).
+- Code improvment.
+- Now Device Sleep Mode allows you to Disable and Enable Sleep mode.
+
+
 # Version 5.3.0
 
 - Huge code improvements.
