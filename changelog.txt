@@ -4,6 +4,7 @@
 - Fix tooltip on Duplicate Driver cleaner button.
 *Update Nvidia Drivers 572.70 (05.03.25)
 *Rework Script for Delete Browsers caches.
+*Update Nvidia Drivers 572.75 (09.03.25)
 
 
 # Version 5.2.4
