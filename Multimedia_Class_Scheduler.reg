@@ -1,7 +1,7 @@
 Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\MMCSS]
-"Start"=dword:00000004
+"Start"=dword:00000002
 
 [HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile]
 "NoLazyMode"=dword:00000001
