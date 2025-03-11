@@ -46,7 +46,7 @@ function Cleanup-Devices {
 function Show-Menu {
     Clear-Host
     Write-Host "============================================="
-    Write-Host "|      LexBoosT  Devices Cleanup Script     |" -ForegroundColor Red
+    Write-Host "|      LexBoosT Devices Cleanup Script      |" -ForegroundColor Red
     Write-Host "============================================="
     Write-Host "| 1. Start devices cleanup                  |"
     Write-Host "| 0. Exit                                   |"
