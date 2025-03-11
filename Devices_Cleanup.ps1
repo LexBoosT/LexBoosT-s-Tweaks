@@ -38,15 +38,15 @@ function Cleanup-Devices {
     Write-Host ""
     Write-Host "Cleanup complete! $removedDevices devices removed." -ForegroundColor Blue
     Write-Host ""
-	Start-Sleep -Seconds 3
-	Show-Menu
+    Start-Sleep -Seconds 3
+    Show-Menu
 }
 
 # Menu principal
 function Show-Menu {
     Clear-Host
     Write-Host "============================================="
-    Write-Host "|      LexBoosT  Devices Cleanup Script     |" -ForegroundColor Red
+    Write-Host "|      LexBoosT Devices Cleanup Script      |" -ForegroundColor Red
     Write-Host "============================================="
     Write-Host "| 1. Start devices cleanup                  |"
     Write-Host "| 0. Exit                                   |"
@@ -54,10 +54,11 @@ function Show-Menu {
     $choice = Read-Host "Please enter your choice. (1 to Start or 0 for Quit)"
     switch ($choice) {
         1 { Cleanup-Devices }
-        0 { Write-Host "Thank you for using the device cleanup script. Have a great day!" -ForegroundColor Yellow
-		    Start-Sleep -Seconds 3
-			exit 
-		  }
+        0 {
+            Write-Host "Thank you for using the device cleanup script. Have a great day!" -ForegroundColor Yellow
+            Start-Sleep -Seconds 3
+            exit 
+        }
         default {
             Write-Host "Invalid choice, please try again." -ForegroundColor Red
             Start-Sleep -Seconds 2
@@ -66,7 +67,11 @@ function Show-Menu {
     }
 }
 
-Test-Admin
-# Afficher le menu
-Show-Menu
+# Test si l'exécution est en tant qu'administrateur puis afficher le menu
+if (Test-Admin) {
+    Show-Menu
+} else {
+    Start-Process powershell -ArgumentList "-NoProfile -ExecutionPolicy Bypass -File `"$PSCommandPath`"" -Verb RunAs
+    exit
+}
 
