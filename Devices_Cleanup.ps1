@@ -19,7 +19,7 @@ function Cleanup-Devices {
     Write-Host "============================================="
 
     # Obtenir tous les périphériques PnP qui ne sont pas actuellement présents
-    $devices = Get-PnpDevice -Status "Error" | Where-Object { $_.Present -eq $false }
+    $devices = Get-PnpDevice | Where-Object { $_.Status -ne "OK" }
     $totalDevices = $devices.Count
     $currentDevice = 0
     $removedDevices = 0
@@ -29,7 +29,7 @@ function Cleanup-Devices {
         $currentDevice++
         Write-Host "Removing device: $($device.Name)" -ForegroundColor Blue
         try {
-            Remove-PnpDevice -InstanceId $device.InstanceId -Confirm:$false
+            Remove-PnpDevice -InstanceId $device.InstanceId -Confirm:$false -Force
             $removedDevices++
         } catch {
             Write-Host "Error removing device: $($device.Name)" -ForegroundColor Red
@@ -46,7 +46,7 @@ function Cleanup-Devices {
 function Show-Menu {
     Clear-Host
     Write-Host "============================================="
-    Write-Host "|      LexBoosT Devices Cleanup Script      |" -ForegroundColor Red
+    Write-Host "|      LexBoosT  Devices Cleanup Script     |" -ForegroundColor Red
     Write-Host "============================================="
     Write-Host "| 1. Start devices cleanup                  |"
     Write-Host "| 0. Exit                                   |"
@@ -74,4 +74,5 @@ if (Test-Admin) {
     Start-Process powershell -ArgumentList "-NoProfile -ExecutionPolicy Bypass -File `"$PSCommandPath`"" -Verb RunAs
     exit
 }
+
 
