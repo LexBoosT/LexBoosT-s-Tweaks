@@ -16,7 +16,6 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 "AutoColorDepthReduction_NA"=dword:00000000
 "D3PCLatency"=dword:00000001
 "DesktopStereoShortcuts"=dword:00000000
-"DisableAsyncPstates"=dword:00000000
 "DisableBlockWrite"=dword:00000000
 "DisableDMACopy"=dword:00000000
 "DisableDynamicPstate"=dword:00000001
@@ -35,7 +34,6 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 "EnableMemoryTiling"=dword:00000001
 "EnablePerformanceMode"=dword:00000001
 "EnableSystemMemoryTiling"=dword:00000001
-"EnableTiledDisplay"=dword:00000001
 "EnableVceSwClockGating"=dword:00000001
 "EnableUvdClockGating"=dword:00000001
 "F1TransitionLatency"=dword:00000001
@@ -46,7 +44,7 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 "KMD_FRTEnabled"=dword:00000000
 "LOWLATENCY"=dword:00000001
 "MaxPerfWithPerfMon"=dword:00000000
-"NVDeviceSupportKFilter"=dword:00000000
+"NVDeviceSupportKFilter"=dword:00000001
 "Node3DLowLatency"=dword:00000001
 "PciLatencyTimerControl"=dword:000000020
 "PerfLevelSrc"=dword:000008ae
