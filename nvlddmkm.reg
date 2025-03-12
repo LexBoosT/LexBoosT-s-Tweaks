@@ -12,6 +12,7 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NVDisplay.ContainerLocalSystem\LocalSystem\NvcDispCorePlugin]
 "DisableLoad"=dword:00000001
+"LogLevel"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NVDisplay.ContainerLocalSystem\LocalSystem\NvcDispWatchdog]
 "LogLevel"=dword:00000000
@@ -39,13 +40,18 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 "RMDisablePostL2Compression"=dword:00000001
 "RmDisableRegistryCaching"=dword:00000001
 
+[HKEY_CURRENT_USER\Software\NVIDIA Corporation\Global\NVTweak]
+"Gestalt"=dword:00000002
+
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\nvlddmkm\Global\NVTweak]
 "Gestalt"=dword:00000513
+"DisplayPowerSaving"=dword:00000000
 "HideXGpuTrayIcon"=dword:00000001
 "NvCplAllowStartupDelay"=dword:00000001
 "NvCplAllowWinSatAssessment"=dword:00000000
 "NvCplPhysxAuto"=dword:00000000
 "NvDevToolsVisible"=dword:00000001
+"RmGpsPsEnablePerCpuCoreDpc"dword:00000001
 "RmProfilingAdminOnly"=dword:00000000
 "DisplayPowerSaving"=dword:00000000
 
@@ -54,31 +60,39 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 "0x11e91a61"=dword:ffffffff
 "AllowdGPUPassthrough"=dword:00000000
 "AllowHWGC6"=dword:00000001
+"AllowMaxPerf"=dword:00000001
+"ComputePreemption"=dword:00000000
 "DisableBugcheckCallback"=dword:00000001
+"DisableCudaContextPreemption"=dword:00000001
 "DisableKmRenderBoost"=dword:00000000
 "DisableKmRenderStage"=dword:00000000
 "DisableKmRender"=dword:00000000
+"DisablePreemption"=dword:00000001
 "DisablePreemptionOnS3S4"=dword:00000000
 "DisableWriteCombining"=dword:00000001
 "EnableAsyncMidBufferPreemption"=dword:00000001
 "EnableBugcheckDisplay"=dword:00000000
 "EnableBugcheckTinting"=dword:00000000
-"EnableCEPreemption"=dword:00000001
+"EnableCEPreemption"=dword:00000000
 "EnableDx12OnMsHybrid"=dword:00000001
 "EnableDx12OnOptimus"=dword:00000001
 "EnableIoMmu"=dword:00000000
-"EnableMemoryTiling"=dword:00000001
+"EnableMemoryTiling"=dword:00000000
+"EnableSystemMemoryTiling"=dword:00000000
 "EnableMidBufferPreemptionForHighTdrTimeout"=dword:00000001
-"EnableMidBufferPreemption"=dword:00000001
+"EnableMidBufferPreemption"=dword:00000000
 "EnableMidGfxPreemption"=dword:00000001
 "EnablePageFaultDebugOutput"=dword:00000000
 "EnablePerformanceMode"=dword:00000001
 "EnableSCGMidBufferPreemption"=dword:00000001
 "EnableSparseTexture"=dword:00000001
+"EnableTiledDisplay"=dword:00000000
 "KMD_StackTraceControl"=dword:00000000
 "MoveToBufferBoundaryPreemption"=dword:00000001
 "NVFBCEnable"=dword:00000001
 "PageFaultDebugMode"=dword:00000000
+"PerfAnalyzeMidBufferPreemption"=dword:00000000
+"RmGpsPsEnablePerCpuCoreDpc"=dword:00000001
 "SimulateSecureBoot"=dword:00000000
 "UMDPowerFeatureConfig"=dword:00000001
 "UseDpcForGpuWatchdogCallback"=dword:00000001
@@ -126,6 +140,9 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 "EnableRID73779"=dword:00000001
 "EnableRID73780"=dword:00000001
 "EnableRID74361"=dword:00000001
+
+[HKLM\SYSTEM\CurrentControlSet\Services\nvlddmkm\NVAPI]
+"RmGpsPsEnablePerCpuCoreDpc"=dword:00000001
 
 [HKLM\SOFTWARE\NVIDIA Corporation\NvControlPanel2\Client]
 "OptInOrOutPreference"=dword:00000000
