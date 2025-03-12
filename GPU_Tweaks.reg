@@ -16,6 +16,7 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 "AutoColorDepthReduction_NA"=dword:00000000
 "DisableBlockWrite"=dword:00000000
 "DisableDMACopy"=dword:00000000
+"DisableDynamicPstate"=dword:00000001
 "DisableSAMUPowerGating"=dword:00000001
 "DisableUVDPowerGatingDynamic"=dword:00000001
 "DisableVCEPowerGating"=dword:00000001
@@ -38,3 +39,7 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 "RMLpwrCtrlMsDifrCgParameters"=dword:00000555
 "RmProfilingAdminOnly"=dword:00000000
 "StutterMode"=dword:00000000
+"PerfLevelSrc"=dword:000008ae
+"PowerMizerEnable"=dword:00000000
+"PowerMizerLevel"=dword:00000000
+"PowerMizerLevelAC"=dword:00000000
