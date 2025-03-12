@@ -105,11 +105,9 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 "RMSkipACPIBattCap"=dword:00000001
 "RMSkipHdcp22Init"=dword:00000001
 "RMSlcg"=dword:0003ffff
-"RmDisableACPI"=dword:000001FF
 "RmDisableHdcp22"=dword:00000001
 "RmDisableInforomNvlink"=dword:00000001
 "RmDisableInst2Sys"=dword:00000000
-"RmDisableRegistryCaching"=dword:0000000F
 "RmDwbMscg"=dword:00000001
 "RmElpg"=dword:00000FFF
 "RmFbsrPagedDMA"=dword:00000001
