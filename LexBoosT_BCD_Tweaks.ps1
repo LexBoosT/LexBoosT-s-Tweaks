@@ -56,15 +56,15 @@ function Show-Menu {
 
 # Fonction pour appliquer les tweaks
 function Apply-Tweaks {
-    bcdedit /set tscsyncpolicy Enhanced
+	bcdedit /set tscsyncpolicy Enhanced
 	bcdedit /timeout 0
 	bcdedit /set bootux disabled
 	bcdedit /set bootmenupolicy standard
 	bcdedit /set quietboot yes
 	bcdedit /set allowedinmemorysettings 0x0
 	bcdedit /set vsmlaunchtype Off
-  	bcdedit /deletevalue nx
- 	bcdedit /set vm No
+	bcdedit /deletevalue nx
+	bcdedit /set vm No
 	bcdedit /set x2apicpolicy Enable
 	bcdedit /set uselegacyapicmode No
 	bcdedit /set configaccesspolicy Default
@@ -85,25 +85,25 @@ if ((Get-WmiObject Win32_Processor).Name -like '*Intel*') {
 
 # Fonction pour restaurer les valeurs par défaut
 function Restore-Defaults {
-    bcdedit /deletevalue tscsyncpolicy
-    bcdedit /timeout 3
-    bcdedit /deletevalue bootux
-    bcdedit /set bootmenupolicy standard
-    bcdedit /set hypervisorlaunchtype Auto
+	bcdedit /deletevalue tscsyncpolicy
+	bcdedit /timeout 3
+	bcdedit /deletevalue bootux
+	bcdedit /set bootmenupolicy standard
+	bcdedit /set hypervisorlaunchtype Auto
 	bcdedit /deletevalue tpmbootentropy
 	bcdedit /deletevalue quietboot
 	bcdedit /set nx optin
 	bcdedit /set allowedinmemorysettings 0x17000077
-    bcdedit /set isolatedcontext Yes
-    bcdedit /deletevalue vsmlaunchtype
-    bcdedit /deletevalue vm
-    bcdedit /deletevalue firstmegabytepolicy
-    bcdedit /deletevalue avoidlowmemory
-    bcdedit /deletevalue nolowmem
-    bcdedit /deletevalue configaccesspolicy
-    bcdedit /deletevalue x2apicpolicy
-    bcdedit /deletevalue usephysicaldestination
-    bcdedit /deletevalue usefirmwarepcisettings
+	bcdedit /set isolatedcontext Yes
+	bcdedit /deletevalue vsmlaunchtype
+	bcdedit /deletevalue vm
+	bcdedit /deletevalue firstmegabytepolicy
+	bcdedit /deletevalue avoidlowmemory
+	bcdedit /deletevalue nolowmem
+	bcdedit /deletevalue configaccesspolicy
+	bcdedit /deletevalue x2apicpolicy
+	bcdedit /deletevalue usephysicaldestination
+	bcdedit /deletevalue usefirmwarepcisettings
 
     Write-Host "Default values restored."
     Pause
