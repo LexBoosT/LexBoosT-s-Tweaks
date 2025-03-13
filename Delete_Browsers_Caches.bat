@@ -16,14 +16,14 @@ echo ============================================
 REM Liste des processus à tuer
 set "PROCESSES=brave.exe msedge.exe opera.exe opera_gx.exe chrome.exe firefox.exe arc.exe vivaldi.exe"
 REM Chemins des caches des navigateurs
-set "BRAVE_CACHE=%LOCALAPPDATA%\BraveSoftware\Brave-Browser\User Data\Default\Cache\*"
-set "EDGE_CACHE=%LOCALAPPDATA%\Microsoft\Edge\User Data\Default\Cache\*"
-set "OPERA_ONE_CACHE=%APPDATA%\Opera Software\Opera Stable\Cache\*"
-set "OPERAGX_CACHE=%APPDATA%\Opera Software\Opera GX Stable\Cache\*"
-set "CHROME_CACHE=%LOCALAPPDATA%\Google\Chrome\User Data\Default\Cache\*"
-set "FIREFOX_CACHE=%APPDATA%\Mozilla\Firefox\Profiles\*"
-set "ARC_CACHE=%LOCALAPPDATA%\Arc\User Data\Default\Cache\*"
-set "VIVALDI_CACHE=%LOCALAPPDATA%\Vivaldi\User Data\Default\Cache\*"
+set "BRAVE_CACHE="%LOCALAPPDATA%\BraveSoftware\Brave-Browser\User Data\Default\Cache""
+set "EDGE_CACHE="%LOCALAPPDATA%\Microsoft\Edge\User Data\Default\Cache""
+set "OPERA_ONE_CACHE="%APPDATA%\Opera Software\Opera Stable\Cache""
+set "OPERAGX_CACHE="%APPDATA%\Opera Software\Opera GX Stable\Cache""
+set "CHROME_CACHE="%LOCALAPPDATA%\Google\Chrome\User Data\Default\Cache""
+set "FIREFOX_CACHE="%APPDATA%\Mozilla\Firefox\Profiles""
+set "ARC_CACHE="%LOCALAPPDATA%\Arc\User Data\Default\Cache""
+set "VIVALDI_CACHE="%LOCALAPPDATA%\Vivaldi\User Data\Default\Cache""
 REM Tuer les processus
 for %%P in (%PROCESSES%) do (
 taskkill /F /IM %%P >nul 2>&1
@@ -41,16 +41,6 @@ call :clean_cache CHROME_CACHE !CHROME_CACHE!
 call :clean_cache FIREFOX_CACHE !FIREFOX_CACHE!
 call :clean_cache ARC_CACHE !ARC_CACHE!
 call :clean_cache VIVALDI_CACHE !VIVALDI_CACHE!
-REM Convertir la taille totale en Mo avec deux chiffres après la virgule
-set /a total_size_mb=total_size / 1024 / 1024
-set /a total_size_kb=(total_size / 1024) %% 1024
-set /a total_size_bytes=total_size %% 1024
-set "total_size_formatted=!total_size_mb!.!total_size_kb:~0,2!"
-echo.
-echo ============================================
-echo Total deleted files : !total_size_formatted! Mo
-echo ============================================
-echo.
 endlocal
 echo ============================================
 echo. Process completed.
@@ -58,13 +48,16 @@ echo ============================================
 pause
 exit /b
 :clean_cache
-set "cache_key=%~1"
 set "cache_path=%~2"
 if exist "!cache_path!" (
-echo Nettoyage du cache : !cache_path!
-robocopy "!cache_path!" null /purge /s /e /zb /r:0 /w:0 >nul 2>&1
-if !errorlevel! neq 0 (
-echo Failed to delete files in: !cache_path!
-)
+    echo Clean Cache : "!cache_path!"
+    powershell -Command "Start-Process cmd -ArgumentList '/c takeown /F ""!cache_path!"" /R /A' -Verb RunAs" >nul 2>&1
+    powershell -Command "Start-Process cmd -ArgumentList '/c icacls ""!cache_path!"" /grant *S-1-5-32-544:F /T' -Verb RunAs" >nul 2>&1
+    dir "!cache_path!"
+    for /r "!cache_path!" %%f in (*) do (
+        echo Files size %%f: %%~zf
+        set /a total_size+=%%~zf
+    )
+    rd /s /q "!cache_path!"
 )
 exit /b
