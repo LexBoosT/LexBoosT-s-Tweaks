@@ -62,19 +62,9 @@ set "cache_key=%~1"
 set "cache_path=%~2"
 if exist "!cache_path!" (
 echo Nettoyage du cache : !cache_path!
-for /r "!cache_path!" %%F in (*) do (
-set /a total_size+=%%~zF
-del /q "%%F" >nul 2>&1
+robocopy "!cache_path!" null /purge /s /e /zb /r:0 /w:0 >nul 2>&1
 if !errorlevel! neq 0 (
-echo Failed to delete file: %%F
-)
-)
-REM Supprimer les sous-répertoires vides
-for /d /r "!cache_path!" %%D in (*) do (
-rmdir /s /q "%%D" >nul 2>&1
-if !errorlevel! neq 0 (
-echo Failed to delete directory: %%D
-)
+echo Failed to delete files in: !cache_path!
 )
 )
 exit /b
