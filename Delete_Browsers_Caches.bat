@@ -2,13 +2,13 @@
 setlocal enabledelayedexpansion
 set "___args="%~f0" %*"
 fltmc > nul 2>&1 || (
-	echo Administrator privileges are required.
-	powershell -c "Start-Process -Verb RunAs -FilePath 'cmd' -ArgumentList """/c $env:___args"""" 2> nul || (
-		echo You must run this script as admin.
-		if "%*"=="" pause
-		exit /b 1
-	)
-	exit /b
+echo Administrator privileges are required.
+powershell -c "Start-Process -Verb RunAs -FilePath 'cmd' -ArgumentList """/c $env:___args"""" 2> nul || (
+echo You must run this script as admin.
+if "%*"=="" pause
+exit /b 1
+)
+exit /b
 )
 echo ============================================
 echo. Clearing browser caches
@@ -26,10 +26,10 @@ set "ARC_CACHE=%LOCALAPPDATA%\Arc\User Data\Default\Cache\*"
 set "VIVALDI_CACHE=%LOCALAPPDATA%\Vivaldi\User Data\Default\Cache\*"
 REM Tuer les processus
 for %%P in (%PROCESSES%) do (
-    taskkill /F /IM %%P >nul 2>&1
-    if !errorlevel! equ 0 (
-        echo Process %%P stopped successfully.
-    )
+taskkill /F /IM %%P >nul 2>&1
+if !errorlevel! equ 0 (
+echo Process %%P stopped successfully.
+)
 )
 REM Nettoyer les caches
 set "total_size=0"
@@ -61,10 +61,13 @@ exit /b
 set "cache_key=%~1"
 set "cache_path=%~2"
 if exist "!cache_path!" (
-    echo Nettoyage du cache : !cache_path!
-    for /r "!cache_path!" %%F in (*) do (
-        set /a total_size+=%%~zF
-        del /q "%%F"
-    )
+echo Nettoyage du cache : !cache_path!
+for /r "!cache_path!" %%F in (*) do (
+set /a total_size+=%%~zF
+del /q "%%F" >nul 2>&1
+if !errorlevel! neq 0 (
+echo Failed to delete file: %%F
+)
+)
 )
 exit /b
