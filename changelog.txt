@@ -1,3 +1,26 @@
+# Version 6.1.0
+
+- Soft now use .NET9.
+- Add new Option for Display/Hide all Notifications Icons on Taskbar for Windows 11.
+- Rework Script for delete Browsers caches with KO display of deleted files.
+
+# Version 6.0.3
+
+- Fix Checkbox margin.
+- Rework GPU Tweaks.
+
+# Version 6.0.2
+
+- Fix Recommended Settings.
+
+
+# Version 6.0.1
+
+-Fix typo: eplorer.exe > explorer.exe.
+-Fix altered checkbox.
+-Fix Typo on Gpu tweaks.reg.
+
+
 # Version 6.0.0
 
 - Reworked interface.
