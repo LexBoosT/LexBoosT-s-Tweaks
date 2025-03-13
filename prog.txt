@@ -1,2 +1,2 @@
 6.1.0
-https://drive.usercontent.google.com/download?id=1fctmsPVwHGe5hQGoRAHCCTJePIY9Uhql&revid=0ByNx6thCwZ7YSUl2UWlCNTE5akFJL0QvbE90bHo0RUpWNlU4PQ&export=download&authuser=0&confirm=t&uuid=d532084c-3306-4a93-a8dd-ad44619c54d7&at=AEz70l5GP5psfaye63UwvU_9S9Yi:1741855241577
+https://raw.githubusercontent.com/LexBoosT/LexBoosT-s-Tweaks/refs/heads/master/Prog/LexBoosT_Tweaks_Tool_Plus!-setup.msi
