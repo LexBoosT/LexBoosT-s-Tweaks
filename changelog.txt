@@ -1,3 +1,9 @@
+
+# Version 6.1.1
+
+- From this version you are supposed to receive updates as usual. For the moment manual installation.
+
+
 # Version 6.1.0
 
 - Soft now use .NET9.
