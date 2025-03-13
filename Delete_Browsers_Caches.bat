@@ -16,14 +16,14 @@ echo ============================================
 REM Liste des processus à tuer
 set "PROCESSES=brave.exe msedge.exe opera.exe opera_gx.exe chrome.exe firefox.exe arc.exe vivaldi.exe"
 REM Chemins des caches des navigateurs
-set "BRAVE_CACHE=%LOCALAPPDATA%\BraveSoftware\Brave-Browser\User Data\Default\Cache"
-set "EDGE_CACHE=%LOCALAPPDATA%\Microsoft\Edge\User Data\Default\Cache"
-set "OPERA_ONE_CACHE=%APPDATA%\Opera Software\Opera Stable\Cache"
-set "OPERAGX_CACHE=%APPDATA%\Opera Software\Opera GX Stable\Cache"
-set "CHROME_CACHE=%LOCALAPPDATA%\Google\Chrome\User Data\Default\Cache"
-set "FIREFOX_CACHE=%APPDATA%\Mozilla\Firefox\Profiles"
-set "ARC_CACHE=%LOCALAPPDATA%\Arc\User Data\Default\Cache"
-set "VIVALDI_CACHE=%LOCALAPPDATA%\Vivaldi\User Data\Default\Cache"
+set "BRAVE_CACHE=%LOCALAPPDATA%\BraveSoftware\Brave-Browser\User Data\Default\Cache\*"
+set "EDGE_CACHE=%LOCALAPPDATA%\Microsoft\Edge\User Data\Default\Cache\*"
+set "OPERA_ONE_CACHE=%APPDATA%\Opera Software\Opera Stable\Cache\*"
+set "OPERAGX_CACHE=%APPDATA%\Opera Software\Opera GX Stable\Cache\*"
+set "CHROME_CACHE=%LOCALAPPDATA%\Google\Chrome\User Data\Default\Cache\*"
+set "FIREFOX_CACHE=%APPDATA%\Mozilla\Firefox\Profiles\*"
+set "ARC_CACHE=%LOCALAPPDATA%\Arc\User Data\Default\Cache\*"
+set "VIVALDI_CACHE=%LOCALAPPDATA%\Vivaldi\User Data\Default\Cache\*"
 REM Tuer les processus
 for %%P in (%PROCESSES%) do (
     taskkill /F /IM %%P >nul 2>&1
