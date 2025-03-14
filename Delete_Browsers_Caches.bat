@@ -13,14 +13,13 @@ fltmc > nul 2>&1 || (
 echo ============================================
 echo. Clearing browser caches
 echo ============================================
-set "PROCESSES=brave.exe msedge.exe opera.exe opera_gx.exe chrome.exe firefox.exe arc.exe vivaldi.exe"
+set "PROCESSES=brave.exe msedge.exe opera.exe opera_gx.exe chrome.exe arc.exe vivaldi.exe"
 REM Chemin du cache de Vivaldi
 set "BRAVE_CACHE="%LOCALAPPDATA%\BraveSoftware\Brave-Browser\User Data\Default\Cache""
 set "EDGE_CACHE="%LOCALAPPDATA%\Microsoft\Edge\User Data\Default\Cache""
 set "OPERA_ONE_CACHE="%APPDATA%\Opera Software\Opera Stable\Cache""
 set "OPERAGX_CACHE="%APPDATA%\Opera Software\Opera GX Stable\Cache""
 set "CHROME_CACHE="%LOCALAPPDATA%\Google\Chrome\User Data\Default\Cache""
-set "FIREFOX_CACHE="%APPDATA%\Mozilla\Firefox\Profiles""
 set "ARC_CACHE="%LOCALAPPDATA%\Arc\User Data\Default\Cache""
 set "VIVALDI_CACHE="%LOCALAPPDATA%\Vivaldi\User Data\Default\Cache""
 for %%P in (%PROCESSES%) do (
@@ -42,7 +41,6 @@ call :clean_cache EDGE_CACHE %EDGE_CACHE%
 call :clean_cache OPERA_ONE_CACHE %OPERA_ONE_CACHE%
 call :clean_cache OPERAGX_CACHE %OPERAGX_CACHE%
 call :clean_cache CHROME_CACHE %CHROME_CACHE%
-call :clean_cache FIREFOX_CACHE %FIREFOX_CACHE%
 call :clean_cache ARC_CACHE %ARC_CACHE%
 call :clean_cache VIVALDI_CACHE %VIVALDI_CACHE%
 
