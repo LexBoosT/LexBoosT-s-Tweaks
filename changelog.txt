@@ -2,7 +2,7 @@
 # Version 6.1.1
 
 - From this version you are supposed to receive updates as usual. For the moment manual installation.
-
+* Fix script for Firefox Clean Caches.
 
 # Version 6.1.0
 
