@@ -17,6 +17,7 @@ echo.
 echo ================================================================
 echo. Thanks for the tests done by "Jeffix" for the Firefox browser
 echo ================================================================
+echo.
 set "PROCESSES=brave.exe msedge.exe opera.exe opera_gx.exe chrome.exe arc.exe vivaldi.exe firefox.exe"
 set "BRAVE_CACHE="%LOCALAPPDATA%\BraveSoftware\Brave-Browser\User Data\Default\Cache""
 set "EDGE_CACHE="%LOCALAPPDATA%\Microsoft\Edge\User Data\Default\Cache""
