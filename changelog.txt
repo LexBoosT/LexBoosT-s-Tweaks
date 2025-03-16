@@ -1,3 +1,8 @@
+# Version 6.2.0
+
+- Added Mega Dan Pollock Host file option.
+- Create a new style for Tooltip for better visibility.
+
 
 # Version 6.1.1
 
