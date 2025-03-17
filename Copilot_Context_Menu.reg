@@ -6,4 +6,5 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 "Icon"="%AppData%\\LexBoosT_Tweaks_Tool_Plus\\settings\\copilot.ico"
 
 [HKEY_CLASSES_ROOT\DesktopBackground\shell\Copilot\Command]
-@="explorer.exe shell:AppsFolder\Microsoft.Copilot_8wekyb3d8bbwe!App"
+[HKEY_CLASSES_ROOT\DesktopBackground\shell\Copilot\Command]
+@="powershell -NoProfile -Command \"& {Get-ChildItem 'C:\\Program Files\\WindowsApps\\Microsoft.Copilot_*\\CopilotNative.exe' -Recurse | Select-Object -ExpandProperty FullName | Invoke-Item}\""
