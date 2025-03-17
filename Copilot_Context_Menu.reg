@@ -3,6 +3,7 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 [HKEY_CLASSES_ROOT\DesktopBackground\shell\Copilot]
 "MUIVerb"="Copilot"
 "Position"="Bottom"
+"Icon"="%AppData%\\LexBoosT_Tweaks_Tool_Plus\\settings\\copilot.ico"
 
 [HKEY_CLASSES_ROOT\DesktopBackground\shell\Copilot\Command]
 @="explorer.exe shell:AppsFolder\\Microsoft.Copilot_8wekyb3d8bbwe!App"
