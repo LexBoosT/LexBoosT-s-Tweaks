@@ -2,6 +2,7 @@
 
 - Added Mega Dan Pollock Host file option.
 - Create a new style for Tooltip for better visibility.
+*Added EnableGpuFirmware = 1 for GPU Tweaks. ~ 3% Dpc Latency Gain (Credits Jensen)
 
 
 # Version 6.1.1
