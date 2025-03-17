@@ -65,7 +65,6 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 "EnableCEPreemption"=dword:00000000
 "EnableCoreSlowdown"=dword:00000000
 "EnableDirectFlip"=dword:00000001
-"EnableGpuFirmware"=dword:00000001
 "EnableIndependentFlip"=dword:00000001
 "EnableMidBufferPreemption"=dword:00000000
 "EnableMidBufferPreemptionForHighTdrTimeout"=dword:00000000
