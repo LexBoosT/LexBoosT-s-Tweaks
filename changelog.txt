@@ -1,3 +1,9 @@
+# Version 6.3.0
+
+- EnableGpuFirmware is now a simple option.
+- Added Diagnostic and Configuration Tools.
+
+
 # Version 6.2.0
 
 - Added Mega Dan Pollock Host file option.
