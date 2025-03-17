@@ -7,4 +7,4 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 
 [HKEY_CLASSES_ROOT\DesktopBackground\shell\Copilot\Command]
 [HKEY_CLASSES_ROOT\DesktopBackground\shell\Copilot\Command]
-@="powershell -NoProfile -Command \"& {Get-ChildItem 'C:\\Program Files\\WindowsApps\\Microsoft.Copilot_*\\CopilotNative.exe' -Recurse | Select-Object -ExpandProperty FullName | Invoke-Item}\""
+@="powershell -NoProfile -ExecutionPolicy Bypass -File \"%AppData%\\LexBoosT_Tweaks_Tool_Plus\\scripts\\LaunchCopilot.ps1\""
