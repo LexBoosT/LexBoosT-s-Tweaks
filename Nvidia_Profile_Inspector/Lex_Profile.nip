@@ -199,7 +199,7 @@
       <ProfileSetting>
         <SettingNameInfo>FRL Low Latency</SettingNameInfo>
         <SettingID>277041152</SettingID>
-        <SettingValue>0</SettingValue>
+        <SettingValue>1</SettingValue>
         <ValueType>Dword</ValueType>
       </ProfileSetting>
       <ProfileSetting>
@@ -211,13 +211,13 @@
       <ProfileSetting>
         <SettingNameInfo>Toggle the VRR global feature</SettingNameInfo>
         <SettingID>278196567</SettingID>
-        <SettingValue>0</SettingValue>
+        <SettingValue>1</SettingValue>
         <ValueType>Dword</ValueType>
       </ProfileSetting>
       <ProfileSetting>
         <SettingNameInfo>VRR requested state</SettingNameInfo>
         <SettingID>278196727</SettingID>
-        <SettingValue>0</SettingValue>
+        <SettingValue>2</SettingValue>
         <ValueType>Dword</ValueType>
       </ProfileSetting>
       <ProfileSetting>
@@ -283,7 +283,7 @@
       <ProfileSetting>
         <SettingNameInfo>Enable G-SYNC globally</SettingNameInfo>
         <SettingID>294973784</SettingID>
-        <SettingValue>0</SettingValue>
+        <SettingValue>2</SettingValue>
         <ValueType>Dword</ValueType>
       </ProfileSetting>
       <ProfileSetting>
