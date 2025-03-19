@@ -2,6 +2,7 @@
 
 - EnableGpuFirmware is now a simple option.
 - Added Diagnostic and Configuration Tools.
+*Update Nvidia Drivers 572.83 (19.03.25)
 
 
 # Version 6.2.0
