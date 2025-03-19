@@ -1,3 +1,9 @@
+# Version 6.4.0
+
+- Add the screens support to more than 160hrz when you activate GPU adjustments.
+- Replace LexBoosT Boot to Bios Option by LexBoosT Toolbox.
+
+
 # Version 6.3.0
 
 - EnableGpuFirmware is now a simple option.
