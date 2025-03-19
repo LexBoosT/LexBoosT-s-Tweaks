@@ -6,7 +6,6 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 "ACGSupported"=dword:00000000
 "Acceleration.Level"=dword:00000000
 "Adaptive De-interlacing"=dword:00000001
-"AdaptiveVsyncEnable"=dword:00000000
 "AllowDeepCStates"=dword:00000000
 "AllowRSOverlay"="false"
 "AllowSkins"="false"
@@ -104,9 +103,6 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 "PP_GPUPowerDownEnabled"=dword:00000001
 "PP_SclkDeepSleepDisable"=dword:00000001
 "PP_ThermalAutoThrottlingEnable"=dword:00000000
-"PowerMizerEnable"=dword:00000000
-"PowerMizerLevel"=dword:00000000
-"PowerMizerLevelAC"=dword:00000000
 "PowerSavingTweaks"=dword:00000000
 "PreferSystemMemoryContiguous"=dword:00000001
 "PrimaryPushBufferSize"=dword:00000001
