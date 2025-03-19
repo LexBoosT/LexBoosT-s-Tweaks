@@ -75,7 +75,6 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 "EnableRuntimePowerManagement"=dword:00000000
 "EnableSCGMidBufferPreemption"=dword:00000000
 "EnableSystemMemoryTiling"=dword:00000000
-"EnableTiledDisplay"=dword:00000000
 "EnableUlps"=dword:00000000
 "EnableUlps_NA"="0"
 "EnableUvdClockGating"=dword:00000001
