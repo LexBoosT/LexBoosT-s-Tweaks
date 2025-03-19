@@ -93,7 +93,6 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 "KMD_FRTEnabled"=dword:00000000
 "KMD_PreemptionLevelLimit"=dword:00000000
 "LOWLATENCY"=dword:00000001
-"NoFastLinkTrainingForeDP"=dword:00000000
 "Node3DLowLatency"=dword:00000001
 "NVDeviceSupportKFilter"=dword:00000001
 "PciLatencyTimerControl"=dword:00000020
