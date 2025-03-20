@@ -3,6 +3,7 @@
 - Fix Cache processors calculation.
 - Add Chinese language. (Credits FengXi)
 
+
 # Version 6.4.0
 
 - Add the screens support to more than 160hrz when you activate GPU adjustments.
