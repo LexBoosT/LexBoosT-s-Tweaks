@@ -1,3 +1,10 @@
+# Version 6.5.0
+
+- Adding a checkbox to deactivate the update message for new Nvidia drivers available.
+- The choice of language in the menu is now saved to restarting the application.
+- The Nvidia drivers are now saved in a speciphic folder and sorted by version number.
+
+
 # Version 6.4.1
 
 - Fix Cache processors calculation.
