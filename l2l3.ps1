@@ -10,6 +10,7 @@ function Check-Admin {
     $currentUser = [Security.Principal.WindowsIdentity]::GetCurrent()
     $principal = New-Object Security.Principal.WindowsPrincipal($currentUser)
     if (-not $principal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
+        Write-Warning "This script requires administrative privileges. Restarting with elevated privileges..."
         Start-Process powershell -Verb runAs -ArgumentList "-NoProfile -ExecutionPolicy Bypass -File `"$PSCommandPath`""
         exit
     }
@@ -21,28 +22,34 @@ Check-Admin
 $Processor = Get-WmiObject -Class Win32_Processor
 
 # Get cache sizes in KB
-$L2Cache = $Processor.L2CacheSize
-$L3Cache = $Processor.L3CacheSize
+$L2Cache = ($Processor | Measure-Object -Property L2CacheSize -Maximum).Maximum
+$L3Cache = ($Processor | Measure-Object -Property L3CacheSize -Maximum).Maximum
 
-# Check if cache sizes are in MB and convert to KB if necessary
-if ($L2Cache -lt 1024) {
-    $L2Cache = $L2Cache * 1024
+if ($L2Cache -lt 256 -or $L2Cache -gt 32768) {
+    Write-Warning "Invalid L2 Cache Size: $L2Cache KB. The size must be between 256 KB and 32768 KB. Skipping registry update."
+    exit
 }
 if ($L3Cache -lt 1024) {
-    $L3Cache = $L3Cache * 1024
+    Write-Warning "Invalid L3 Cache Size: $L3Cache KB. The size must be at least 1024 KB. Skipping registry update."
+    exit
 }
 
 # Set registry keys
 $Path = "HKLM:\System\CurrentControlSet\Control\Session Manager\Memory Management"
-if ((Get-ItemProperty -Path $Path).PSObject.Properties.Name -contains "SecondLevelDataCache") {
+$SecondLevelCache = Get-ItemProperty -Path $Path -Name "SecondLevelDataCache" -ErrorAction SilentlyContinue
+$ThirdLevelCache = Get-ItemProperty -Path $Path -Name "ThirdLevelDataCache" -ErrorAction SilentlyContinue
+
+if ($SecondLevelCache -and $SecondLevelCache.SecondLevelDataCache -ne $L2Cache) {
     Remove-ItemProperty -Path $Path -Name "SecondLevelDataCache"
 }
-New-ItemProperty -Path $Path -Name "SecondLevelDataCache" -Value $L2Cache -PropertyType DWORD
+New-ItemProperty -Path $Path -Name "SecondLevelDataCache" -Value $L2Cache -PropertyType DWORD -Force
 
-if ((Get-ItemProperty -Path $Path).PSObject.Properties.Name -contains "ThirdLevelDataCache") {
+if ($ThirdLevelCache -and $ThirdLevelCache.ThirdLevelDataCache -ne $L3Cache) {
     Remove-ItemProperty -Path $Path -Name "ThirdLevelDataCache"
 }
-New-ItemProperty -Path $Path -Name "ThirdLevelDataCache" -Value $L3Cache -PropertyType DWORD
+New-ItemProperty -Path $Path -Name "ThirdLevelDataCache" -Value $L3Cache -PropertyType DWORD -Force
+
+Write-Host "L2 and L3 cache sizes have been updated successfully."
 
 
 
