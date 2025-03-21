@@ -16,4 +16,4 @@ function Check-Admin {
 }
 Check-Admin
 
-winget.exe install --id "Google.PlayGames.Beta" --exact --source winget --accept-source-agreements --version "129.0.6651.0" --silent --disable-interactivity --accept-package-agreements --force
+winget.exe install --id "Google.PlayGames.Beta" --exact --source winget --version "129.0.6651.0" --silent  --accept-package-agreements --accept-source-agreements --force
