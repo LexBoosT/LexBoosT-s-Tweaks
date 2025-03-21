@@ -4,6 +4,9 @@
 - The choice of language in the menu is now saved to restarting the application.
 - The Nvidia drivers are now saved in a speciphic folder and sorted by version number.
 *Rework Drivers Clean Duplicates. (21.03.25)
+*Rework LexBoosT BCD Tweaks Script. (21.03.25)
+*Rework LexBoosT Network Mega Tweaks Script. (21.03.25)
+*Rework LexBoosT Lex Compactor Script. (21.03.25)
 
 
 # Version 6.4.1
