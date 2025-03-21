@@ -1,3 +1,9 @@
+# Version 6.5.1
+
+- Fix Nvidia Drivers Download.
+- Fix Typo in language files.
+
+
 # Version 6.5.0
 
 - Adding a checkbox to deactivate the update message for new Nvidia drivers available.
