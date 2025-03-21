@@ -32,7 +32,7 @@ while ($true) {
 
 	switch ($choice) {
 		'1' { choco install razer-synapse-2 -y --no-progress --force }
-		'2' { winget install -e --id "RazerInc.RazerInstaller" --accept-package-agreements --accept-source-agreements --disable-interactivity --force -h }
+		'2' { winget install -e --id "RazerInc.RazerInstaller" --accept-package-agreements --accept-source-agreements --force }
 		'0' { exit }
 		default { Write-Host "Invalid choice. Please try again." }
 	}
