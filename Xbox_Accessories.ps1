@@ -16,4 +16,4 @@ function Check-Admin {
 }
 Check-Admin
 
-winget install -e --id "9NBLGGH30XJ3" --accept-package-agreements --accept-source-agreements --disable-interactivity --force -h
+winget install -e --id "9NBLGGH30XJ3" --accept-package-agreements --accept-source-agreements --force
