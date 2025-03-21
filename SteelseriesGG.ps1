@@ -24,4 +24,4 @@ if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
     Add-AppxPackage -Path "$env:TEMP\Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle"
 }
 
-winget install -e --id "SteelSeries.GG" --accept-package-agreements --accept-source-agreements --disable-interactivity --force -h
+winget install -e --id "SteelSeries.GG" --accept-package-agreements --accept-source-agreements --force
