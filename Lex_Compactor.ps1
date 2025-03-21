@@ -11,7 +11,7 @@ Clear-Host
 
 # Configuration du menu
 $global:MenuConfig = @{
-    Width       = 70
+    Width       = 70  # Largeur du menu
     LineChar    = '='
     SideBorder  = '|'
     CornerTL    = '+'
@@ -77,7 +77,11 @@ function Show-Compression-Menu {
     # Menu Items
     $menuItems = @(
         @{Text="1. Compress specific folders"; Color="Blue"; Enabled=$true},
-        @{Text="    (C:\Windows\winsxs, C:\Windows\System32\DriverStore, C:\Program Files\WindowsApps, C:\Windows\InfusedApps, C:\Windows\installer)"; Color="Gray"; Enabled=$true},
+        @{Text="    - C:\Windows\winsxs"; Color="Gray"; Enabled=$true},
+        @{Text="    - C:\Windows\System32\DriverStore"; Color="Gray"; Enabled=$true},
+        @{Text="    - C:\Program Files\WindowsApps"; Color="Gray"; Enabled=$true},
+        @{Text="    - C:\Windows\InfusedApps"; Color="Gray"; Enabled=$true},
+        @{Text="    - C:\Windows\installer"; Color="Gray"; Enabled=$true},
         @{Text="2. Compress a custom folder"; Color="Magenta"; Enabled=$true},
         @{Text="0. Back"; Color="Red"; Enabled=$true}
     )
@@ -116,7 +120,11 @@ function Show-Decompression-Menu {
     # Menu Items
     $menuItems = @(
         @{Text="1. Decompress specific folders"; Color="Blue"; Enabled=$true},
-        @{Text="    (C:\Windows\winsxs, C:\Windows\System32\DriverStore, C:\Program Files\WindowsApps, C:\Windows\InfusedApps, C:\Windows\installer)"; Color="Gray"; Enabled=$true},
+        @{Text="    - C:\Windows\winsxs"; Color="Gray"; Enabled=$true},
+        @{Text="    - C:\Windows\System32\DriverStore"; Color="Gray"; Enabled=$true},
+        @{Text="    - C:\Program Files\WindowsApps"; Color="Gray"; Enabled=$true},
+        @{Text="    - C:\Windows\InfusedApps"; Color="Gray"; Enabled=$true},
+        @{Text="    - C:\Windows\installer"; Color="Gray"; Enabled=$true},
         @{Text="2. Decompress a custom folder"; Color="Magenta"; Enabled=$true},
         @{Text="0. Back"; Color="Red"; Enabled=$true}
     )
