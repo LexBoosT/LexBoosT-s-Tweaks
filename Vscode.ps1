@@ -16,5 +16,5 @@ function Check-Admin {
 }
 Check-Admin
 
-winget install -e --id "Microsoft.VisualStudioCode" --accept-package-agreements --accept-source-agreements --force -h
+winget install -e --id "Microsoft.VisualStudioCode" --accept-package-agreements --accept-source-agreements --force
 Start-Process -FilePath "$env:LOCALAPPDATA\Packages\Microsoft.DesktopAppInstaller_8wekyb3d8bbwe\LocalCache\Local\Microsoft\WinGet"
