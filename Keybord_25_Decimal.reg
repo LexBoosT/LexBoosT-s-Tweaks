@@ -2,11 +2,6 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\services\kbdclass\Parameters]
 "KeyboardDataQueueSize"=dword:00000032
-"ConnectMultiplePorts"=dword:00000000
-"KeyboardDeviceBaseName"="KeyboardClass"
-"MaximumPortsServiced"=dword:00000003
-"SendOutputToAllPorts"=dword:00000001
-"WppRecorder_TraceGuid"="{09281f1f-f66e-485a-99a2-91638f782c49}"
 
 [HKEY_CURRENT_USER\Control Panel\Keyboard]
 "KeyboardDelay"="0"
