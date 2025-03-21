@@ -6,8 +6,8 @@ Robust driver maintenance tool with ASCII-compatible interface
 #>
 
 #region Initialization
-$EnableLogs = (Read-Host "Do you want to enable logging on Desktop? (Y/N)") -eq 'Y'
-$EnableBackup = (Read-Host "Do you want to enable Drivers backup on Desktop? (Y/N)") -eq 'Y'
+$EnableLogs = (Read-Host "Do you want to create a folder with Logs files at the program root? (Y/N)") -eq 'Y'
+$EnableBackup = (Read-Host "Do you want to create a folder with Drivers backup at the program root? (Y/N)") -eq 'Y'
 
 $LogPath = if ($EnableLogs) { "$PSScriptRoot\Logs" } else { $null }
 $BackupPath = if ($EnableBackup) { "$PSScriptRoot\Backup" } else { $null }
