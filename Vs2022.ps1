@@ -16,4 +16,4 @@ function Check-Admin {
 }
 Check-Admin
 
-winget install -e --id "Microsoft.VisualStudio.2022.Community" --accept-package-agreements --accept-source-agreements --force -h
+winget install -e --id "Microsoft.VisualStudio.2022.Community" --accept-package-agreements --accept-source-agreements --force
