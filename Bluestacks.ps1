@@ -16,4 +16,4 @@ function Check-Admin {
 }
 Check-Admin
 
-winget install -e --id "BlueStack.BlueStacks" --accept-package-agreements --accept-source-agreements --disable-interactivity --force -h
+winget install -e --id "BlueStack.BlueStacks" --accept-package-agreements --accept-source-agreements --force -h
