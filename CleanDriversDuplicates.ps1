@@ -5,6 +5,16 @@ LexBoosT Drivers Cleaner - Stable Final Version
 Robust driver maintenance tool with ASCII-compatible interface
 #>
 
+function Test-Admin {
+    $currentUser = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())
+    return $currentUser.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
+}
+
+if (-not (Test-Admin)) {
+    Start-Process powershell -ArgumentList "-NoProfile -ExecutionPolicy Bypass -File `"$PSCommandPath`"" -Verb RunAs
+    exit
+}
+
 #region Initialization
 $EnableLogs = (Read-Host "Do you want to create a folder with Logs files at the program root? (Y/N)") -eq 'Y'
 $EnableBackup = (Read-Host "Do you want to create a folder with Drivers backup at the program root? (Y/N)") -eq 'Y'
@@ -297,3 +307,10 @@ try {
     Read-Host "`n[EXIT] Press Enter to close..."
 }
 #endregion
+
+if (Test-Admin) {
+    Show-Menu
+} else {
+    Start-Process powershell -ArgumentList "-NoProfile -ExecutionPolicy Bypass -File `"$PSCommandPath`"" -Verb RunAs
+    exit
+}
