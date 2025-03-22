@@ -1,3 +1,12 @@
+# Version 6.6.0
+
+- Polishing of the user interface for better visibility.
+- Fix compatibility on various systems.
+- Removing the checkbox to remove the alert for available drivers and complete deletion of the alert.
+- Adding the PDFGEAR program.
+- Fix Style on Lively Wallpaper button.
+
+
 # Version 6.5.1
 
 - Fix Nvidia Drivers Download.
