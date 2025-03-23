@@ -1,3 +1,10 @@
+# Version 6.7.0
+
+- Fix Language system.
+- The program restarts correctly after acting/deactivation.
+- Adjustments and code cleaning.
+
+
 # Version 6.6.0
 
 - Polishing of the user interface for better visibility.
