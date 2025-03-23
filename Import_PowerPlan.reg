@@ -1,7 +1,7 @@
 Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 
 [HKEY_CLASSES_ROOT\.pow]
-@="Power Plan"
+@="PowerPlan"
 "FriendlyTypeName"="Power Plan"
 
 [HKEY_CLASSES_ROOT\.pow\DefaultIcon]
@@ -10,10 +10,9 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
   77,00,65,00,72,00,63,00,66,00,67,00,2e,00,63,00,70,00,6c,00,2c,00,2d,00,32,\
   00,30,00,32,00,00,00
 
-[HKEY_CLASSES_ROOT\.pow\shell]
-
-[HKEY_CLASSES_ROOT\.pow\shell\Import Power Plan]
+[HKEY_CLASSES_ROOT\.pow\shell\ImportPowerPlan]
+@="Import Power Plan"
 "Icon"="powercpl.dll"
 
-[HKEY_CLASSES_ROOT\.pow\shell\Import Power Plan\command]
+[HKEY_CLASSES_ROOT\.pow\shell\ImportPowerPlan\command]
 @="powercfg /import \"%1\""
