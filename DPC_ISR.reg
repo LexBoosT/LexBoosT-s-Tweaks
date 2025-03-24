@@ -67,15 +67,11 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 "InternalDiagnosticsBufferSize"=dword:00010000
 "InvestigationDebugParameter"=dword:00000000
 "MaximumAdapterCount"=dword:00000004
-"MonitorLatencyTolerance"=dword:000003E8
-"MonitorRefreshLatencyTolerance"=dword:000003E8
 "NeedToSuspendVidSchBeforeSetGammaRamp"=dword:00000000
 "PreserveFirmwareMode"=dword:00000000
 "PreventFullscreenWireFormatChange"=dword:00000000
 "RapidHpdMaxChainInMilliseconds"=dword:00001388
 "RapidHpdTimeoutInMilliseconds"=dword:00000064
-"RMDisablePostL2Compression"=dword:00000001
-"RmDisableRegistryCaching"=dword:00000001
 "SupportMultipleIntegratedDisplays"=dword:00000000
 "SuspendAdapterTimerPeriod"=dword:0007A120
 "TerminationListSizeLimit"=dword:04000000
@@ -92,6 +88,12 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 "LongLinkTrainingTimeout"=dword:000001F4
 "HPDFilterLimit"=dword:000F4240
 "EnableVirtualRefreshRateOnExternalMonitor"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\GraphicsDrivers\Smm]
+"EnablePageTracking"=dword:00000000
+"LogicalAddressMode"=dword:00000000
+"PreferHighLogicalAddresses"=dword:00000000
+"DebugMode"=dword:00000000
 
 [HKLM\SYSTEM\CurrentControlSet\Control\GraphicsDrivers\Power]
 "DefaultD3TransitionLatencyActivelyUsed"=dword:00000001
