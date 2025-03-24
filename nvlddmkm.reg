@@ -27,6 +27,10 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 "LogLevel"=dword:00000000
 
 [HKLM\SYSTEM\CurrentControlSet\Control\GraphicsDrivers]
+"EnablePageTracking"=dword:00000000
+"LogicalAddressMode"=dword:00000000
+"PreferHighLogicalAddresses"=dword:00000000
+"DebugMode"=dword:00000000
 "TdrLevel"=dword:00000000
 "TdrDelay"=dword:00000000
 "TdrDdiDelay"=dword:00000000
