@@ -126,7 +126,6 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 [HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\kernel]
 "DisableAutoBoost"=dword:00000000
 "DisableExceptionChainValidation"=dword:00000001
-"DisableLowQosTimerResolution"=dword:00000001
 "DpcWatchdogProfileOffset"=dword:00000000
 "DpcTimeout"=dword:00000000
 "IdealDpcRate"=dword:00000001
@@ -144,8 +143,4 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 "MinimumDpcRate"=dword:00000001
 "DpcWatchdogPeriod"=dword:00000000
 "UnlimitDpcQueue"=dword:00000001
-"SerializeTimerExpiration"=dword:00000002
-"SchedulerAssistThreadFlagOverride"=dword:00000002
 "ThreadDpcEnable"=dword:00000001
-"TimerCheckFlags"=dword:00000000
-"VpThreadSystemWorkPriority"=dword:00000008
