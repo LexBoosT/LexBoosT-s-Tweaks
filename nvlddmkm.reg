@@ -35,8 +35,8 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 "TdrLimitTime"=dword:00000000
 "TdrTestMode"=dword:00000000
 "RmGpsPsEnablePerCpuCoreDpc"=dword:00000001
-"MonitorLatencyTolerance"=dword:00000000
-"MonitorRefreshLatencyTolerance"=dword:00000000
+"MonitorLatencyTolerance"=dword:000003E8
+"MonitorRefreshLatencyTolerance"=dword:000003E8
 "RMDisablePostL2Compression"=dword:00000001
 "RmDisableRegistryCaching"=dword:00000001
 
