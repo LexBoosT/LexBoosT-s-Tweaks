@@ -54,8 +54,10 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 "EnableFuzzing"=dword:00000000
 "EnableHMDTestMode"=dword:00000000
 "EnableIgnoreWin32ProcessStatus"=dword:00000000
+"EnableVirtualTopologySupport"=dword:00000000
 "ExternalDiagnosticsBufferMultiplier"=dword:00000002
 "ExternalDiagnosticsBufferSize"=dword:00010000
+"ForceEnableDWMClone"=dword:00000000
 "ForcePreserveBootDisplay"=dword:00000000
 "ForceUsb4MonitorSupport"=dword:00000000
 "HwSchMode"=dword:00000002
@@ -67,6 +69,7 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 "MaximumAdapterCount"=dword:00000004
 "MonitorLatencyTolerance"=dword:000003E8
 "MonitorRefreshLatencyTolerance"=dword:000003E8
+"NeedToSuspendVidSchBeforeSetGammaRamp"=dword:00000000
 "PreserveFirmwareMode"=dword:00000000
 "PreventFullscreenWireFormatChange"=dword:00000000
 "RapidHpdMaxChainInMilliseconds"=dword:00001388
