@@ -40,15 +40,15 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 "MaximumThrottlePercent"=dword:00000000
 "MinimumThrottlePercent"=dword:00000000
 "MiracastPerfTrackGraphicsLatency"=dword:00000001
-"MonitorLatencyTolerance"=dword:00000001
-"MonitorRefreshLatencyTolerance"=dword:00000001
+"MonitorLatencyTolerance"=dword:000003E8
+"MonitorRefreshLatencyTolerance"=dword:000003E8
 "QosManagesIdleProcessors"=dword:00000000
 "RtlCapabilityCheckLatency"=dword:00000001
 "TransitionLatency"=dword:00000001
 
 [HKLM\SYSTEM\CurrentControlSet\Control\GraphicsDrivers]
-"MonitorLatencyTolerance"=dword:00000000
-"MonitorRefreshLatencyTolerance"=dword:00000000
+"MonitorLatencyTolerance"=dword:000003E8
+"MonitorRefreshLatencyTolerance"=dword:000003E8
 "RMDisablePostL2Compression"=dword:00000001
 "RmDisableRegistryCaching"=dword:00000001
 
@@ -71,11 +71,13 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 "DefaultMemoryRefreshLatencyToleranceActivelyUsed"=dword:00000001
 "DefaultMemoryRefreshLatencyToleranceMonitorOff"=dword:00000001
 "DefaultMemoryRefreshLatencyToleranceNoContext"=dword:00000001
+"DisableDevicePowerRequired"=dword:00000001
+"EnableRuntimePowerManagement"=dword:00000000
 "Latency"=dword:00000001
 "MaxIAverageGraphicsLatencyInOneBucket"=dword:00000001
 "MiracastPerfTrackGraphicsLatency"=dword:00000001
-"MonitorLatencyTolerance"=dword:00000000
-"MonitorRefreshLatencyTolerance"=dword:00000000
+"MonitorLatencyTolerance"=dword:000003E8
+"MonitorRefreshLatencyTolerance"=dword:000003E8
 "TransitionLatency"=dword:00000000
 
 [HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\kernel]
