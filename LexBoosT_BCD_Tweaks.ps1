@@ -97,7 +97,7 @@ function Apply-Tweaks {
     bcdedit /set tscsyncpolicy Enhanced
     bcdedit /timeout 0
     bcdedit /set bootux disabled
-    bcdedit /set bootmenupolicy standard
+    bcdedit /set bootmenupolicy Legacy
     bcdedit /set quietboot yes
     bcdedit /set allowedinmemorysettings 0x0
     bcdedit /set vsmlaunchtype Off
@@ -108,6 +108,7 @@ function Apply-Tweaks {
     bcdedit /set configaccesspolicy Default
     bcdedit /set usephysicaldestination No
     bcdedit /set usefirmwarepcisettings No
+    bcdedit /set lastknowngood yes
     if ((Get-WmiObject Win32_Processor).Name -like '*Intel*') {
         bcdedit /set nx optout
     } else {
