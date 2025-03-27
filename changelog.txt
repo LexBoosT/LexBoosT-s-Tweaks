@@ -1,3 +1,23 @@
+# Version 7.0.0
+
+- Reworked interface.
+- Complete software translation in the 3 languages.
+- Deletion of click sound.
+- New style for the reboot window.
+- Adding Java (Runtimes Tab).
+- Adding Zen Browser.
+- Adding Tor Browser.
+- Adding OBS Studio.
+- Adding StreamLabs.
+- Adding Spotify.
+- Adding GPU-Z.
+- Adding CPU-Z
+- Adding Netflix.
+- Adding Prime Video.
+- Adding WinSCP.
+- Adding RedM (Games Launchers Tab).
+- Update LexBoosT OS to V1.3, fix of several scripts and integration of Lexboost Tweaks Tools Plus!. (Rewriting complete from scratch soon.)
+
 # Version 6.7.0
 
 - Fix Language system.
