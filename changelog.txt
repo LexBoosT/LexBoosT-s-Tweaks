@@ -18,6 +18,7 @@
 - Adding RedM (Games Launchers Tab).
 - Update LexBoosT OS to V1.3, fix of several scripts and integration of Lexboost Tweaks Tools Plus!. (Rewriting complete from scratch soon.)
 
+
 # Version 6.7.0
 
 - Fix Language system.
