@@ -63,7 +63,6 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 "0x112493bd"=dword:00000000
 "0x11e91a61"=dword:ffffffff
 "AllowdGPUPassthrough"=dword:00000000
-"AllowHWGC6"=dword:00000001
 "AllowMaxPerf"=dword:00000001
 "ComputePreemption"=dword:00000000
 "DisableBugcheckCallback"=dword:00000001
@@ -71,8 +70,6 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 "DisableKmRenderBoost"=dword:00000000
 "DisableKmRenderStage"=dword:00000000
 "DisableKmRender"=dword:00000000
-"DisablePreemption"=dword:00000001
-"DisablePreemptionOnS3S4"=dword:00000000
 "DisableWriteCombining"=dword:00000001
 "EnableAsyncMidBufferPreemption"=dword:00000001
 "EnableBugcheckDisplay"=dword:00000000
@@ -87,7 +84,6 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 "EnableMidBufferPreemption"=dword:00000000
 "EnableMidGfxPreemption"=dword:00000001
 "EnablePageFaultDebugOutput"=dword:00000000
-"EnablePerformanceMode"=dword:00000001
 "EnableSCGMidBufferPreemption"=dword:00000001
 "EnableSparseTexture"=dword:00000001
 "EnableTiledDisplay"=dword:00000000
