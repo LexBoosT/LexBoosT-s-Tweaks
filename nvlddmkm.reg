@@ -64,7 +64,6 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 "0x11e91a61"=dword:ffffffff
 "AllowdGPUPassthrough"=dword:00000000
 "AllowMaxPerf"=dword:00000001
-"ComputePreemption"=dword:00000000
 "DisableBugcheckCallback"=dword:00000001
 "DisableCudaContextPreemption"=dword:00000001
 "DisableKmRenderBoost"=dword:00000000
