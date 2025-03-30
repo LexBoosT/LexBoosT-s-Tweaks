@@ -32,7 +32,6 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 "DisableGDIAcceleration"=dword:00000000
 "DisableGDSPowerGating"=dword:00000001
 "DisableGfxCGPowerGating"=dword:00000001
-"DisableGfxClockGating"=dword:00000001
 "DisableGFXPipelinePowerGating"=dword:00000001
 "DisableGmcPowerGating"=dword:00000001
 "DisableHdpClockPowerGating"=dword:00000001
@@ -42,10 +41,6 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 "DisableOverclockedPstates"=dword:00000001
 "DisableOverlay"=dword:00000001
 "DisablePFonDP"=dword:00000001
-"DisablePowerGating"=dword:00000001
-"DisablePreemption"=dword:00000001
-"DisablePreemptionOnS3S4"=dword:00000001
-"DisableSAMUPowerGating"=dword:00000001
 "DisableSysClockGating"=dword:00000001
 "DisableUVDPowerGating"=dword:00000001
 "DisableUVDPowerGatingDynamic"=dword:00000001
@@ -56,8 +51,6 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 "DisableXdmaSclkGating"=dword:00000001
 "Disable_OverlayDSQualityEnhancement"=dword:00000001
 "DpiMapIommuContiguous"=dword:00000001
-"EnableAggressivePStateBoost"=dword:00000001
-"EnableAggressivePStateOnly"=dword:00000001
 "EnableAsyncMidBufferPreemption"=dword:00000000
 "EnableAspmL0s"=dword:00000000
 "EnableAspmL1"=dword:00000000
@@ -70,9 +63,6 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 "EnableMidGfxPreemption"=dword:00000000
 "EnableMidGfxPreemptionVGPU"=dword:00000000
 "EnableNVClkSlowdown"=dword:00000000
-"EnablePerformanceMode"=dword:00000001
-"EnablePreemption"=dword:00000000
-"EnableRuntimePowerManagement"=dword:00000000
 "EnableSCGMidBufferPreemption"=dword:00000000
 "EnableSystemMemoryTiling"=dword:00000000
 "EnableUlps"=dword:00000000
