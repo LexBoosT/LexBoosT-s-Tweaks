@@ -1,3 +1,10 @@
+# Version 7.0.1
+
+- LexBoosT OS V2.0 rewrite from scratch.
+- Software compatible with Lexboost OS V2.0.
+- Software images compression.
+
+
 # Version 7.0.0
 
 - Reworked interface.
