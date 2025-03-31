@@ -3,6 +3,7 @@
 - LexBoosT OS V2.0 rewrite from scratch.
 - Software compatible with Lexboost OS V2.0.
 - Software images compression.
+*Fix Gimp link.
 
 
 # Version 7.0.0
