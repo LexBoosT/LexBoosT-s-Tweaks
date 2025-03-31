@@ -16,4 +16,4 @@ function Check-Admin {
 }
 Check-Admin
 
-winget install -e --id "GIMP.GIMP" --accept-package-agreements --accept-source-agreements --force
+winget install -e --id "GIMP.GIMP.3" --accept-package-agreements --accept-source-agreements --force
