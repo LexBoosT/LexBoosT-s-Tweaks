@@ -4,5 +4,5 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 "PowerThrottlingOff"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\PriorityControl]
-"Win32PrioritySeparation"=dword:0000002a
+"Win32PrioritySeparation"=dword:0000001a
 "ConvertibleSlateMode"=dword:00000000
