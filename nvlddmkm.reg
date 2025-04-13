@@ -55,7 +55,7 @@ Windows Registry Editor Version 5.00 Made by LexBoosT 2024
 "NvCplAllowWinSatAssessment"=dword:00000000
 "NvCplPhysxAuto"=dword:00000000
 "NvDevToolsVisible"=dword:00000001
-"RmGpsPsEnablePerCpuCoreDpc"dword:00000001
+"RmGpsPsEnablePerCpuCoreDpc"=dword:00000001
 "RmProfilingAdminOnly"=dword:00000000
 "DisplayPowerSaving"=dword:00000000
 
