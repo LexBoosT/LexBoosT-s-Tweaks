@@ -1,10 +1,14 @@
+# Version 7.0.2
+
+-Update  LexBoosT OS V2.1
+
+
 # Version 7.0.1
 
 - LexBoosT OS V2.0 rewrite from scratch.
 - Software compatible with Lexboost OS V2.0.
 - Software images compression.
 *Fix Gimp link.
-*Update LexBoosT OS V2.1 (14.04.25)
 
 
 # Version 7.0.0
