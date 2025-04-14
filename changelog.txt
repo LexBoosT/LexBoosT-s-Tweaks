@@ -1,6 +1,6 @@
 # Version 7.0.2
 
--Update  LexBoosT OS V2.1
+-Update LexBoosT OS V2.1
 
 
 # Version 7.0.1
