@@ -1,6 +1,7 @@
 # Version 7.0.2
 
 -Update LexBoosT OS V2.1
+*Update Nvidia Drivers 576.02 (16.04.25)
 
 
 # Version 7.0.1
