@@ -2,6 +2,7 @@
 
 - Delete Experimental Nvidia Tweaks
 - Update LexBoosT OS V2.2
+*Update Nvidia Drivers 576.15 (22.04.25)
 
 
 # Version 7.0.2
