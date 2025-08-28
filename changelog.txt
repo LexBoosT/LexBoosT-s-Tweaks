@@ -15,6 +15,7 @@
 *Update Nvidia Drivers 580.97 (12.08.25)
 *Update Nvidia Drivers 581.08 (19.08.25)
 *Update LexBoosT OS 2.6 (24.08.25)
+*Update Nvidia Drivers 581.15 (28.08.25)
 
 
 # Version 7.0.2
@@ -506,6 +507,7 @@
 - Removing unnecessary tweaks.
 - Added Nvidia Telemetry Program.
 - Gives access to tweaks from the old version only.
+
 
 
 
