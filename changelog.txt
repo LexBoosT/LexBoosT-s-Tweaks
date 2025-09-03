@@ -1,3 +1,8 @@
+# Version 7.0.4
+
+- Update link for Donate button
+
+
 # Version 7.0.3
 
 - Delete Experimental Nvidia Tweaks
@@ -509,6 +514,7 @@
 - Removing unnecessary tweaks.
 - Added Nvidia Telemetry Program.
 - Gives access to tweaks from the old version only.
+
 
 
 
