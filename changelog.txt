@@ -2,6 +2,7 @@
 
 - Update link for Donate button
 *Update Nvidia Drivers 581.29 (10.09.25)
+*Major Update for LexBoosT OS V3.0
 
 
 # Version 7.0.3
@@ -515,6 +516,7 @@
 - Removing unnecessary tweaks.
 - Added Nvidia Telemetry Program.
 - Gives access to tweaks from the old version only.
+
 
 
 
