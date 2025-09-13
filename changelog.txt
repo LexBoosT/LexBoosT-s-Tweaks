@@ -1,3 +1,9 @@
+# Version 7.0.5
+
+- Delete text version for LexBoosT OS description.
+*Update LexBoosT OS to V3.1
+
+
 # Version 7.0.4
 
 - Update link for Donate button
@@ -517,6 +523,7 @@
 - Removing unnecessary tweaks.
 - Added Nvidia Telemetry Program.
 - Gives access to tweaks from the old version only.
+
 
 
 
