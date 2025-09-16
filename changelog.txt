@@ -3,6 +3,7 @@
 - Delete text version for LexBoosT OS description.
 *Update LexBoosT OS to V3.1
 *Update Drivers Booster Pro 13.0.0.138
+*Update LexBoosT OS to V3.2
 
 
 # Version 7.0.4
@@ -524,6 +525,7 @@
 - Removing unnecessary tweaks.
 - Added Nvidia Telemetry Program.
 - Gives access to tweaks from the old version only.
+
 
 
 
