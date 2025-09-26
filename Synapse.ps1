@@ -26,14 +26,17 @@ while ($true) {
 	Write-Host "Choose the package to install:"
 	Write-Host "1. Razer Synapse 2"
 	Write-Host "2. Razer Synapse 3"
+	Write-Host "3. Razer Synapse 4"
 	Write-Host "0. Exit"
 
-	$choice = Read-Host "Enter your choice (1, 2 or 0 for Quit)"
+	$choice = Read-Host "Enter your choice (1, 2, 3 or 0 for Quit)"
 
 	switch ($choice) {
 		'1' { choco install razer-synapse-2 -y --no-progress --force }
-		'2' { winget install -e --id "RazerInc.RazerInstaller" --accept-package-agreements --accept-source-agreements --force }
+		'2' { winget install -e --id "RazerInc.RazerInstaller.Synapse3" --accept-package-agreements --accept-source-agreements --force }
+		'3' { winget install -e --id "RazerInc.RazerInstaller.Synapse4" --accept-package-agreements --accept-source-agreements --force }
 		'0' { exit }
 		default { Write-Host "Invalid choice. Please try again." }
 	}
 }
+
