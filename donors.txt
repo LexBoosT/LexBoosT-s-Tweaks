@@ -7,6 +7,7 @@ rainfall
 -----------------
 777pascha
 Adri Pino
+Alcopsy
 Alex Bunta
 Bloode
 Chiko
@@ -21,6 +22,7 @@ Jaxys
 JBOnes
 Jeffix
 Jensen
+John Williams
 Klezys
 Kofi-Annan
 learnlegalwheel
@@ -46,3 +48,4 @@ woes.slash
 YesIKeepASwitchInTact
 Yggdrasilly
 zach
+
