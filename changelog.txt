@@ -21,6 +21,7 @@
 *Update LexBoosT OS to V5.2
 *Update LexBoosT OS to V5.3
 *Update Nvidia Drivers 581.80 (04.11.25)
+*Update LexBoosT OS to V5.4
 
 
 # Version 7.0.4
@@ -542,6 +543,7 @@
 - Removing unnecessary tweaks.
 - Added Nvidia Telemetry Program.
 - Gives access to tweaks from the old version only.
+
 
 
 
