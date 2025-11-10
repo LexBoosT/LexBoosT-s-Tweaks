@@ -11,6 +11,7 @@ Adri Pino
 Alcopsy
 Alex Bunta
 Bloode
+certjii
 Chiko
 Chris
 Demonstar
@@ -44,11 +45,13 @@ star
 Strixluca
 TASbot
 TrashForReal
+Trij
 Verhafter
 woes.slash
 YesIKeepASwitchInTact
 Yggdrasilly
 zach
+
 
 
 
