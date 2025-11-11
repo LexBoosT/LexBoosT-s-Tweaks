@@ -1,5 +1,6 @@
 ---Best Donors---
 Cloudsan
+TrashForReal
 Jeffix
 x_N0TRicK5_x
 TvR
@@ -44,14 +45,10 @@ SSentry
 star
 Strixluca
 TASbot
-TrashForReal
 Trij
 Verhafter
 woes.slash
 YesIKeepASwitchInTact
 Yggdrasilly
 zach
-
-
-
 
