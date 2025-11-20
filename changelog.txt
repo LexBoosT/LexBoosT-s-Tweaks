@@ -1,6 +1,7 @@
 # Version 7.0.6
 
 - The LexBoosT OS download button directs you to the Discord server.
+*Update Nvidia Drivers 581.94 (20.11.25)
 
 
 # Version 7.0.5
@@ -549,6 +550,7 @@
 - Removing unnecessary tweaks.
 - Added Nvidia Telemetry Program.
 - Gives access to tweaks from the old version only.
+
 
 
 
