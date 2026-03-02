@@ -12,6 +12,7 @@
 *Update Nvidia Drivers 591.74 (06.01.26)
 *Update Nvidia Drivers 591.86 (27.01.26)
 *Update Nvidia Drivers 595.59 (26.02.26)
+*Update Nvidia Drivers 595.71 (02.03.26)
 
 
 # Version 7.0.5
@@ -560,6 +561,7 @@
 - Removing unnecessary tweaks.
 - Added Nvidia Telemetry Program.
 - Gives access to tweaks from the old version only.
+
 
 
 
