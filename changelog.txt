@@ -21,6 +21,8 @@
 *Update LexBoosT OS to V6.6
 *Update LexBoosT OS to V6.7
 *Update LexBoosT OS to V6.8
+*Update Nvidia Drivers 596.02 (25.03.26)
+
 
 # Version 7.0.5
 
