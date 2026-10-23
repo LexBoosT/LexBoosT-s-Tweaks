@@ -55,8 +55,11 @@
 *Update Nvidia Drivers 616.92 (09.09.26)
 *Update Nvidia Drivers 617.14 (22.09.26)
 *Update Nvidia Drivers 617.42 (06.10.26)
+*Update LexBoosT OS to 26.10
 *Update Nvidia Drivers 617.70 (15.10.26)
 *Update Nvidia Drivers 621.01 (21.10.26)
+*Update LexBoosT OS to 26.10.1
+
 
 # Version 7.0.5
 
