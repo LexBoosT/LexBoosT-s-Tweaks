@@ -63,6 +63,7 @@
 *Update Nvidia Drivers 621.14 (04.11.26)
 *Update Nvidia Drivers 621.24 (12.11.26)
 *Update Nvidia Drivers 621.35 (23.11.26)
+*Update Nvidia Drivers 621.40 (24.11.26)
 
 
 # Version 7.0.5
